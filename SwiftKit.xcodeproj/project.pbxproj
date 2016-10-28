@@ -108,6 +108,7 @@
 		DC4D918D1DC345140095A348 /* Serializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Serializer.swift; sourceTree = "<group>"; };
 		DC4D91921DC34BE40095A348 /* DictionaryUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DictionaryUtils.swift; path = Utils/DictionaryUtils.swift; sourceTree = "<group>"; };
 		DC4D91941DC34D300095A348 /* StaticPolymorph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StaticPolymorph.swift; path = StaticPolymorph/StaticPolymorph.swift; sourceTree = "<group>"; };
+		DC4D91971DC3E6E00095A348 /* JsonSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = JsonSerializer.swift; path = JsonSerializer/JsonSerializer.swift; sourceTree = "<group>"; };
 		DC5B83921DBA9294007751F6 /* SerializableData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SerializableData.swift; path = Map/SerializableData.swift; sourceTree = "<group>"; };
 		DC5B83941DBA92A4007751F6 /* DeserializableData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DeserializableData.swift; path = Map/DeserializableData.swift; sourceTree = "<group>"; };
 		DC5B83961DBA92B4007751F6 /* MappableData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MappableData.swift; path = Map/MappableData.swift; sourceTree = "<group>"; };
@@ -176,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				DCA815B41E36119400C78A44 /* Info.plist */,
+				DC4D91961DC3E6CC0095A348 /* JsonSerializer */,
 				18E4847E1BA8C054004CB09A /* ObjectMapper */,
 			);
 			path = SwiftKit;
@@ -298,6 +300,14 @@
 				DC4D91921DC34BE40095A348 /* DictionaryUtils.swift */,
 			);
 			name = Utils;
+			sourceTree = "<group>";
+		};
+		DC4D91961DC3E6CC0095A348 /* JsonSerializer */ = {
+			isa = PBXGroup;
+			children = (
+				DC4D91971DC3E6E00095A348 /* JsonSerializer.swift */,
+			);
+			name = JsonSerializer;
 			sourceTree = "<group>";
 		};
 		DC5B83911DBA9223007751F6 /* Map */ = {
