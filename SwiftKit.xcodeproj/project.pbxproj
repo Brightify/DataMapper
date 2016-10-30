@@ -61,6 +61,7 @@
 		DCA815FB1E36120700C78A44 /* StringTransformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5B84151DBAC5A4007751F6 /* StringTransformation.swift */; };
 		DCA815FC1E36120A00C78A44 /* DictionaryUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4D91921DC34BE40095A348 /* DictionaryUtils.swift */; };
 		DCA815FF1E36135A00C78A44 /* SwiftKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E4845D1BA8BFB1004CB09A /* SwiftKitTests.swift */; };
+		DC07855E1DC6634A0063AB96 /* DeserializationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC07855D1DC6634A0063AB96 /* DeserializationError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +97,7 @@
 		BACC98F5132F5D2FA8DDF557 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		BAE7934CA54D6546A09DB278 /* Pods_SwiftKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D377A479DD457196E4FC76E9 /* Pods-Showcase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Showcase.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Showcase/Pods-Showcase.debug.xcconfig"; sourceTree = "<group>"; };
+		DC07855D1DC6634A0063AB96 /* DeserializationError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeserializationError.swift; sourceTree = "<group>"; };
 		DC4D91711DC341B30095A348 /* Polymorph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Polymorph.swift; sourceTree = "<group>"; };
 		DC4D91741DC3425C0095A348 /* GenericPolymorphicInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GenericPolymorphicInfo.swift; path = StaticPolymorph/GenericPolymorphicInfo.swift; sourceTree = "<group>"; };
 		DC4D91751DC3425C0095A348 /* PolymorphDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PolymorphDataProvider.swift; path = StaticPolymorph/PolymorphDataProvider.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 		18E4847E1BA8C054004CB09A /* ObjectMapper */ = {
 			isa = PBXGroup;
 			children = (
+				DC07855D1DC6634A0063AB96 /* DeserializationError.swift */,
 				DC4D918B1DC345090095A348 /* ObjectMapper.swift */,
 				DC4D91711DC341B30095A348 /* Polymorph.swift */,
 				DC4D918D1DC345140095A348 /* Serializer.swift */,
@@ -582,6 +585,7 @@
 				DCA815D01E3611E400C78A44 /* MappableData.swift in Sources */,
 				DCA815E71E3611F700C78A44 /* URL+SupportedTypeConvertible.swift in Sources */,
 				DCA815CA1E3611DF00C78A44 /* ObjectMapper.swift in Sources */,
+				DC07855E1DC6634A0063AB96 /* DeserializationError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
