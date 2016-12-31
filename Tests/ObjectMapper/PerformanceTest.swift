@@ -40,12 +40,6 @@ class PerfomanceTest: XCTestCase {
         _ = result
     }
     
-    func testSerializeWithPolymorph() {
-    }
-    
-    func testDeserializeWithPolymorph() {
-    }
-    
     private func testData(x: Int) -> MappableStruct {
         var object: MappableStruct = MappableStruct(number: 0, text: "0", points: [], children: [])
         // Floor[ x! * e ] x is max i
