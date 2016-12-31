@@ -64,34 +64,57 @@
 		DC5F6E791DBFEB2F005DDC61 /* Mappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5F6E761DBFEB2F005DDC61 /* Mappable.swift */; };
 		DC5F6E7A1DBFEB2F005DDC61 /* Serializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5F6E771DBFEB2F005DDC61 /* Serializable.swift */; };
 		DC81E5321E0AF0D800E80FE3 /* TypedSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC81E5311E0AF0D800E80FE3 /* TypedSerializer.swift */; };
-		DCA817731E361E7D00C78A44 /* ApiTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA8173B1E361E4800C78A44 /* ApiTest.swift */; };
-		DCA817741E361E7D00C78A44 /* BoolTransformationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA8173C1E361E4800C78A44 /* BoolTransformationTest.swift */; };
-		DCA817751E361E7D00C78A44 /* CompositeTransformationsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA8173D1E361E4800C78A44 /* CompositeTransformationsTest.swift */; };
-		DCA817761E361E7D00C78A44 /* ConvertiblesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA8173E1E361E4800C78A44 /* ConvertiblesTest.swift */; };
-		DCA817771E361E7D00C78A44 /* CustomDateFormatTransformationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA8173F1E361E4800C78A44 /* CustomDateFormatTransformationTest.swift */; };
-		DCA817781E361E7D00C78A44 /* DateFormatterTransformationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA817401E361E4800C78A44 /* DateFormatterTransformationTest.swift */; };
-		DCA817791E361E7D00C78A44 /* DateTransformationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA817411E361E4800C78A44 /* DateTransformationTest.swift */; };
-		DCA8177A1E361E7D00C78A44 /* DelegatedTransformationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA817421E361E4800C78A44 /* DelegatedTransformationTest.swift */; };
-		DCA8177B1E361E7D00C78A44 /* DeserializableDataTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA817431E361E4800C78A44 /* DeserializableDataTest.swift */; };
-		DCA8177C1E361E7D00C78A44 /* DeserializableMappableDataWrapperTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA817441E361E4800C78A44 /* DeserializableMappableDataWrapperTest.swift */; };
-		DCA8177D1E361E7D00C78A44 /* DeserializableTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA817451E361E4800C78A44 /* DeserializableTest.swift */; };
-		DCA8177E1E361E7D00C78A44 /* DoubleTransformationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA817461E361E4800C78A44 /* DoubleTransformationTest.swift */; };
-		DCA8177F1E361E7D00C78A44 /* EnumTransformationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA817471E361E4800C78A44 /* EnumTransformationTest.swift */; };
-		DCA817801E361E7D00C78A44 /* GenericPolymorphicInfoTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA817481E361E4800C78A44 /* GenericPolymorphicInfoTest.swift */; };
-		DCA817811E361E7D00C78A44 /* IntTransformationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA817491E361E4800C78A44 /* IntTransformationTest.swift */; };
-		DCA817821E361E7D00C78A44 /* ISO8601DateTransformationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA8174A1E361E4800C78A44 /* ISO8601DateTransformationTest.swift */; };
-		DCA817831E361E7D00C78A44 /* MappableTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA8174B1E361E4800C78A44 /* MappableTest.swift */; };
-		DCA817841E361E7D00C78A44 /* PerformanceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA8174C1E361E4800C78A44 /* PerformanceTest.swift */; };
-		DCA817851E361E7D00C78A44 /* PolymorphDataProviderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA8174D1E361E4800C78A44 /* PolymorphDataProviderTest.swift */; };
-		DCA817861E361E7D00C78A44 /* PolymorphicTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA8174E1E361E4800C78A44 /* PolymorphicTest.swift */; };
-		DCA817871E361E7D00C78A44 /* SerializableData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA8174F1E361E4800C78A44 /* SerializableData.swift */; };
-		DCA817881E361E7D00C78A44 /* SerializableMappableDataWrapperTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA817501E361E4800C78A44 /* SerializableMappableDataWrapperTest.swift */; };
-		DCA817891E361E7D00C78A44 /* SerializableTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA817511E361E4800C78A44 /* SerializableTest.swift */; };
-		DCA8178A1E361E7D00C78A44 /* StaticPolymorphTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA817521E361E4800C78A44 /* StaticPolymorphTest.swift */; };
-		DCA8178B1E361E7D00C78A44 /* StringTransformationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA817531E361E4800C78A44 /* StringTransformationTest.swift */; };
-		DCA8178C1E361E7D00C78A44 /* SupportedTypeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA817541E361E4800C78A44 /* SupportedTypeTest.swift */; };
-		DCA8178D1E361E7D00C78A44 /* TransformationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA817551E361E4800C78A44 /* TransformationTest.swift */; };
-		DCA8178E1E361E7D00C78A44 /* URLTransformationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA817561E361E4800C78A44 /* URLTransformationTest.swift */; };
+		DCA817F31E361F9000C78A44 /* AnyDeserializableTransformationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA817941E361F7500C78A44 /* AnyDeserializableTransformationTest.swift */; };
+		DCA817F41E361F9000C78A44 /* AnySerializableTransformationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA817951E361F7500C78A44 /* AnySerializableTransformationTest.swift */; };
+		DCA817F51E361F9000C78A44 /* AnyTransformationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA817961E361F7500C78A44 /* AnyTransformationTest.swift */; };
+		DCA817F61E361F9000C78A44 /* ApiTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA817971E361F7500C78A44 /* ApiTest.swift */; };
+		DCA817F71E361F9000C78A44 /* Bool+SupportedTypeConvertibleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA817981E361F7500C78A44 /* Bool+SupportedTypeConvertibleTest.swift */; };
+		DCA817F81E361F9000C78A44 /* BoolTransformationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA817991E361F7500C78A44 /* BoolTransformationTest.swift */; };
+		DCA817F91E361F9000C78A44 /* CompositeDeserializableTransformationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA8179A1E361F7500C78A44 /* CompositeDeserializableTransformationTest.swift */; };
+		DCA817FA1E361F9000C78A44 /* CompositeSerializableTransformationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA8179B1E361F7500C78A44 /* CompositeSerializableTransformationTest.swift */; };
+		DCA817FB1E361F9000C78A44 /* CompositeTransformationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA8179C1E361F7500C78A44 /* CompositeTransformationTest.swift */; };
+		DCA817FC1E361F9000C78A44 /* CustomDateFormatTransformationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA8179D1E361F7500C78A44 /* CustomDateFormatTransformationTest.swift */; };
+		DCA817FD1E361F9000C78A44 /* DateFormatterTransformationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA8179E1E361F7500C78A44 /* DateFormatterTransformationTest.swift */; };
+		DCA817FE1E361F9000C78A44 /* DateTransformationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA8179F1E361F7500C78A44 /* DateTransformationTest.swift */; };
+		DCA817FF1E361F9000C78A44 /* DelegatedDeserializableTransformationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA817A01E361F7500C78A44 /* DelegatedDeserializableTransformationTest.swift */; };
+		DCA818001E361F9000C78A44 /* DelegatedSerializableTransformationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA817A11E361F7500C78A44 /* DelegatedSerializableTransformationTest.swift */; };
+		DCA818011E361F9000C78A44 /* DelegatedTransformationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA817A21E361F7500C78A44 /* DelegatedTransformationTest.swift */; };
+		DCA818021E361F9000C78A44 /* DeserializableDataTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA817A31E361F7500C78A44 /* DeserializableDataTest.swift */; };
+		DCA818031E361F9000C78A44 /* DeserializableMappableDataWrapperTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA817A41E361F7500C78A44 /* DeserializableMappableDataWrapperTest.swift */; };
+		DCA818041E361F9000C78A44 /* DeserializableSupportedTypeConvertibleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA817A51E361F7500C78A44 /* DeserializableSupportedTypeConvertibleTest.swift */; };
+		DCA818051E361F9000C78A44 /* DeserializableTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA817A61E361F7500C78A44 /* DeserializableTest.swift */; };
+		DCA818061E361F9000C78A44 /* DeserializableTransformationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA817A71E361F7500C78A44 /* DeserializableTransformationTest.swift */; };
+		DCA818071E361F9000C78A44 /* DictionaryUtilsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA817A81E361F7500C78A44 /* DictionaryUtilsTest.swift */; };
+		DCA818081E361F9000C78A44 /* Double+SupportedTypeConvertibleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA817A91E361F7500C78A44 /* Double+SupportedTypeConvertibleTest.swift */; };
+		DCA818091E361F9000C78A44 /* DoubleTransformationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA817AA1E361F7500C78A44 /* DoubleTransformationTest.swift */; };
+		DCA8180A1E361F9000C78A44 /* EnumTransformationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA817AB1E361F7500C78A44 /* EnumTransformationTest.swift */; };
+		DCA8180B1E361F9000C78A44 /* GenericPolymorphicInfoTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA817AC1E361F7500C78A44 /* GenericPolymorphicInfoTest.swift */; };
+		DCA8180C1E361F9000C78A44 /* Int+SupportedTypeConvertibleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA817AD1E361F7500C78A44 /* Int+SupportedTypeConvertibleTest.swift */; };
+		DCA8180D1E361F9000C78A44 /* IntTransformationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA817AE1E361F7500C78A44 /* IntTransformationTest.swift */; };
+		DCA8180E1E361F9000C78A44 /* ISO8601DateTransformationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA817AF1E361F7500C78A44 /* ISO8601DateTransformationTest.swift */; };
+		DCA8180F1E361F9000C78A44 /* MappableTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA817B01E361F7500C78A44 /* MappableTest.swift */; };
+		DCA818101E361F9000C78A44 /* ObjectMapperTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA817B11E361F7500C78A44 /* ObjectMapperTest.swift */; };
+		DCA818111E361F9000C78A44 /* PerformanceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA817B21E361F7500C78A44 /* PerformanceTest.swift */; };
+		DCA818121E361F9000C78A44 /* PolymorphDataProviderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA817B31E361F7500C78A44 /* PolymorphDataProviderTest.swift */; };
+		DCA818131E361F9000C78A44 /* PolymorphicTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA817B41E361F7500C78A44 /* PolymorphicTest.swift */; };
+		DCA818141E361F9000C78A44 /* SerializableData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA817B51E361F7500C78A44 /* SerializableData.swift */; };
+		DCA818151E361F9000C78A44 /* SerializableMappableDataWrapperTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA817B61E361F7500C78A44 /* SerializableMappableDataWrapperTest.swift */; };
+		DCA818161E361F9000C78A44 /* SerializableSupportedTypeConvertibleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA817B71E361F7500C78A44 /* SerializableSupportedTypeConvertibleTest.swift */; };
+		DCA818171E361F9000C78A44 /* SerializableTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA817B81E361F7500C78A44 /* SerializableTest.swift */; };
+		DCA818181E361F9000C78A44 /* SerializableTransformationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA817B91E361F7500C78A44 /* SerializableTransformationTest.swift */; };
+		DCA818191E361F9000C78A44 /* StaticPolymorphTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA817BA1E361F7500C78A44 /* StaticPolymorphTest.swift */; };
+		DCA8181A1E361F9000C78A44 /* String+SupportedTypeConvertibleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA817BB1E361F7500C78A44 /* String+SupportedTypeConvertibleTest.swift */; };
+		DCA8181B1E361F9000C78A44 /* StringTransformationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA817BC1E361F7500C78A44 /* StringTransformationTest.swift */; };
+		DCA8181C1E361F9000C78A44 /* SupportedNumberTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA817BD1E361F7500C78A44 /* SupportedNumberTest.swift */; };
+		DCA8181D1E361F9000C78A44 /* SupportedTypeConvertibleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA817BE1E361F7500C78A44 /* SupportedTypeConvertibleTest.swift */; };
+		DCA8181E1E361F9000C78A44 /* SupportedTypeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA817BF1E361F7500C78A44 /* SupportedTypeTest.swift */; };
+		DCA8181F1E361F9000C78A44 /* TransformationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA817C01E361F7500C78A44 /* TransformationTest.swift */; };
+		DCA818201E361F9000C78A44 /* URL+SupportedTypeConvertibleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA817C11E361F7500C78A44 /* URL+SupportedTypeConvertibleTest.swift */; };
+		DCA818211E361F9000C78A44 /* URLTransformationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA817C21E361F7500C78A44 /* URLTransformationTest.swift */; };
+		DCA818261E361FB600C78A44 /* SupportedNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA818221E361FB600C78A44 /* SupportedNumber.swift */; };
+		DCA818271E361FB600C78A44 /* SupportedNumber+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA818231E361FB600C78A44 /* SupportedNumber+Equatable.swift */; };
+		DCA818281E361FB600C78A44 /* SupportedType+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA818241E361FB600C78A44 /* SupportedType+Equatable.swift */; };
+		DCA818291E361FB600C78A44 /* SupportedType+SupportedNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA818251E361FB600C78A44 /* SupportedType+SupportedNumber.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -176,35 +199,58 @@
 		DC5F6E771DBFEB2F005DDC61 /* Serializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Serializable.swift; sourceTree = "<group>"; };
 		DC81E5311E0AF0D800E80FE3 /* TypedSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypedSerializer.swift; sourceTree = "<group>"; };
 		DCA815711E3605D700C78A44 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DCA8173B1E361E4800C78A44 /* ApiTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiTest.swift; sourceTree = "<group>"; };
-		DCA8173C1E361E4800C78A44 /* BoolTransformationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoolTransformationTest.swift; sourceTree = "<group>"; };
-		DCA8173D1E361E4800C78A44 /* CompositeTransformationsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompositeTransformationsTest.swift; sourceTree = "<group>"; };
-		DCA8173E1E361E4800C78A44 /* ConvertiblesTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvertiblesTest.swift; sourceTree = "<group>"; };
-		DCA8173F1E361E4800C78A44 /* CustomDateFormatTransformationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomDateFormatTransformationTest.swift; sourceTree = "<group>"; };
-		DCA817401E361E4800C78A44 /* DateFormatterTransformationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatterTransformationTest.swift; sourceTree = "<group>"; };
-		DCA817411E361E4800C78A44 /* DateTransformationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTransformationTest.swift; sourceTree = "<group>"; };
-		DCA817421E361E4800C78A44 /* DelegatedTransformationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DelegatedTransformationTest.swift; sourceTree = "<group>"; };
-		DCA817431E361E4800C78A44 /* DeserializableDataTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeserializableDataTest.swift; sourceTree = "<group>"; };
-		DCA817441E361E4800C78A44 /* DeserializableMappableDataWrapperTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeserializableMappableDataWrapperTest.swift; sourceTree = "<group>"; };
-		DCA817451E361E4800C78A44 /* DeserializableTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeserializableTest.swift; sourceTree = "<group>"; };
-		DCA817461E361E4800C78A44 /* DoubleTransformationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleTransformationTest.swift; sourceTree = "<group>"; };
-		DCA817471E361E4800C78A44 /* EnumTransformationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnumTransformationTest.swift; sourceTree = "<group>"; };
-		DCA817481E361E4800C78A44 /* GenericPolymorphicInfoTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericPolymorphicInfoTest.swift; sourceTree = "<group>"; };
-		DCA817491E361E4800C78A44 /* IntTransformationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntTransformationTest.swift; sourceTree = "<group>"; };
-		DCA8174A1E361E4800C78A44 /* ISO8601DateTransformationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ISO8601DateTransformationTest.swift; sourceTree = "<group>"; };
-		DCA8174B1E361E4800C78A44 /* MappableTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MappableTest.swift; sourceTree = "<group>"; };
-		DCA8174C1E361E4800C78A44 /* PerformanceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerformanceTest.swift; sourceTree = "<group>"; };
-		DCA8174D1E361E4800C78A44 /* PolymorphDataProviderTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PolymorphDataProviderTest.swift; sourceTree = "<group>"; };
-		DCA8174E1E361E4800C78A44 /* PolymorphicTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PolymorphicTest.swift; sourceTree = "<group>"; };
-		DCA8174F1E361E4800C78A44 /* SerializableData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerializableData.swift; sourceTree = "<group>"; };
-		DCA817501E361E4800C78A44 /* SerializableMappableDataWrapperTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerializableMappableDataWrapperTest.swift; sourceTree = "<group>"; };
-		DCA817511E361E4800C78A44 /* SerializableTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerializableTest.swift; sourceTree = "<group>"; };
-		DCA817521E361E4800C78A44 /* StaticPolymorphTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticPolymorphTest.swift; sourceTree = "<group>"; };
-		DCA817531E361E4800C78A44 /* StringTransformationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringTransformationTest.swift; sourceTree = "<group>"; };
-		DCA817541E361E4800C78A44 /* SupportedTypeTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportedTypeTest.swift; sourceTree = "<group>"; };
-		DCA817551E361E4800C78A44 /* TransformationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransformationTest.swift; sourceTree = "<group>"; };
-		DCA817561E361E4800C78A44 /* URLTransformationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLTransformationTest.swift; sourceTree = "<group>"; };
-		DCA8178F1E361EC700C78A44 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DCA817921E361F7500C78A44 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DCA817941E361F7500C78A44 /* AnyDeserializableTransformationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyDeserializableTransformationTest.swift; sourceTree = "<group>"; };
+		DCA817951E361F7500C78A44 /* AnySerializableTransformationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnySerializableTransformationTest.swift; sourceTree = "<group>"; };
+		DCA817961E361F7500C78A44 /* AnyTransformationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyTransformationTest.swift; sourceTree = "<group>"; };
+		DCA817971E361F7500C78A44 /* ApiTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiTest.swift; sourceTree = "<group>"; };
+		DCA817981E361F7500C78A44 /* Bool+SupportedTypeConvertibleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bool+SupportedTypeConvertibleTest.swift"; sourceTree = "<group>"; };
+		DCA817991E361F7500C78A44 /* BoolTransformationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoolTransformationTest.swift; sourceTree = "<group>"; };
+		DCA8179A1E361F7500C78A44 /* CompositeDeserializableTransformationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompositeDeserializableTransformationTest.swift; sourceTree = "<group>"; };
+		DCA8179B1E361F7500C78A44 /* CompositeSerializableTransformationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompositeSerializableTransformationTest.swift; sourceTree = "<group>"; };
+		DCA8179C1E361F7500C78A44 /* CompositeTransformationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompositeTransformationTest.swift; sourceTree = "<group>"; };
+		DCA8179D1E361F7500C78A44 /* CustomDateFormatTransformationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomDateFormatTransformationTest.swift; sourceTree = "<group>"; };
+		DCA8179E1E361F7500C78A44 /* DateFormatterTransformationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatterTransformationTest.swift; sourceTree = "<group>"; };
+		DCA8179F1E361F7500C78A44 /* DateTransformationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTransformationTest.swift; sourceTree = "<group>"; };
+		DCA817A01E361F7500C78A44 /* DelegatedDeserializableTransformationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DelegatedDeserializableTransformationTest.swift; sourceTree = "<group>"; };
+		DCA817A11E361F7500C78A44 /* DelegatedSerializableTransformationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DelegatedSerializableTransformationTest.swift; sourceTree = "<group>"; };
+		DCA817A21E361F7500C78A44 /* DelegatedTransformationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DelegatedTransformationTest.swift; sourceTree = "<group>"; };
+		DCA817A31E361F7500C78A44 /* DeserializableDataTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeserializableDataTest.swift; sourceTree = "<group>"; };
+		DCA817A41E361F7500C78A44 /* DeserializableMappableDataWrapperTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeserializableMappableDataWrapperTest.swift; sourceTree = "<group>"; };
+		DCA817A51E361F7500C78A44 /* DeserializableSupportedTypeConvertibleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeserializableSupportedTypeConvertibleTest.swift; sourceTree = "<group>"; };
+		DCA817A61E361F7500C78A44 /* DeserializableTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeserializableTest.swift; sourceTree = "<group>"; };
+		DCA817A71E361F7500C78A44 /* DeserializableTransformationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeserializableTransformationTest.swift; sourceTree = "<group>"; };
+		DCA817A81E361F7500C78A44 /* DictionaryUtilsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryUtilsTest.swift; sourceTree = "<group>"; };
+		DCA817A91E361F7500C78A44 /* Double+SupportedTypeConvertibleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+SupportedTypeConvertibleTest.swift"; sourceTree = "<group>"; };
+		DCA817AA1E361F7500C78A44 /* DoubleTransformationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleTransformationTest.swift; sourceTree = "<group>"; };
+		DCA817AB1E361F7500C78A44 /* EnumTransformationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnumTransformationTest.swift; sourceTree = "<group>"; };
+		DCA817AC1E361F7500C78A44 /* GenericPolymorphicInfoTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericPolymorphicInfoTest.swift; sourceTree = "<group>"; };
+		DCA817AD1E361F7500C78A44 /* Int+SupportedTypeConvertibleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+SupportedTypeConvertibleTest.swift"; sourceTree = "<group>"; };
+		DCA817AE1E361F7500C78A44 /* IntTransformationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntTransformationTest.swift; sourceTree = "<group>"; };
+		DCA817AF1E361F7500C78A44 /* ISO8601DateTransformationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ISO8601DateTransformationTest.swift; sourceTree = "<group>"; };
+		DCA817B01E361F7500C78A44 /* MappableTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MappableTest.swift; sourceTree = "<group>"; };
+		DCA817B11E361F7500C78A44 /* ObjectMapperTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectMapperTest.swift; sourceTree = "<group>"; };
+		DCA817B21E361F7500C78A44 /* PerformanceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerformanceTest.swift; sourceTree = "<group>"; };
+		DCA817B31E361F7500C78A44 /* PolymorphDataProviderTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PolymorphDataProviderTest.swift; sourceTree = "<group>"; };
+		DCA817B41E361F7500C78A44 /* PolymorphicTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PolymorphicTest.swift; sourceTree = "<group>"; };
+		DCA817B51E361F7500C78A44 /* SerializableData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerializableData.swift; sourceTree = "<group>"; };
+		DCA817B61E361F7500C78A44 /* SerializableMappableDataWrapperTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerializableMappableDataWrapperTest.swift; sourceTree = "<group>"; };
+		DCA817B71E361F7500C78A44 /* SerializableSupportedTypeConvertibleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerializableSupportedTypeConvertibleTest.swift; sourceTree = "<group>"; };
+		DCA817B81E361F7500C78A44 /* SerializableTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerializableTest.swift; sourceTree = "<group>"; };
+		DCA817B91E361F7500C78A44 /* SerializableTransformationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerializableTransformationTest.swift; sourceTree = "<group>"; };
+		DCA817BA1E361F7500C78A44 /* StaticPolymorphTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticPolymorphTest.swift; sourceTree = "<group>"; };
+		DCA817BB1E361F7500C78A44 /* String+SupportedTypeConvertibleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+SupportedTypeConvertibleTest.swift"; sourceTree = "<group>"; };
+		DCA817BC1E361F7500C78A44 /* StringTransformationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringTransformationTest.swift; sourceTree = "<group>"; };
+		DCA817BD1E361F7500C78A44 /* SupportedNumberTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportedNumberTest.swift; sourceTree = "<group>"; };
+		DCA817BE1E361F7500C78A44 /* SupportedTypeConvertibleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportedTypeConvertibleTest.swift; sourceTree = "<group>"; };
+		DCA817BF1E361F7500C78A44 /* SupportedTypeTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportedTypeTest.swift; sourceTree = "<group>"; };
+		DCA817C01E361F7500C78A44 /* TransformationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransformationTest.swift; sourceTree = "<group>"; };
+		DCA817C11E361F7500C78A44 /* URL+SupportedTypeConvertibleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+SupportedTypeConvertibleTest.swift"; sourceTree = "<group>"; };
+		DCA817C21E361F7500C78A44 /* URLTransformationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLTransformationTest.swift; sourceTree = "<group>"; };
+		DCA818221E361FB600C78A44 /* SupportedNumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportedNumber.swift; sourceTree = "<group>"; };
+		DCA818231E361FB600C78A44 /* SupportedNumber+Equatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SupportedNumber+Equatable.swift"; sourceTree = "<group>"; };
+		DCA818241E361FB600C78A44 /* SupportedType+Equatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SupportedType+Equatable.swift"; sourceTree = "<group>"; };
+		DCA818251E361FB600C78A44 /* SupportedType+SupportedNumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SupportedType+SupportedNumber.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -235,7 +281,11 @@
 				DC4D918B1DC345090095A348 /* ObjectMapper.swift */,
 				DC4D91711DC341B30095A348 /* Polymorph.swift */,
 				DC4D918D1DC345140095A348 /* Serializer.swift */,
+				DCA818221E361FB600C78A44 /* SupportedNumber.swift */,
+				DCA818231E361FB600C78A44 /* SupportedNumber+Equatable.swift */,
 				DC5B83CF1DBA964E007751F6 /* SupportedType.swift */,
+				DCA818241E361FB600C78A44 /* SupportedType+Equatable.swift */,
+				DCA818251E361FB600C78A44 /* SupportedType+SupportedNumber.swift */,
 				DC81E5311E0AF0D800E80FE3 /* TypedSerializer.swift */,
 				DC5B83911DBA9223007751F6 /* Map */,
 				DC5F6E741DBFEAFA005DDC61 /* Mappable */,
@@ -265,7 +315,7 @@
 				DCA815711E3605D700C78A44 /* Info.plist */,
 				DC4D91961DC3E6CC0095A348 /* JsonSerializer */,
 				18E4847E1BA8C054004CB09A /* ObjectMapper */,
-				DCA817391E361E4800C78A44 /* Tests */,
+				DCA817911E361F7500C78A44 /* Tests */,
 				40530704BB654DF2297D1CF7 /* Pods */,
 				6003F58C195388D20070C39A /* Frameworks */,
 				6003F58B195388D20070C39A /* Products */,
@@ -442,46 +492,65 @@
 			path = Mappable;
 			sourceTree = "<group>";
 		};
-		DCA817391E361E4800C78A44 /* Tests */ = {
+		DCA817911E361F7500C78A44 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				DCA8178F1E361EC700C78A44 /* Info.plist */,
-				DCA8173A1E361E4800C78A44 /* ObjectMapper */,
+				DCA817921E361F7500C78A44 /* Info.plist */,
+				DCA817931E361F7500C78A44 /* ObjectMapper */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
 		};
-		DCA8173A1E361E4800C78A44 /* ObjectMapper */ = {
+		DCA817931E361F7500C78A44 /* ObjectMapper */ = {
 			isa = PBXGroup;
 			children = (
-				DCA8173B1E361E4800C78A44 /* ApiTest.swift */,
-				DCA8173C1E361E4800C78A44 /* BoolTransformationTest.swift */,
-				DCA8173D1E361E4800C78A44 /* CompositeTransformationsTest.swift */,
-				DCA8173E1E361E4800C78A44 /* ConvertiblesTest.swift */,
-				DCA8173F1E361E4800C78A44 /* CustomDateFormatTransformationTest.swift */,
-				DCA817401E361E4800C78A44 /* DateFormatterTransformationTest.swift */,
-				DCA817411E361E4800C78A44 /* DateTransformationTest.swift */,
-				DCA817421E361E4800C78A44 /* DelegatedTransformationTest.swift */,
-				DCA817431E361E4800C78A44 /* DeserializableDataTest.swift */,
-				DCA817441E361E4800C78A44 /* DeserializableMappableDataWrapperTest.swift */,
-				DCA817451E361E4800C78A44 /* DeserializableTest.swift */,
-				DCA817461E361E4800C78A44 /* DoubleTransformationTest.swift */,
-				DCA817471E361E4800C78A44 /* EnumTransformationTest.swift */,
-				DCA817481E361E4800C78A44 /* GenericPolymorphicInfoTest.swift */,
-				DCA817491E361E4800C78A44 /* IntTransformationTest.swift */,
-				DCA8174A1E361E4800C78A44 /* ISO8601DateTransformationTest.swift */,
-				DCA8174B1E361E4800C78A44 /* MappableTest.swift */,
-				DCA8174C1E361E4800C78A44 /* PerformanceTest.swift */,
-				DCA8174D1E361E4800C78A44 /* PolymorphDataProviderTest.swift */,
-				DCA8174E1E361E4800C78A44 /* PolymorphicTest.swift */,
-				DCA8174F1E361E4800C78A44 /* SerializableData.swift */,
-				DCA817501E361E4800C78A44 /* SerializableMappableDataWrapperTest.swift */,
-				DCA817511E361E4800C78A44 /* SerializableTest.swift */,
-				DCA817521E361E4800C78A44 /* StaticPolymorphTest.swift */,
-				DCA817531E361E4800C78A44 /* StringTransformationTest.swift */,
-				DCA817541E361E4800C78A44 /* SupportedTypeTest.swift */,
-				DCA817551E361E4800C78A44 /* TransformationTest.swift */,
-				DCA817561E361E4800C78A44 /* URLTransformationTest.swift */,
+				DCA817941E361F7500C78A44 /* AnyDeserializableTransformationTest.swift */,
+				DCA817951E361F7500C78A44 /* AnySerializableTransformationTest.swift */,
+				DCA817961E361F7500C78A44 /* AnyTransformationTest.swift */,
+				DCA817971E361F7500C78A44 /* ApiTest.swift */,
+				DCA817981E361F7500C78A44 /* Bool+SupportedTypeConvertibleTest.swift */,
+				DCA817991E361F7500C78A44 /* BoolTransformationTest.swift */,
+				DCA8179A1E361F7500C78A44 /* CompositeDeserializableTransformationTest.swift */,
+				DCA8179B1E361F7500C78A44 /* CompositeSerializableTransformationTest.swift */,
+				DCA8179C1E361F7500C78A44 /* CompositeTransformationTest.swift */,
+				DCA8179D1E361F7500C78A44 /* CustomDateFormatTransformationTest.swift */,
+				DCA8179E1E361F7500C78A44 /* DateFormatterTransformationTest.swift */,
+				DCA8179F1E361F7500C78A44 /* DateTransformationTest.swift */,
+				DCA817A01E361F7500C78A44 /* DelegatedDeserializableTransformationTest.swift */,
+				DCA817A11E361F7500C78A44 /* DelegatedSerializableTransformationTest.swift */,
+				DCA817A21E361F7500C78A44 /* DelegatedTransformationTest.swift */,
+				DCA817A31E361F7500C78A44 /* DeserializableDataTest.swift */,
+				DCA817A41E361F7500C78A44 /* DeserializableMappableDataWrapperTest.swift */,
+				DCA817A51E361F7500C78A44 /* DeserializableSupportedTypeConvertibleTest.swift */,
+				DCA817A61E361F7500C78A44 /* DeserializableTest.swift */,
+				DCA817A71E361F7500C78A44 /* DeserializableTransformationTest.swift */,
+				DCA817A81E361F7500C78A44 /* DictionaryUtilsTest.swift */,
+				DCA817A91E361F7500C78A44 /* Double+SupportedTypeConvertibleTest.swift */,
+				DCA817AA1E361F7500C78A44 /* DoubleTransformationTest.swift */,
+				DCA817AB1E361F7500C78A44 /* EnumTransformationTest.swift */,
+				DCA817AC1E361F7500C78A44 /* GenericPolymorphicInfoTest.swift */,
+				DCA817AD1E361F7500C78A44 /* Int+SupportedTypeConvertibleTest.swift */,
+				DCA817AE1E361F7500C78A44 /* IntTransformationTest.swift */,
+				DCA817AF1E361F7500C78A44 /* ISO8601DateTransformationTest.swift */,
+				DCA817B01E361F7500C78A44 /* MappableTest.swift */,
+				DCA817B11E361F7500C78A44 /* ObjectMapperTest.swift */,
+				DCA817B21E361F7500C78A44 /* PerformanceTest.swift */,
+				DCA817B31E361F7500C78A44 /* PolymorphDataProviderTest.swift */,
+				DCA817B41E361F7500C78A44 /* PolymorphicTest.swift */,
+				DCA817B51E361F7500C78A44 /* SerializableData.swift */,
+				DCA817B61E361F7500C78A44 /* SerializableMappableDataWrapperTest.swift */,
+				DCA817B71E361F7500C78A44 /* SerializableSupportedTypeConvertibleTest.swift */,
+				DCA817B81E361F7500C78A44 /* SerializableTest.swift */,
+				DCA817B91E361F7500C78A44 /* SerializableTransformationTest.swift */,
+				DCA817BA1E361F7500C78A44 /* StaticPolymorphTest.swift */,
+				DCA817BB1E361F7500C78A44 /* String+SupportedTypeConvertibleTest.swift */,
+				DCA817BC1E361F7500C78A44 /* StringTransformationTest.swift */,
+				DCA817BD1E361F7500C78A44 /* SupportedNumberTest.swift */,
+				DCA817BE1E361F7500C78A44 /* SupportedTypeConvertibleTest.swift */,
+				DCA817BF1E361F7500C78A44 /* SupportedTypeTest.swift */,
+				DCA817C01E361F7500C78A44 /* TransformationTest.swift */,
+				DCA817C11E361F7500C78A44 /* URL+SupportedTypeConvertibleTest.swift */,
+				DCA817C21E361F7500C78A44 /* URLTransformationTest.swift */,
 			);
 			path = ObjectMapper;
 			sourceTree = "<group>";
@@ -683,10 +752,12 @@
 				DC4D918E1DC345140095A348 /* Serializer.swift in Sources */,
 				DC5B84161DBAC5A4007751F6 /* CustomDateFormatTransformation.swift in Sources */,
 				DC5B83F61DBAB5A4007751F6 /* DelegatedTransformation.swift in Sources */,
+				DCA818261E361FB600C78A44 /* SupportedNumber.swift in Sources */,
 				DC07855E1DC6634A0063AB96 /* DeserializationError.swift in Sources */,
 				DC5B845D1DBD1C36007751F6 /* DeserializableMappableDataWrapper.swift in Sources */,
 				DC5B841F1DBAC5A4007751F6 /* StringTransformation.swift in Sources */,
 				DC4D91951DC34D300095A348 /* StaticPolymorph.swift in Sources */,
+				DCA818281E361FB600C78A44 /* SupportedType+Equatable.swift in Sources */,
 				DC4D917B1DC3425C0095A348 /* GenericPolymorphicInfo.swift in Sources */,
 				DC5B83F21DBAA46E007751F6 /* CompositeTransformation.swift in Sources */,
 				DC5B841D1DBAC5A4007751F6 /* DoubleTransformation.swift in Sources */,
@@ -694,6 +765,7 @@
 				DC4D91981DC3E6E00095A348 /* JsonSerializer.swift in Sources */,
 				DC5B841B1DBAC5A4007751F6 /* URLTransformation.swift in Sources */,
 				DC5B83951DBA92A4007751F6 /* DeserializableData.swift in Sources */,
+				DCA818271E361FB600C78A44 /* SupportedNumber+Equatable.swift in Sources */,
 				DC5B84521DBCA074007751F6 /* SerializableSupportedTypeConvertible.swift in Sources */,
 				DC5B841E1DBAC5A4007751F6 /* IntTransformation.swift in Sources */,
 				DC5B84181DBAC5A4007751F6 /* DateTransformation.swift in Sources */,
@@ -722,6 +794,7 @@
 				DC81E5321E0AF0D800E80FE3 /* TypedSerializer.swift in Sources */,
 				DC4D91881DC3428C0095A348 /* PolymorphicSerializable.swift in Sources */,
 				DC4D917F1DC3425C0095A348 /* Polymorphic.swift in Sources */,
+				DCA818291E361FB600C78A44 /* SupportedType+SupportedNumber.swift in Sources */,
 				DC5B83D71DBA9D42007751F6 /* Transformation.swift in Sources */,
 				DC5B84401DBC9FCA007751F6 /* DeserializableTransformation.swift in Sources */,
 				DC5F6E781DBFEB2F005DDC61 /* Deserializable.swift in Sources */,
@@ -740,34 +813,53 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DCA817811E361E7D00C78A44 /* IntTransformationTest.swift in Sources */,
-				DCA817741E361E7D00C78A44 /* BoolTransformationTest.swift in Sources */,
-				DCA8177D1E361E7D00C78A44 /* DeserializableTest.swift in Sources */,
-				DCA817761E361E7D00C78A44 /* ConvertiblesTest.swift in Sources */,
-				DCA817871E361E7D00C78A44 /* SerializableData.swift in Sources */,
-				DCA817791E361E7D00C78A44 /* DateTransformationTest.swift in Sources */,
-				DCA8178C1E361E7D00C78A44 /* SupportedTypeTest.swift in Sources */,
-				DCA817821E361E7D00C78A44 /* ISO8601DateTransformationTest.swift in Sources */,
-				DCA817841E361E7D00C78A44 /* PerformanceTest.swift in Sources */,
-				DCA817881E361E7D00C78A44 /* SerializableMappableDataWrapperTest.swift in Sources */,
-				DCA817801E361E7D00C78A44 /* GenericPolymorphicInfoTest.swift in Sources */,
-				DCA8177C1E361E7D00C78A44 /* DeserializableMappableDataWrapperTest.swift in Sources */,
-				DCA817891E361E7D00C78A44 /* SerializableTest.swift in Sources */,
-				DCA817851E361E7D00C78A44 /* PolymorphDataProviderTest.swift in Sources */,
-				DCA817861E361E7D00C78A44 /* PolymorphicTest.swift in Sources */,
-				DCA8178A1E361E7D00C78A44 /* StaticPolymorphTest.swift in Sources */,
-				DCA8178E1E361E7D00C78A44 /* URLTransformationTest.swift in Sources */,
-				DCA8178B1E361E7D00C78A44 /* StringTransformationTest.swift in Sources */,
-				DCA817751E361E7D00C78A44 /* CompositeTransformationsTest.swift in Sources */,
-				DCA8177F1E361E7D00C78A44 /* EnumTransformationTest.swift in Sources */,
-				DCA817831E361E7D00C78A44 /* MappableTest.swift in Sources */,
-				DCA817731E361E7D00C78A44 /* ApiTest.swift in Sources */,
-				DCA817771E361E7D00C78A44 /* CustomDateFormatTransformationTest.swift in Sources */,
-				DCA8177A1E361E7D00C78A44 /* DelegatedTransformationTest.swift in Sources */,
-				DCA8177B1E361E7D00C78A44 /* DeserializableDataTest.swift in Sources */,
-				DCA817781E361E7D00C78A44 /* DateFormatterTransformationTest.swift in Sources */,
-				DCA8177E1E361E7D00C78A44 /* DoubleTransformationTest.swift in Sources */,
-				DCA8178D1E361E7D00C78A44 /* TransformationTest.swift in Sources */,
+				DCA818131E361F9000C78A44 /* PolymorphicTest.swift in Sources */,
+				DCA8180D1E361F9000C78A44 /* IntTransformationTest.swift in Sources */,
+				DCA8181E1E361F9000C78A44 /* SupportedTypeTest.swift in Sources */,
+				DCA818061E361F9000C78A44 /* DeserializableTransformationTest.swift in Sources */,
+				DCA8180B1E361F9000C78A44 /* GenericPolymorphicInfoTest.swift in Sources */,
+				DCA817FF1E361F9000C78A44 /* DelegatedDeserializableTransformationTest.swift in Sources */,
+				DCA818161E361F9000C78A44 /* SerializableSupportedTypeConvertibleTest.swift in Sources */,
+				DCA818021E361F9000C78A44 /* DeserializableDataTest.swift in Sources */,
+				DCA8180C1E361F9000C78A44 /* Int+SupportedTypeConvertibleTest.swift in Sources */,
+				DCA8180A1E361F9000C78A44 /* EnumTransformationTest.swift in Sources */,
+				DCA817F41E361F9000C78A44 /* AnySerializableTransformationTest.swift in Sources */,
+				DCA818091E361F9000C78A44 /* DoubleTransformationTest.swift in Sources */,
+				DCA818121E361F9000C78A44 /* PolymorphDataProviderTest.swift in Sources */,
+				DCA818011E361F9000C78A44 /* DelegatedTransformationTest.swift in Sources */,
+				DCA8181C1E361F9000C78A44 /* SupportedNumberTest.swift in Sources */,
+				DCA817FA1E361F9000C78A44 /* CompositeSerializableTransformationTest.swift in Sources */,
+				DCA817F51E361F9000C78A44 /* AnyTransformationTest.swift in Sources */,
+				DCA817F81E361F9000C78A44 /* BoolTransformationTest.swift in Sources */,
+				DCA8180F1E361F9000C78A44 /* MappableTest.swift in Sources */,
+				DCA818171E361F9000C78A44 /* SerializableTest.swift in Sources */,
+				DCA817FD1E361F9000C78A44 /* DateFormatterTransformationTest.swift in Sources */,
+				DCA8181A1E361F9000C78A44 /* String+SupportedTypeConvertibleTest.swift in Sources */,
+				DCA818041E361F9000C78A44 /* DeserializableSupportedTypeConvertibleTest.swift in Sources */,
+				DCA817FC1E361F9000C78A44 /* CustomDateFormatTransformationTest.swift in Sources */,
+				DCA817F91E361F9000C78A44 /* CompositeDeserializableTransformationTest.swift in Sources */,
+				DCA8180E1E361F9000C78A44 /* ISO8601DateTransformationTest.swift in Sources */,
+				DCA818031E361F9000C78A44 /* DeserializableMappableDataWrapperTest.swift in Sources */,
+				DCA817F61E361F9000C78A44 /* ApiTest.swift in Sources */,
+				DCA818201E361F9000C78A44 /* URL+SupportedTypeConvertibleTest.swift in Sources */,
+				DCA817FE1E361F9000C78A44 /* DateTransformationTest.swift in Sources */,
+				DCA817FB1E361F9000C78A44 /* CompositeTransformationTest.swift in Sources */,
+				DCA818101E361F9000C78A44 /* ObjectMapperTest.swift in Sources */,
+				DCA817F71E361F9000C78A44 /* Bool+SupportedTypeConvertibleTest.swift in Sources */,
+				DCA8181D1E361F9000C78A44 /* SupportedTypeConvertibleTest.swift in Sources */,
+				DCA818191E361F9000C78A44 /* StaticPolymorphTest.swift in Sources */,
+				DCA818071E361F9000C78A44 /* DictionaryUtilsTest.swift in Sources */,
+				DCA8181F1E361F9000C78A44 /* TransformationTest.swift in Sources */,
+				DCA818141E361F9000C78A44 /* SerializableData.swift in Sources */,
+				DCA8181B1E361F9000C78A44 /* StringTransformationTest.swift in Sources */,
+				DCA817F31E361F9000C78A44 /* AnyDeserializableTransformationTest.swift in Sources */,
+				DCA818081E361F9000C78A44 /* Double+SupportedTypeConvertibleTest.swift in Sources */,
+				DCA818151E361F9000C78A44 /* SerializableMappableDataWrapperTest.swift in Sources */,
+				DCA818051E361F9000C78A44 /* DeserializableTest.swift in Sources */,
+				DCA818001E361F9000C78A44 /* DelegatedSerializableTransformationTest.swift in Sources */,
+				DCA818111E361F9000C78A44 /* PerformanceTest.swift in Sources */,
+				DCA818181E361F9000C78A44 /* SerializableTransformationTest.swift in Sources */,
+				DCA818211E361F9000C78A44 /* URLTransformationTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
