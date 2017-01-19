@@ -8,20 +8,12 @@
 
 public struct SupportedNumber {
     
+    public let bool: Bool?
     public let int: Int?
     public let double: Double?
-    
-    public init(int: Int) {
-        self.int = int
-        self.double = nil
-    }
-    
-    public init(double: Double) {
-        self.int = nil
-        self.double = double
-    }
-    
-    public init(int: Int, double: Double) {
+
+    public init(bool: Bool? = nil, int: Int? = nil, double: Double? = nil) {
+        self.bool = bool
         self.int = int
         self.double = double
     }

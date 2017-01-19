@@ -15,7 +15,15 @@ class JsonSerializerTest: QuickSpec {
     override func spec() {
         describe("JsonSerializer") {
             let serializer = JsonSerializer()
-            let type = TestData.generateType(x: 3)
+            let type: SupportedType = .dictionary([
+                    "int": number(2),
+                    "double": .double(1.1),
+                    "bool": number(1),
+                    "text": .string("A"),
+                    "null": .null,
+                    "array": .array([number(0), number(1), number(2), .null]),
+                    "dictionary": .dictionary(["null": .null, "text": .string("B")])
+                ])
                 
             describe("typed serialize and deserialize") {
                 it("serializes and deserializes to the same type") {
@@ -36,5 +44,10 @@ class JsonSerializerTest: QuickSpec {
                 }
             }
         }
+    }
+    
+    private func number(_ value: Int) -> SupportedType {
+        return .number(value == 0 || value == 1 ? SupportedNumber(bool: value == 1, int: value, double: Double(value)) :
+            SupportedNumber(int: value, double: Double(value)))
     }
 }

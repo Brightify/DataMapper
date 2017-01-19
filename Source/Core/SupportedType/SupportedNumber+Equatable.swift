@@ -10,5 +10,5 @@ extension SupportedNumber: Equatable {
 }
 
 public func ==(lhs: SupportedNumber, rhs: SupportedNumber) -> Bool {
-    return lhs.int == rhs.int && lhs.double == rhs.double
+    return lhs.bool == rhs.bool && lhs.int == rhs.int && lhs.double == rhs.double
 }
