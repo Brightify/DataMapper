@@ -1,31 +1,60 @@
-# SwiftKit
+# ObjectMapper
 
-[![CI Status](http://img.shields.io/travis/brightify/SwiftKit.svg?style=flat)](https://travis-ci.org/brightify/SwiftKit)
-[![Version](https://img.shields.io/cocoapods/v/SwiftKit.svg?style=flat)](http://cocoapods.org/pods/SwiftKit)
-[![License](https://img.shields.io/cocoapods/l/SwiftKit.svg?style=flat)](http://cocoapods.org/pods/SwiftKit)
-[![Platform](https://img.shields.io/cocoapods/p/SwiftKit.svg?style=flat)](http://cocoapods.org/pods/SwiftKit)
+[![CI Status](http://img.shields.io/travis/Brightify/ObjectMapper.svg?style=flat)](https://travis-ci.org/Brightify/ObjectMapper)
+[![Version](https://img.shields.io/cocoapods/v/ObjectMapper.svg?style=flat)](http://cocoapods.org/pods/ObjectMapper)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![License](https://img.shields.io/cocoapods/l/ObjectMapper.svg?style=flat)](http://cocoapods.org/pods/ObjectMapper)
+[![Platform](https://img.shields.io/cocoapods/p/ObjectMapper.svg?style=flat)](http://cocoapods.org/pods/ObjectMapper)
 
-## Usage
+## Introduction
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+## Changelog
 
-## [Documentation](https://github.com/brightify/SwiftKit/wiki)
+List of all changes and new features can be found [here](CHANGELOG.md).
 
 ## Requirements
 
+- **Swift 3**
+- **iOS 8+**
+
 ## Installation
 
-SwiftKit is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+### CocoaPods
 
-```ruby
-pod "SwiftKit"
+TODO: Add Serializer setup.
+
+ObjectMapper is available through [CocoaPods](http://cocoapods.org). To install
+it, simply add the following line to your test target in your Podfile:
+
+```Ruby
+pod "ObjectMapper"
 ```
+
+### Carthage
+
+To use ObjectMapper with [Carthage](https://github.com/Carthage/Carthage) add in your Cartfile this line:
+```
+github "Brightify/ObjectMapper"
+```
+
+## Versioning
+
+This library uses semantic versioning. Until version 1.0 API breaking changes may occur even in minor versions. We consider version 0.7 to be prerelease, which means that API should be stable but is not tested yet in real project. After that testing we make needed adjustmens and bump the version to 1.0 (first release).
 
 ## Author
 
-Tadeas Kriz, tadeas@brightify.org
+* Tadeas Kriz, [tadeas@brightify.org](mailto:tadeas@brightify.org)
+* Filip Dolník, [filip@brightify.org](mailto:filip@brightify.org)
+
+## Used libraries in JsonSerializer
+
+* [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON)
+
+## Used libraries in tests
+
+* [Quick](https://github.com/Quick/Quick)
+* [Nimble](https://github.com/Quick/Nimble)
 
 ## License
 
-SwiftKit is available under the MIT license. See the LICENSE file for more info.
+ObjectMapper is available under the [MIT License](LICENSE).
