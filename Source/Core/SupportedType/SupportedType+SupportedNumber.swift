@@ -8,12 +8,20 @@
 
 extension SupportedType {
     
+    public static func bool(_ value: Bool) -> SupportedType {
+        return .number(SupportedNumber(bool: value))
+    }
+    
     public static func int(_ value: Int) -> SupportedType {
         return .number(SupportedNumber(int: value))
     }
     
     public static func double(_ value: Double) -> SupportedType {
         return .number(SupportedNumber(double: value))
+    }
+    
+    public var bool: Bool? {
+        return number?.bool
     }
     
     public var int: Int? {

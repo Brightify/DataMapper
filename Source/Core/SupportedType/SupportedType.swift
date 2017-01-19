@@ -11,7 +11,6 @@ public enum SupportedType {
     case null
     case string(String)
     case number(SupportedNumber)
-    case bool(Bool)
     indirect case array([SupportedType])
     indirect case dictionary([String: SupportedType])
 }
@@ -36,14 +35,6 @@ extension SupportedType {
     
     public var number: SupportedNumber? {
         if case .number(let value) = self {
-            return value
-        } else {
-            return nil
-        }
-    }
-    
-    public var bool: Bool? {
-        if case .bool(let value) = self {
             return value
         } else {
             return nil

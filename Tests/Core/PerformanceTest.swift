@@ -8,7 +8,6 @@
 
 import XCTest
 import DataMapper
-import SwiftyJSON
 
 class PerfomanceTest: XCTestCase {
     
@@ -18,42 +17,42 @@ class PerfomanceTest: XCTestCase {
     private let serializer = JsonSerializer()
     private let objects = TestData.generate(x: 6)
     
-    func testSerializeObjectToJSON() {
+    func testSerializeObjectToData() {
         let data: Object = objects
-        var result: JSON! = nil
+        var result: Data! = nil
         measure {
-             result = self.serializer.typedSerialize(self.objectMapper.serialize(data))
+             result = self.serializer.serialize(self.objectMapper.serialize(data))
         }
         _ = result
     }
     
-    func testDeserializeJSONToObject() {
-        let data: JSON = serializer.typedSerialize(objectMapper.serialize(objects))
+    func testDeserializeDataToObject() {
+        let data: Data = serializer.serialize(objectMapper.serialize(objects))
         var result: Object! = nil
         measure {
-            result = self.objectMapper.deserialize(self.serializer.typedDeserialize(data))
+            result = self.objectMapper.deserialize(self.serializer.deserialize(data))
         }
         _ = result
     }
     
-    func testSerializeSupportedTypeToJSON() {
+    func testSerializeSupportedTypeToData() {
         let data: SupportedType = objectMapper.serialize(objects)
-        var result: JSON! = nil
+        var result: Data! = nil
         measure {
-            result = self.serializer.typedSerialize(data)
+            result = self.serializer.serialize(data)
         }
         _ = result
     }
     
-    func testDeserializeJSONToSupportedType() {
-        let data: JSON = serializer.typedSerialize(objectMapper.serialize(objects))
+    func testDeserializeDataToSupportedType() {
+        let data: Data = serializer.serialize(objectMapper.serialize(objects))
         var result: SupportedType = .null
         measure {
-            result = self.serializer.typedDeserialize(data)
+            result = self.serializer.deserialize(data)
         }
         _ = result
     }
-    
+ 
     func testSerializeObjectToSupportedType() {
         let data: Object = objects
         var result: SupportedType = .null
