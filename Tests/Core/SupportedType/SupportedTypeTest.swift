@@ -40,18 +40,8 @@ class SupportedTypeTest: QuickSpec {
                     expect(type.number) == SupportedNumber(int: 1)
                 }
                 it("returns nil if is not number") {
-                    let type: SupportedType = .bool(true)
+                    let type: SupportedType = .string("A")
                     expect(type.number).to(beNil())
-                }
-            }
-            describe("bool") {
-                it("returns bool if is bool") {
-                    let type: SupportedType = .bool(true)
-                    expect(type.bool).to(beTrue())
-                }
-                it("returns nil if is not bool") {
-                    let type: SupportedType = .int(1)
-                    expect(type.bool).to(beNil())
                 }
             }
             describe("array") {
@@ -72,6 +62,16 @@ class SupportedTypeTest: QuickSpec {
                 it("returns nil if is not dictionary") {
                     let type: SupportedType = .bool(true)
                     expect(type.dictionary).to(beNil())
+                }
+            }
+            describe("bool") {
+                it("returns bool if is bool") {
+                    let type: SupportedType = .bool(true)
+                    expect(type.bool).to(beTrue())
+                }
+                it("returns nil if is not bool") {
+                    let type: SupportedType = .int(1)
+                    expect(type.bool).to(beNil())
                 }
             }
             describe("int") {

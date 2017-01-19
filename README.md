@@ -46,10 +46,6 @@ This library uses semantic versioning. Until version 1.0 API breaking changes ma
 * Tadeas Kriz, [tadeas@brightify.org](mailto:tadeas@brightify.org)
 * Filip Dolník, [filip@brightify.org](mailto:filip@brightify.org)
 
-## Used libraries in JsonSerializer
-
-* [SwiftyJSON](https://github.com/SwiftyJSON/SwiftyJSON)
-
 ## Used libraries in tests
 
 * [Quick](https://github.com/Quick/Quick)

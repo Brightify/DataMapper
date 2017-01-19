@@ -1,9 +1,9 @@
 Pod::Spec.new do |spec|
     spec.name             = "DataMapper"
     spec.version          = "0.1.0"
-    spec.summary          = "TODO"
+    spec.summary          = "TODO summary"
     spec.description      = <<-DESC
-                       TODO
+                       TODO description
                        DESC
     spec.homepage         = "https://github.com/Brightify/DataMapper"
     spec.license          = 'MIT'
@@ -24,7 +24,6 @@ Pod::Spec.new do |spec|
 
     spec.subspec 'JsonSerializer' do |subspec|
         subspec.dependency 'DataMapper/Core'
-        subspec.dependency 'SwiftyJSON', '~> 3.1'
         subspec.source_files = ['Source/JsonSerializer/**/*.swift']
     end
 end

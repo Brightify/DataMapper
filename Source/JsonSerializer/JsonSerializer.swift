@@ -6,27 +6,27 @@
 //  Copyright © 2016 Brightify. All rights reserved.
 //
 
-import SwiftyJSON
+import Foundation
 
 public struct JsonSerializer: TypedSerializer {
     
     public init() {
     }
     
-    public func typedSerialize(_ supportedType: SupportedType) -> JSON {
-        return JSON(serializeToAny(supportedType))
+    public func typedSerialize(_ supportedType: SupportedType) -> Any {
+        return serializeToAny(supportedType)
     }
     
     public func serialize(_ supportedType: SupportedType) -> Data {
-        return (try? typedSerialize(supportedType).rawData()) ?? Data()
+        return (try? JSONSerialization.data(withJSONObject: typedSerialize(supportedType))) ?? Data()
     }
     
-    public func typedDeserialize(_ data: JSON) -> SupportedType {
+    public func typedDeserialize(_ data: Any) -> SupportedType {
         return deserializeToSupportedType(data)
     }
     
     public func deserialize(_ data: Data) -> SupportedType {
-        return typedDeserialize(JSON(data: data))
+        return typedDeserialize((try? JSONSerialization.jsonObject(with: data, options: .allowFragments)) ?? NSNull())
     }
     
     private func serializeToAny(_ supportedType: SupportedType) -> Any {
@@ -36,9 +36,7 @@ public struct JsonSerializer: TypedSerializer {
         case .string(let string):
             return string
         case .number(let number):
-            return number.double ?? number.int as Any
-        case .bool(let bool):
-            return bool
+            return number.bool ?? number.double ?? number.int as Any
         case .array(let array):
             return array.map { serializeToAny($0) }
         case .dictionary(let dictionary):
@@ -46,23 +44,23 @@ public struct JsonSerializer: TypedSerializer {
         }
     }
     
-    private func deserializeToSupportedType(_ json: JSON) -> SupportedType {
-        switch json.type {
-        case .array:
-            return .array(json.array!.map { deserializeToSupportedType($0) })
-        case .dictionary:
-            return .dictionary(json.dictionary!.mapValue { deserializeToSupportedType($0) })
-        case .string:
-            return .string(json.string!)
-        case .number:
-            let double = json.number!.doubleValue
-            if double.truncatingRemainder(dividingBy: 1) == 0 {
-                return .number(SupportedNumber(int: json.number!.intValue, double: double))
+    private func deserializeToSupportedType(_ json: Any) -> SupportedType {
+        switch json {
+        case let number as NSNumber:
+            let double = number.doubleValue
+            if double == 1 || double == 0 {
+                return .number(SupportedNumber(bool: number.boolValue, int: number.intValue, double: double))
+            } else if double.truncatingRemainder(dividingBy: 1) == 0 {
+                return .number(SupportedNumber(int: number.intValue, double: double))
             } else {
                 return .double(double)
             }
-        case .bool:
-            return .bool(json.bool!)
+        case let string as String:
+            return .string(string)
+        case let array as [Any]:
+            return .array(array.map { deserializeToSupportedType($0) })
+        case let dictionary as [String: Any]:
+            return .dictionary(dictionary.mapValue { deserializeToSupportedType($0) })
         default:
             return .null
         }

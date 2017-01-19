@@ -29,16 +29,6 @@ struct TestData {
         return object
     }
     
-    static func generateType(x: Int) -> SupportedType {
-        var type: SupportedType = .dictionary(["number": .number(SupportedNumber(int: 0, double: 0)), "text": .string("0"), "points": .array([]), "children": .array([])])
-        
-        for i in 1...x {
-            type = .dictionary(["number": .number(SupportedNumber(int: i, double: Double(i))), "text": .string("\(i)"),
-                "points": .array((1...i).map { .number(SupportedNumber(int: $0, double: Double($0)))}), "children": .array((1...i).map { _ in type })])
-        }
-        return type
-    }
-    
     struct DeserializableStruct: Deserializable {
         
         let number: Int?
