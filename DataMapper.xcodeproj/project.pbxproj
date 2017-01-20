@@ -253,6 +253,12 @@
 		DC69ACDB1E31101500957C55 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DC69ACDE1E3114EE00957C55 /* JsonSerializerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonSerializerTest.swift; sourceTree = "<group>"; };
 		DC81E5311E0AF0D800E80FE3 /* TypedSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypedSerializer.swift; sourceTree = "<group>"; };
+		DCA815661E321C1700C78A44 /* DataMapper.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DataMapper.podspec; sourceTree = "<group>"; };
+		DCA815671E321C1700C78A44 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
+		DCA815681E321C1700C78A44 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		DCA815691E321C1700C78A44 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		DCA8156A1E321C1700C78A44 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		DCA815701E321C2100C78A44 /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
 		EFBEC0FCB124491489437253 /* Pods-CoreTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoreTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CoreTests/Pods-CoreTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -344,6 +350,12 @@
 		6003F581195388D10070C39A = {
 			isa = PBXGroup;
 			children = (
+				DCA815671E321C1700C78A44 /* CHANGELOG.md */,
+				DCA815661E321C1700C78A44 /* DataMapper.podspec */,
+				DCA815681E321C1700C78A44 /* LICENSE */,
+				DCA815691E321C1700C78A44 /* Podfile */,
+				DCA8156A1E321C1700C78A44 /* README.md */,
+				DCA815701E321C2100C78A44 /* .travis.yml */,
 				DC69ACAA1E30E3B100957C55 /* Source */,
 				18E4845C1BA8BFB1004CB09A /* Tests */,
 				6003F58C195388D20070C39A /* Frameworks */,
