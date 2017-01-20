@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		085068D2E12B019B90A3396E /* Pods_DataMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB00A2D2F89595D06F34EE2D /* Pods_DataMapper.framework */; };
 		18E484571BA8BFB1004CB09A /* DataMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18E4844D1BA8BFB1004CB09A /* DataMapper.framework */; };
 		DC07855E1DC6634A0063AB96 /* DeserializationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC07855D1DC6634A0063AB96 /* DeserializationError.swift */; };
 		DC2C72E51E0EC25600EE380C /* ObjectMapperTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2C72E41E0EC25600EE380C /* ObjectMapperTest.swift */; };
@@ -147,6 +148,7 @@
 		71E4442DD32958F54EE30CF2 /* Pods-SwiftKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftKit/Pods-SwiftKit.debug.xcconfig"; sourceTree = "<group>"; };
 		793CFCC98A9365FB4334946F /* Pods_CoreTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CoreTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C29B08FD7301743525EA86A /* Pods_JsonSerializerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JsonSerializerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		820DD9D1D9663CC2B91BFBAD /* Pods-DataMapper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DataMapper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DataMapper/Pods-DataMapper.debug.xcconfig"; sourceTree = "<group>"; };
 		8A5A3D6215DD5250671D66F0 /* Pods-SwiftKitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftKitTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftKitTests/Pods-SwiftKitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		94014F6DDF95E02A5D59D23E /* Pods-DataMapperTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DataMapperTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DataMapperTests/Pods-DataMapperTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B2DE9C9C07DC93B4E6269F81 /* Pods_SwiftKitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftKitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -154,6 +156,7 @@
 		CAC21C81FBB4B0BD632E94FB /* Pods-JsonSerializerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JsonSerializerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JsonSerializerTests/Pods-JsonSerializerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CB00A2D2F89595D06F34EE2D /* Pods_DataMapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DataMapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE60DCDA14A7999E46A5DA7F /* Pods-DataMapperTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DataMapperTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-DataMapperTests/Pods-DataMapperTests.release.xcconfig"; sourceTree = "<group>"; };
+		CF3CED21D53FBE59F5407DEB /* Pods-DataMapper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DataMapper.release.xcconfig"; path = "Pods/Target Support Files/Pods-DataMapper/Pods-DataMapper.release.xcconfig"; sourceTree = "<group>"; };
 		D375C6B52BFB8080C40A30B6 /* Pods_DataMapperTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DataMapperTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D377A479DD457196E4FC76E9 /* Pods-Showcase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Showcase.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Showcase/Pods-Showcase.debug.xcconfig"; sourceTree = "<group>"; };
 		DB3BF816D64478E10A0467DF /* Pods-JsonSerializerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JsonSerializerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JsonSerializerTests/Pods-JsonSerializerTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -274,6 +277,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				085068D2E12B019B90A3396E /* Pods_DataMapper.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -351,6 +355,8 @@
 				1BA11F57F89EE2389E10ECAA /* Pods-JsonSerializer.release.xcconfig */,
 				CAC21C81FBB4B0BD632E94FB /* Pods-JsonSerializerTests.debug.xcconfig */,
 				DB3BF816D64478E10A0467DF /* Pods-JsonSerializerTests.release.xcconfig */,
+				820DD9D1D9663CC2B91BFBAD /* Pods-DataMapper.debug.xcconfig */,
+				CF3CED21D53FBE59F5407DEB /* Pods-DataMapper.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -722,10 +728,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 18E484641BA8BFB1004CB09A /* Build configuration list for PBXNativeTarget "DataMapper" */;
 			buildPhases = (
+				819879EBD545EE4D8D593957 /* [CP] Check Pods Manifest.lock */,
 				18E484481BA8BFB1004CB09A /* Sources */,
 				18E484491BA8BFB1004CB09A /* Frameworks */,
 				18E4844A1BA8BFB1004CB09A /* Headers */,
 				18E4844B1BA8BFB1004CB09A /* Resources */,
+				B518202B398E69D813A9F1DB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -829,6 +837,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DataMapperTests/Pods-DataMapperTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		819879EBD545EE4D8D593957 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		921650F9D8529F3C16859D75 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -842,6 +865,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DataMapperTests/Pods-DataMapperTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B518202B398E69D813A9F1DB /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DataMapper/Pods-DataMapper-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DA0FDB8995EE725847F2562A /* [CP] Check Pods Manifest.lock */ = {
@@ -996,8 +1034,8 @@
 /* Begin XCBuildConfiguration section */
 		18E484651BA8BFB1004CB09A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 820DD9D1D9663CC2B91BFBAD /* Pods-DataMapper.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
@@ -1024,8 +1062,8 @@
 		};
 		18E484661BA8BFB1004CB09A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CF3CED21D53FBE59F5407DEB /* Pods-DataMapper.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
@@ -1055,7 +1093,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 94014F6DDF95E02A5D59D23E /* Pods-DataMapperTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1072,7 +1109,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CE60DCDA14A7999E46A5DA7F /* Pods-DataMapperTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";

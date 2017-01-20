@@ -20,7 +20,7 @@ class ISO8601DateTransformationTest: QuickSpec {
             
             let transformation = ISO8601DateTransformation()
             let value = formatter.date(from: "2016-12-31T11:00:32+01:00")
-            let type: SupportedType = .string("2016-12-31T11:00:32+01:00")
+            let type: SupportedType = .string(formatter.string(from: value ?? Date()))
             let incorrectType: SupportedType = .double(1)
             
             describe("transform(from)") {

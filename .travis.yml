@@ -2,5 +2,9 @@ language: objective-c
 osx_image: xcode8.2
 
 script:
-    - xctool -workspace DataMapper.xcworkspace -scheme DataMapper -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO run-tests
+    - xcodebuild -workspace DataMapper.xcworkspace -scheme DataMapper -sdk iphonesimulator build-for-testing
+    - xctool -workspace DataMapper.xcworkspace -scheme DataMapper -sdk iphonesimulator run-tests
     - pod lib lint
+
+notifications:
+    slack: brightify:00rIGJIfWqG5RyWCVoRNEgxt
