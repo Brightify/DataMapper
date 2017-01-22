@@ -9,4 +9,6 @@
 public enum DeserializationError: Error {
     
     case wrongType(type: SupportedType)
+    case custom(Error)
+    case unknown
 }

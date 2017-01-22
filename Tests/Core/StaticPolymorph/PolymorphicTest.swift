@@ -20,16 +20,8 @@ class PolymorphicTest: QuickSpec {
                 it("returns name of class") {
                     expect(PolymorphicClass.defaultName) == "PolymorphicClass"
                 }
-                it("returns name of struct") {
-                    expect(PolymorphicStruct.defaultName) == "PolymorphicStruct"
-                }
-                context("type is private") {
-                    it("returns name of class") {
-                        expect(PrivatePolymorphicClass.defaultName) == "PrivatePolymorphicClass"
-                    }
-                    it("returns name of struct") {
-                        expect(PrivatePolymorphicStruct.defaultName) == "PrivatePolymorphicStruct"
-                    }
+                it("returns name of class if type is private") {
+                    expect(PrivatePolymorphicClass.defaultName) == "PrivatePolymorphicClass"
                 }
             }
             describe("createPolymorphicInfo") {
@@ -58,21 +50,7 @@ class PolymorphicTest: QuickSpec {
         static let polymorphicInfo: PolymorphicInfo = createPolymorphicInfo()
     }
     
-    struct PolymorphicStruct: Polymorphic {
-        
-        static let polymorphicKey = "K"
-        
-        static let polymorphicInfo: PolymorphicInfo = createPolymorphicInfo()
-    }
-    
     private class PrivatePolymorphicClass: Polymorphic {
-        
-        static let polymorphicKey = "K"
-        
-        static let polymorphicInfo: PolymorphicInfo = createPolymorphicInfo()
-    }
-    
-    private struct PrivatePolymorphicStruct: Polymorphic {
         
         static let polymorphicKey = "K"
         

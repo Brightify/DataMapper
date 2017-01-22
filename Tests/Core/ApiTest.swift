@@ -190,37 +190,37 @@ private struct PolymorphicInfoInstance: PolymorphicInfo {
     var registeredSubtypes: [Polymorphic.Type] = []
 }
 
-private struct PolymorphicInstance: Polymorphic {
+private class PolymorphicInstance: Polymorphic {
     
     static var polymorphicKey: String = ""
     
     static var polymorphicInfo: PolymorphicInfo = PolymorphicInfoInstance()
 }
 
-private struct PolymorphicDeserializableInstance: PolymorphicDeserializable {
+private class PolymorphicDeserializableInstance: PolymorphicDeserializable {
     
     static var polymorphicKey: String = ""
     
     static var polymorphicInfo: PolymorphicInfo = PolymorphicInfoInstance()
     
-    init(_ data: DeserializableData) throws {
+    required init(_ data: DeserializableData) throws {
     }
 }
 
-private struct PolymorphicMappableInstance: PolymorphicMappable {
+private class PolymorphicMappableInstance: PolymorphicMappable {
     
     static var polymorphicKey: String = ""
     
     static var polymorphicInfo: PolymorphicInfo = PolymorphicInfoInstance()
     
-    init(_ data: DeserializableData) throws {
+    required init(_ data: DeserializableData) throws {
     }
     
-    mutating func mapping(_ data: inout MappableData) throws {
+    func mapping(_ data: inout MappableData) throws {
     }
 }
 
-private struct PolymorphicSerializableInstance: PolymorphicSerializable {
+private class PolymorphicSerializableInstance: PolymorphicSerializable {
     
     static var polymorphicKey: String = ""
     
