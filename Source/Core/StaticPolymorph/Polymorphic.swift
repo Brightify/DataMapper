@@ -6,7 +6,7 @@
 //  Copyright © 2016 Brightify. All rights reserved.
 //
 
-public protocol Polymorphic {
+public protocol Polymorphic: AnyObject {
     
     static var polymorphicKey: String { get }
     

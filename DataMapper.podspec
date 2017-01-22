@@ -1,9 +1,9 @@
 Pod::Spec.new do |spec|
     spec.name             = "DataMapper"
     spec.version          = "0.1.0"
-    spec.summary          = "TODO summary"
+    spec.summary          = "Almost universal object deserialization/serialization in Swift."
     spec.description      = <<-DESC
-                       TODO description
+                       DataMapper is a framework for safe deserialization/serialization of objects from/to different data representation (JSON but it can be practically everything).  
                        DESC
     spec.homepage         = "https://github.com/Brightify/DataMapper"
     spec.license          = 'MIT'
@@ -13,8 +13,9 @@ Pod::Spec.new do |spec|
         :tag => spec.version.to_s
     }
     spec.social_media_url = 'https://twitter.com/BrightifyOrg'
-    spec.platform     = :ios, '8.0'
     spec.requires_arc = true
+
+    spec.platform     = :ios, '8.0'
 
     spec.frameworks = 'Foundation'
 

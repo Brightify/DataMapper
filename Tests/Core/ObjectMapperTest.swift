@@ -17,7 +17,7 @@ class ObjectMapperTest: QuickSpec {
     private typealias B = TestData.PolymorphicTypes.B
     private typealias C = TestData.PolymorphicTypes.C
     
-    override func spec() {
+    override func spec() {        
         describe("ObjectMapper") {
             it("serializes and deserializes to the same object") {
                 let objectMapper = ObjectMapper()

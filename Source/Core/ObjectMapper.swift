@@ -6,8 +6,6 @@
 //  Copyright © 2016 Brightify. All rights reserved.
 //
 
-public typealias DataMapper = ObjectMapper
-
 public final class ObjectMapper {
     
     private let polymorph: Polymorph?
