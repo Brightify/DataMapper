@@ -16,16 +16,11 @@ class SupportedNumberTest: QuickSpec {
         describe("SupportedNumber") {
             describe("init") {
                 it("initializes object") {
-                    let none = SupportedNumber()
                     let bool = SupportedNumber(bool: true)
                     let int = SupportedNumber(int: 1)
                     let double = SupportedNumber(double: 1.1)
                     let all = SupportedNumber(bool: false, int: 0, double: 0)
-                    
-                    expect(none.bool).to(beNil())
-                    expect(none.int).to(beNil())
-                    expect(none.double).to(beNil())
-                    
+
                     expect(bool.bool) == true
                     expect(bool.int).to(beNil())
                     expect(bool.double).to(beNil())
