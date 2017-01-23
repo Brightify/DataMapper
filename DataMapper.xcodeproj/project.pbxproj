@@ -119,6 +119,16 @@
 		F73F4D43E10DD77596C895EF /* Pods_DataMapperTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D375C6B52BFB8080C40A30B6 /* Pods_DataMapperTests.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		DC4690981E368158001C8540 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6003F582195388D10070C39A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 18E4844C1BA8BFB1004CB09A;
+			remoteInfo = DataMapper;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		18E4844D1BA8BFB1004CB09A /* DataMapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DataMapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		18E484561BA8BFB1004CB09A /* DataMapperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DataMapperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -256,7 +266,7 @@
 		DCA815661E321C1700C78A44 /* DataMapper.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DataMapper.podspec; sourceTree = "<group>"; };
 		DCA815671E321C1700C78A44 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		DCA815681E321C1700C78A44 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		DCA815691E321C1700C78A44 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		DCA815691E321C1700C78A44 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		DCA8156A1E321C1700C78A44 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		DCA815701E321C2100C78A44 /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
 		EFBEC0FCB124491489437253 /* Pods-CoreTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoreTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CoreTests/Pods-CoreTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -1017,6 +1027,7 @@
 		18E484591BA8BFB1004CB09A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 18E4844C1BA8BFB1004CB09A /* DataMapper */;
+			targetProxy = DC4690981E368158001C8540 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
