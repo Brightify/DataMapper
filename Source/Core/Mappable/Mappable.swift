@@ -37,7 +37,7 @@ extension Mappable {
             }
         }
         catch {
-            preconditionFailure("Mapping called for serialization cannot throw exception.")
+            fatalError("Mapping called for serialization cannot throw exception.")
         }
     }
 }
