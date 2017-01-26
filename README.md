@@ -2,7 +2,6 @@
 
 [![CI Status](http://img.shields.io/travis/Brightify/DataMapper.svg?style=flat)](https://travis-ci.org/Brightify/DataMapper)
 [![Version](https://img.shields.io/cocoapods/v/DataMapper.svg?style=flat)](http://cocoapods.org/pods/DataMapper)
-[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![License](https://img.shields.io/cocoapods/l/DataMapper.svg?style=flat)](http://cocoapods.org/pods/DataMapper)
 [![Platform](https://img.shields.io/cocoapods/p/DataMapper.svg?style=flat)](http://cocoapods.org/pods/DataMapper)
 [![Slack Status](http://swiftkit.brightify.org//badge.svg)](http://swiftkit.brightify.org)
@@ -61,13 +60,6 @@ pod "DataMapper/JsonSerializer"
 ```
 
 These subspecs have Core as dependency, so there is no need to specify it explicitly.
-
-### Carthage
-
-To use DataMapper with [Carthage](https://github.com/Carthage/Carthage) add in your Cartfile this line:
-```
-github "Brightify/DataMapper"
-```
 
 ## Usage
 
