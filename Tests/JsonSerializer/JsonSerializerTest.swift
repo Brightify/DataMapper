@@ -24,7 +24,14 @@ class JsonSerializerTest: QuickSpec {
                     "array": .array([number(0), number(1), number(2), .null]),
                     "dictionary": .dictionary(["null": .null, "text": .string("B")])
                 ])
-                
+            
+            describe("serialize") {
+                it("returns empty data is input is .null") {
+                    let data = serializer.serialize(.null)
+                    
+                    expect(String(data: data, encoding: .utf8)) == ""
+                }
+            }
             describe("typed serialize and deserialize") {
                 it("serializes and deserializes to the same type") {
                     let json = serializer.typedSerialize(type)

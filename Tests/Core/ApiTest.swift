@@ -181,6 +181,13 @@ private struct SerializableInstance: Serializable {
     }
 }
 
+private class PolymorphicInstance: Polymorphic {
+    
+    static var polymorphicKey: String = ""
+    
+    static var polymorphicInfo: PolymorphicInfo = PolymorphicInfoInstance()
+}
+
 private struct PolymorphicInfoInstance: PolymorphicInfo {
     
     var type: Polymorphic.Type = PolymorphicInfoInstance.self as! Polymorphic.Type
@@ -188,13 +195,6 @@ private struct PolymorphicInfoInstance: PolymorphicInfo {
     var name: String = ""
     
     var registeredSubtypes: [Polymorphic.Type] = []
-}
-
-private class PolymorphicInstance: Polymorphic {
-    
-    static var polymorphicKey: String = ""
-    
-    static var polymorphicInfo: PolymorphicInfo = PolymorphicInfoInstance()
 }
 
 private class PolymorphicDeserializableInstance: PolymorphicDeserializable {
