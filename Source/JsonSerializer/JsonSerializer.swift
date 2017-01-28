@@ -18,6 +18,10 @@ public struct JsonSerializer: TypedSerializer {
     }
     
     public func serialize(_ supportedType: SupportedType) -> Data {
+        guard supportedType != .null else {
+            return Data()
+        }
+        
         return (try? JSONSerialization.data(withJSONObject: typedSerialize(supportedType))) ?? Data()
     }
     
