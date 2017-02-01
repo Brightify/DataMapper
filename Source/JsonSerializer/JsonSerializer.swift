@@ -18,11 +18,18 @@ public struct JsonSerializer: TypedSerializer {
     }
     
     public func serialize(_ supportedType: SupportedType) -> Data {
-        guard supportedType != .null else {
-            return Data()
+        let data: Data?
+        switch supportedType {
+        case .null:
+            data = nil
+        case .string(let value):
+            data = "\"\(value)\"".data(using: .utf8)
+        case .number(let value):
+            data = numberToString(value).data(using: .utf8)
+        default:
+            data = try? JSONSerialization.data(withJSONObject: typedSerialize(supportedType))
         }
-        
-        return (try? JSONSerialization.data(withJSONObject: typedSerialize(supportedType))) ?? Data()
+        return data ?? Data()
     }
     
     public func typedDeserialize(_ data: Any) -> SupportedType {
@@ -67,6 +74,18 @@ public struct JsonSerializer: TypedSerializer {
             return .dictionary(dictionary.mapValue { deserializeToSupportedType($0) })
         default:
             return .null
+        }
+    }
+    
+    private func numberToString(_ number: SupportedNumber) -> String {
+        if let bool = number.bool {
+            return "\(bool)"
+        } else if let double = number.double {
+            return "\(double)"
+        } else if let int = number.int {
+            return "\(int)"
+        } else {
+            return ""
         }
     }
 }
