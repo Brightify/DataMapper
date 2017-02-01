@@ -14,7 +14,6 @@ class JsonSerializerTest: QuickSpec {
     
     override func spec() {
         describe("JsonSerializer") {
-            let serializer = JsonSerializer()
             let type: SupportedType = .dictionary([
                     "int": number(2),
                     "double": .double(1.1),
@@ -25,32 +24,45 @@ class JsonSerializerTest: QuickSpec {
                     "dictionary": .dictionary(["null": .null, "text": .string("B")])
                 ])
             
-            describe("serialize") {
-                it("returns empty data is input is .null") {
-                    let data = serializer.serialize(.null)
-                    
-                    expect(String(data: data, encoding: .utf8)) == ""
-                }
-            }
             describe("typed serialize and deserialize") {
                 it("serializes and deserializes to the same type") {
-                    let json = serializer.typedSerialize(type)
-                    
-                    let result = serializer.typedDeserialize(json)
-                    
-                    expect(result) == type
+                    self.typedSerializeTest(for: .null)
+                    self.typedSerializeTest(for: .string("a"))
+                    self.typedSerializeTest(for: self.number(1))
+                    self.typedSerializeTest(for: .array([.null]))
+                    self.typedSerializeTest(for: .dictionary(["a": .null]))
+                    self.typedSerializeTest(for: type)
                 }
             }
             describe("serialize and deserialize") {
                 it("serializes and deserializes to the same type") {
-                    let data = serializer.serialize(type)
-                    
-                    let result = serializer.deserialize(data)
-                    
-                    expect(result) == type
+                    self.serializeTest(for: .null)
+                    self.serializeTest(for: .string("a"))
+                    self.serializeTest(for: self.number(1))
+                    self.serializeTest(for: .array([.null]))
+                    self.serializeTest(for: .dictionary(["a": .null]))
+                    self.serializeTest(for: type)
                 }
             }
         }
+    }
+    
+    private func serializeTest(for type: SupportedType, file: String = #file, line: UInt = #line) {
+        let serializer = JsonSerializer()
+        
+        let data = serializer.serialize(type)
+        let actualType = serializer.deserialize(data)
+        
+        expect(actualType, file: file, line: line) == type
+    }
+    
+    private func typedSerializeTest(for type: SupportedType, file: String = #file, line: UInt = #line) {
+        let serializer = JsonSerializer()
+        
+        let data = serializer.typedSerialize(type)
+        let actualType = serializer.typedDeserialize(data)
+        
+        expect(actualType, file: file, line: line) == type
     }
     
     private func number(_ value: Int) -> SupportedType {
