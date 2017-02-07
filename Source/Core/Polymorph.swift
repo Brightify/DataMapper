@@ -8,9 +8,9 @@
 
 public protocol Polymorph {
     
-    /// Returns type to which should be the supportedType deserialized.
+    /// Returns type to which the supportedType should be deserialized.
     func polymorphType<T>(for type: T.Type, in supportedType: SupportedType) -> T.Type
     
-    /// Write info about type to supportedType if necessary. 
+    /// Write info about the type to supportedType if necessary.
     func writeTypeInfo<T>(to supportedType: inout SupportedType, of type: T.Type)
 }

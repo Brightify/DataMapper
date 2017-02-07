@@ -8,13 +8,13 @@
 
 ## Introduction
 
-DataMapper is a framework for safe deserialization/serialization of objects from/to different data representation (JSON but it can be practically everything).
+DataMapper is a framework for safe deserialization/serialization of objects from/to different data representation standards (as of now we support JSON but others can be added easily).
 
 Among its advantages belongs:
 
 * Easy to use API
 * Compile time safety (as much as possible)
-* Support for custom Serializers (allows you to simply change target data representation by implementing one class)
+* Support for custom Serializers (allows you to simply change data representation format by implementing one class)
 * Polymorph
 * Thread safety (depends on your usage)
 * Support for one direction use (if you don't need the other one, you don't have to implement it)
@@ -27,7 +27,7 @@ List of all changes and new features can be found [here](CHANGELOG.md).
 
 * XMLSerializer
 * NSUserDefaultsSerializer
-* Dynamic polymorph (once Swift allows it)
+* Dynamic polymorph (currently not possible because of Swift limitations)
 
 ## Requirements
 
@@ -145,7 +145,33 @@ Used terminology:
 
 ### SupportedType
 
-`SupportedType` creates intermediate level between ObjectMapper and Serializers. It is an enum representing basic data types (`null`, `string`, `number`, `array`, `dictionary`). Each type has associated property which return its value if it is correct type or nil otherwise. With small exception for `null` which property is named `isNull` and returns `Bool`. For example:
+```Swift
+enum SupportedType {
+    
+    case null
+    case string(String)
+    case number(SupportedNumber)
+    case array([SupportedType])
+    case dictionary([String: SupportedType])
+}
+
+extension SupportedType {
+    
+    var isNull: Bool
+    
+    var string: String?
+    
+    var number: SupportedNumber?
+    
+    var array: [SupportedType]?
+    
+    var dictionary: [String: SupportedType]?
+
+    mutating func addToDictionary(key: String, value: SupportedType)
+}
+```
+
+`SupportedType` creates intermediate level between ObjectMapper and Serializers. It is an enum representing basic data types (`null`, `string`, `number`, `array`, `dictionary`). Each type has associated property which return its value if it is correct type or nil otherwise. With small exception for `null` whose property is named `isNull` and returns `Bool`. For example:
 
 ```Swift
 let type: SupportedType = .string("A")
@@ -153,9 +179,22 @@ type.string // "A"
 type.number // nil
 ```
 
+`addToDictionary` adds the key value pair to the dictionary. If the current type is not a dictionary, then it is replaced with a new dictionary. 
+
 #### SupportedNumber
 
-SupportedNumber handles problem of numbers being ambiguous when represented as text. For example is 1 `Int` or `Double` or even `Bool`? (thanks `NSNumber` for that) It is a basic struct representing `Bool`, `Int` or `Double` or any combination of these. Usage:
+```Swift
+struct SupportedNumber {
+    
+    let bool: Bool?
+    let int: Int?
+    let double: Double?
+
+    // + all combinations of inits.
+}
+```
+
+SupportedNumber handles the problem of numbers being ambiguous when represented as text. For example is 1 `Int` or `Double` or even `Bool`? (thanks `NSNumber` for that) It is a basic struct representing `Bool`, `Int` or `Double` or any combination of these. Usage:
 
 ```Swift
 let int = SupportedNumber(int: 1)
@@ -169,7 +208,7 @@ intOrDouble.int // 1
 intOrDouble.double // 1
 ```
 
-Normally you will directly use it only if the number is ambiguous (in Serializers) in other cases use extensions for SupportedType to create and access it. For example:
+You would only use it if the number type is ambiguous (i.e. in Serializers). Otherwise you should always use extensions of `SupportedType` to create and access it. For example:
 
 ```Swift
 let int: SupportedType = .int(1)
@@ -185,7 +224,21 @@ intOrDouble.double // 1
 
 ### ObjectMapper
 
-Class which maps object to `SupportedType`. It has two types of methods: `serialize` which takes Swift objects and transforms them to `SupportedType` and `deserialize` which do it the other way.
+```Swift
+final class ObjectMapper {
+
+	func serialize<T: Serializable>(_ value: T?) -> SupportedType
+
+	func deserialize<T: Deserializable>(_ type: SupportedType) -> T?
+
+	// + other overloads for supported types mentioned below
+}
+```
+
+`ObjectMapper` maps objects to `SupportedType`. It has two types of methods: 
+
+* `serialize` - Takes Swift objects and transforms them to `SupportedType`.
+* `deserialize` - Takes `SupportedType` and transforms them to Swift objects.
 
 Supported Swift types:
 
@@ -195,21 +248,41 @@ Supported Swift types:
 * `[T?]?`
 * `[String: T?]?`
 
-where `T` conforms to Map protocol (depends on method). If `T` does not conform to this protocol, you need to pass instance of `Transformation` as second parameter named `using`.
+where `T` conforms to the Map protocol (depends on the method). If `T` does not conform to this protocol, you need to pass the instance of `Transformation` as the second parameter named `using`.
 
-As you can see `deserialize` always returns optional type. `nil` is returned if `SupportedType` is `.null` or cannot be converted to `T`.
+As you can see `deserialize` always returns an optional type. `nil` is returned if `SupportedType` is `.null` or cannot be converted to `T`.
 
 `serialize` accepts both optional and non optional types. If `nil` is passed then the result `SupportedType` is `.null`.
 
-`[T]?` differs from `[T?]?` in deserialization in that if one of the elements from array is `nil` (`SupportedType` is `.null` or the object cannot be deserialized) then everything is discarded and `nil` is returned. In case of `[T?]?` `nil` value will be added to the array. The same applies to dictionary.
+`[T]?` differs from `[T?]?` in deserialization. If one of the elements from array is `nil` (`SupportedType` is `.null` or the object cannot be deserialized) then everything is discarded and `nil` is returned. In case of `[T?]?` `nil` value will be added to the array. The same applies to the dictionary.
 
 ### Serializer
 
-DataMapper specifies protocol named `Serializer` which maps `SupportedType` to `NSData`. You don't have to implement it in order to create custom one, but it is recommended because then it can be used in other libraries.
+```Swift
+protocol Serializer {
+    
+    func serialize(_ supportedType: SupportedType) -> Data
+    
+    func deserialize(_ data: Data) -> SupportedType
+}
+```
+
+`Serializer` represents some object which maps `SupportedType` to `NSData`. You don't have to implement `Serializer` in order to map `SupportedType` to `NSData`, but it is recommended because then the object can be used in other libraries. (This protocol only provides standardized API.)
 
 #### TypedSerializer
 
-Extends `Serializer` with generic type and methods. Sometimes you may get data from another library not as `NSData` but for example as JSON (`Any` with specific structure) and transforming them back and forth is not good for performance.
+```Swift
+protocol TypedSerializer: Serializer {
+    
+    associatedtype DataType
+    
+    func typedSerialize(_ supportedType: SupportedType) -> DataType
+    
+    func typedDeserialize(_ data: DataType) -> SupportedType
+}
+```
+
+Extends `Serializer` with generic type and methods. Sometimes you may get data from another library not as `NSData` but, for example, as JSON (`Any` with specific structure) and transforming them back and forth is not good for performance.
 
 #### Pre-implemented Serializers
 
@@ -221,8 +294,6 @@ As its name suggests it works with JSON. It conforms to `TypedSerializer` protoc
 
 #### Deserializable
 
-Allows object conforming to this protocol to be deserialized from `SupportedType` using `ObjectMapper`. It is specified as:
-
 ```Swift
 protocol Deserializable {
 
@@ -230,11 +301,9 @@ protocol Deserializable {
 }
 ```
 
-In this `init` you need to initialize the object using `DeserializableData` (see DeserializableData chapter). If for some reason the object cannot be created (wrong data), then throw `DeserializationError`.
+Allows object conforming to this protocol to be deserialized from `SupportedType` using `ObjectMapper`. In this `init` you need to initialize the object using `DeserializableData` (see [DeserializableData](#deserializabledata)). If for some reason the object cannot be created (wrong data), then throw `DeserializationError`.
 
 #### Serializable
-
-Allows object conforming to this protocol to be serialized to `SupportedType` using `ObjectMapper`. It is specified as:
 
 ```Swift
 protocol Serializable {
@@ -243,13 +312,11 @@ protocol Serializable {
 }
 ```
 
-In `serialize` set data you want to serialize (it does not have to be everything) to `SerializableData` (see SerializableData chapter).
+Allows object conforming to this protocol to be serialized to `SupportedType` using `ObjectMapper`. In `serialize` set data you want to serialize (it does not have to be everything) to `SerializableData` (see [SerializableData](#serializabledata)).
 
-Warning: This method can easily break thread safety if serialized data are mutable (immutability and structs are your friend here).
+Warning: This method can easily break thread safety if serialized data are mutable (immutability and structs are your friends here).
 
 #### Mappable
-
-`Mappable` protocol combines both `Deserializable` and `Serializable`. It is specified as:
 
 ```Swift
 protocol Mappable: Serializable, Deserializable {
@@ -258,7 +325,7 @@ protocol Mappable: Serializable, Deserializable {
 }
 ```
 
-It provides default implementation for `serialize` but `init` needs to be implemented by hand, usually like this:
+`Mappable` protocol combines both `Deserializable` and `Serializable`. It provides default implementation for `serialize` but `init` needs to be implemented by hand, usually like this:
 
 ```Swift
 struct SomeObject: Mappable {
@@ -272,9 +339,9 @@ struct SomeObject: Mappable {
 
 This also means that the object has to be initialized before calling the `mapping` method.
 
-If you change the default implementation of `init` or `serialize` do not forget to call `try mapping(data)` (in `init`) or `mapping(&data)` (in `serialize`).
+If you change the default implementation of `init` or `serialize`, do not forget to call `try mapping(data)` (in `init`) or `mapping(&data)` (in `serialize`).
 
-In `mapping` you have access to `MappableData` (see MappableData chapter) which allows you to specify how to map object at one place. For this the fields must be mutable. Immutable fields needs to be defined separately in `init` and `serialize` like so:
+In `mapping` you have access to `MappableData` (see [MappableData](#mappabledata)) which allows you to specify how to map object at one place. For this the fields must be mutable. Immutable fields needs to be defined separately in `init` and `serialize` like so:
 
 ```Swift
 struct SomeObject: Mappable {
@@ -302,11 +369,11 @@ struct SomeObject: Mappable {
 
 Throws works the same as in `Deserializable`.
 
-Warning: Same as for `Serializable`.
+Warning: Same problems with thread safety as in `Serializable`.
 
 ### DeserializableData/SerializableData/MappableData
 
-They are used in corresponding methods in Map protocols. They provide many overloads of one specific method and a subscript. The subscript is used as key in a dictionary and it can be nested like so:
+They are used in corresponding methods in the Map protocols. They provide many overloads of one specific method and a subscript. The subscript is used as a key in a dictionary and it can be nested like so:
 
 ```Swift
 data["a"]["b"]
@@ -314,9 +381,9 @@ data[["a", "b"]]
 data["a", "b"]
 ```
 
-These all means that data corresponds to dictionary with key "a" which is another dictionary with key "b".
+These all mean that data corresponds to a dictionary with the key "a" which is another dictionary with the key "b".
 
-The specific method has overloads for the same types as `ObjectMapper` with the same behavior (see ObjectMapper) and for each of them there are three choices:
+The specific method has overloads for the same types as `ObjectMapper` with the same behavior (see [ObjectMapper](#objectmapper)) and for each of them there are three choices:
 
 * same as in `ObjectMapper` - works with optional type, nil represents .null
 * `try` - works with non optional type and throws exception if .null is found
@@ -366,7 +433,7 @@ Note: `try` and `or` affects result of `map` only in deserialization.
 
 ### Transformations
 
-Transformations provide another way of specifying how object should be mapped. They are used to either override behavior of methods in Map protocol or to allow mapping of type which does not conform to Map protocol.
+Transformations provide another way of specifying how an object should be mapped. They are used to either override behavior of methods in the Map protocol or to allow mapping of type which does not conform to the Map protocol.
 
 There are three types of them: `DeserializableTransformation` (only for deserialization), `SerializableTransformation` (only for serialization) and `Transformation` (both). Also all of the specialized implementations (`AnyTransformation`, `SupportedTypeConvertible`, ...) have three versions with corresponding name.
 
@@ -407,9 +474,9 @@ let anySerializableTransformation: AnySerializableTransformation = transformatio
 
 #### SupportedTypeConvertible
 
-Extending type with `SupportedTypeConvertible` provides default implementation of Map protocol if there already is `Transformation` for that type. All value types with transformations and `NSURL` conforms to this protocol.
+Extending type with `SupportedTypeConvertible` provides default implementation of the Map protocol if there already is `Transformation` for that type. All value types with transformations and `NSURL` conforms to this protocol.
 
-Here is example implementation for `Int`:
+Here is an example implementation for `Int`:
 
 ```Swift
 extension Int: SupportedTypeConvertible {
@@ -422,7 +489,7 @@ Note: This allows types like `Int` to be used directly in `ObjectMapper` without
 
 #### CompositeTransformation
 
-`CompositeTransformation` allows you to reuse already existing `Transformation` to transform value of type `TransitiveObject` to/from `SupportedType`. Then you only need to write code for converting that `TransitiveObject` to/from `Object`.
+`CompositeTransformation` allows you to reuse already existing `Transformation` to transform the value of the type `TransitiveObject` to/from `SupportedType`. Then you only need to write code for converting that `TransitiveObject` to/from `Object`.
 
 #### DelegatedTransformation
 
@@ -437,11 +504,22 @@ struct ISO8601DateTransformation: DelegatedTransformation {
 }
 ```
 
-Because there is already `CustomDateFormatTransformation` which handles transformation to/from `.string`, it is not necessary to implement that again here. It is sufficient to specify the format used.
+Because there is already `CustomDateFormatTransformation` which handles transformation to/from `.string`, it is not necessary to implement it again here. It is sufficient to specify the format used.
 
 ### Polymorph
 
-`Polymorph` represents object that can decide (at runtime) to which object should be the data deserialized and what metadata should be kept about the object concrete type when being serialized to `SupportedType`.
+```Swift
+protocol Polymorph {
+
+    /// Returns type to which the supportedType should be deserialized.
+    func polymorphType<T>(for type: T.Type, in supportedType: SupportedType) -> T.Type
+
+    /// Write info about the type to supportedType if necessary.
+    func writeTypeInfo<T>(to supportedType: inout SupportedType, of type: T.Type)
+}
+```
+
+`Polymorph` represents an object that can decide (at runtime) to which object should be the data deserialized and what metadata should be kept about the object concrete type when being serialized to `SupportedType`.
 
 To use `Polymorph` initialize `ObjectMapper` with it. For example: 
 
@@ -449,20 +527,7 @@ To use `Polymorph` initialize `ObjectMapper` with it. For example:
 let objectMapper = ObjectMapper(polymorph: StaticPolymorph())
 ```
 
-The protocol is defined like this:
-
-```Swift
-protocol Polymorph {
-
-    /// Returns type to which should be the supportedType deserialized.
-    func polymorphType<T>(for type: T.Type, in supportedType: SupportedType) -> T.Type
-
-    /// Write info about type to supportedType if necessary.
-    func writeTypeInfo<T>(to supportedType: inout SupportedType, of type: T.Type)
-}
-```
-
-There is at the moment only one implementation (`StaticPolymorph`) but once Swift adds reflexion we will implement new one (dynamic). Also feel free to implement your own polymorphism if ours is not universal enough for you. In extreme cases you may even want to "hardcode" which types should be used.
+There is, at the moment, only one implementation (`StaticPolymorph`) but once Swift adds reflexion, we will implement new one (dynamic). Also feel free to implement your own polymorphism if ours is not universal enough for you. In extreme cases you may even want to "hardcode" which types should be used.
 
 Example of what can polymorph do: 
 
@@ -481,7 +546,7 @@ class B: A {
 
 struct MyPolymorph: Polymorph {
     
-    // If B is castable to T and supportedType contains dictionary with key "type" and value "B", then the type to use is B, otherwise does nothing.
+    // If B is castable to T and supportedType contains a dictionary with key "type" and the value "B", then the type to use is `B`, otherwise does nothing.
     func polymorphType<T>(for type: T.Type, in supportedType: SupportedType) -> T.Type {
         if let bType = B.self as? T.Type, supportedType.dictionary?["type"]?.string == "B" {
             return bType
@@ -505,7 +570,7 @@ let bType: SupportedType = .dictionary(["value": .int(2), "text": .string("text"
 
 // Deserialization
 let aObject: A? = objectMapper.deserialize(aType) // A(value: 1) - no surprise here
-let bObject: A? = objectMapper.deserialize(bType) // A(value: 2) - rest of the dictionary is ignored
+let bObject: A? = objectMapper.deserialize(bType) // A(value: 2) - the rest of the dictionary is ignored
 
 let aPolymorphic: A? = objectMapperWithPolymorh.deserialize(aType) // A(value: 1) - again the same result
 let bPolymorphic: A? = objectMapperWithPolymorh.deserialize(bType) // B(value: 2, text: "text") - this time the polymorph comes into play
@@ -519,15 +584,15 @@ objectMapper.serialize(bPolymorphic) // .dictionary(["value": .int(2), "text": .
 objectMapperWithPolymorh.serialize(bPolymorphic) // .dictionary(["value": .int(2), "text": .string("text"), "type": .string("B")]) - type is added
 ```
 
-#### StaticPolymorp
+#### StaticPolymorph
 
-`StaticPolymorph` resolve types by looking into `SupportedType` for dictionary entries with specific key (which key is used is determined by object type at input). Then the value for that key is compared to names of known types. If match is found than correct type is return otherwise it returns the input type. When serializing the `StaticPolymorh` adds into `SupportedType` the key value pair that corresponds to the serialized type.
+`StaticPolymorph` resolves types by looking into `SupportedType` for dictionary entries with the specific key (which key is used is determined by object type at input). Then the value for that key is compared to names of known types. If match is found than the correct type is return otherwise it returns the input type. When serializing the `StaticPolymorh` adds into `SupportedType` the key value pair that corresponds to the serialized type.
 
-`StaticPolymorp` affects only objects which implement `Polymorphic` protocol. For other types `polymorphType` returns the input type and `writeTypeInfo` does nothing.
+`StaticPolymorph` affects only objects which implement the `Polymorphic` protocol. For other types `polymorphType` returns the input type and `writeTypeInfo` does nothing.
 
-Note: Implementing `Polymoprhic` is not enough for object to be used in `ObjectMapper`. To solve this there are type aliases that combines `Polymorhic` with Map protocol: `PolymorphicDeserializable`, `PolymorphicSerializable` and `PolymorphicMappable`.
+Note: Implementing `Polymoprhic` is not enough for an object to be used in `ObjectMapper`. To solve this, there are type aliases that combines `Polymorhic` with the Map protocol: `PolymorphicDeserializable`, `PolymorphicSerializable` and `PolymorphicMappable`.
 
-Note: Limitation of `StaticPolymorph` is necessity to use classes. It is not possible to use protocol and structs.
+Note: Limitation of `StaticPolymorph` is that only classes can be used. It is not possible to use a protocol and structs.
 
 **Polymorphic**
 
@@ -542,11 +607,11 @@ protocol Polymorphic: AnyObject {
 }
 ```
 
-`polymorphicKey` represents the key mentioned above. (Where to look for a name of the type.) `polymorphicKey` can be overriden. That allows each type to be identified with key and name combination. It is not defined what happens if more than one key is present in `SupportedType` with valid names! There can be multiple subtypes with the same key or name as long as the combination is unique.
+`polymorphicKey` represents the key mentioned above. (Where to look for a name of the type.) `polymorphicKey` can be overriden. That allows each type to be identified with the key and name combination. It is not defined what happens if more than one key is present in `SupportedType` with valid names! There can be multiple subtypes with the same key or name as long as the combination is unique.
 
-`polymorphicInfo` defines type name and its subtypes (they don't have to be direct subtypes). It cannot be checked if these types are really subtypes but this won't be a problem if you use `GenericPolymorphicInfo` which does that check. If registered subtype is not a real subtype then `StaticPolymorph` will ignore it (but don't rely on this behavior). When `StaticPolymorp` resolves subtypes it relies only on information provided by `polymorphicInfo`, so subtypes which are not registered in input type (or in registered subtype) don't exist for it. To prevent potential misuse it is prohibited to use `Polymorphic` as input type if it does not override `polymorphicInfo` (as seen in example below).
+`polymorphicInfo` defines the type name and its subtypes (they don't have to be direct subtypes). It cannot be checked if these types are really subtypes but this won't be a problem if you use `GenericPolymorphicInfo` which does that check. If registered subtype is not a real subtype then `StaticPolymorph` will ignore it (but don't rely on this behavior). When `StaticPolymorph` resolves subtypes it relies only on information provided by `polymorphicInfo`, so subtypes which are not registered in input type (or in registered subtype) don't exist for it. To prevent potential misuse it is prohibited to use `Polymorphic` as input type if it does not override `polymorphicInfo` (as is seen in the example below).
 
-`Polymorphic` provides method `createPolymorphicInfo()` which returns `GenericPolymorphicInfo`. This method has optional parameter `name` which represents the polymorphic name of the type (default value is real name of the type). `GenericPolymorphicInfo` allows you to register subtypes with overloads of `register()` and `with()` (`with()` returns `self` to allow chaining).
+`Polymorphic` provides method `createPolymorphicInfo()` which returns `GenericPolymorphicInfo`. This method has optional parameter `name` which represents the polymorphic name of the type (default value the is real name of the type). `GenericPolymorphicInfo` allows you to register subtypes with overloads of `register()` and `with()` (`with()` returns `self` to allow chaining).
 
 **Example**
 
@@ -584,23 +649,23 @@ class D: C {
 }
 ```
 
-Note: This example omits implementation of Map protocol.
+Note: This example omits implementation of the Map protocol.
 
 There are few things to notice.
 
-1. `C` overrides `polymorphicKey` that means: `A` and `B` have key "K" and `C` and `D` have key "C". So `SupportedType.dictionary(["C": .string("C")]` represents `C` but `SupportedType.dictionary(["K": .string("C")]` means nothing in this context.
+1. `C` overrides `polymorphicKey` that means: `A` and `B` have the key "K" and `C` and `D` have the key "C". So `SupportedType.dictionary(["C": .string("C")]` represents `C` but `SupportedType.dictionary(["K": .string("C")]` means nothing in this context.
 1. `A` has explicit name "Base". So `SupportedType.dictionary(["K": .string("Base")]` represents `A`.
 1. `C` does not override `polymorphicInfo`. This means that `C` cannot be used as the input type (exception will be raised) but `D` can be, even though it won't ever resolve to another type.
-1. `D` is registered in `A` not `B`. Because of that `B` does not know about `D`. So if `B` is the input type you can never get `D` as subtype.
+1. `D` is registered in `A` not `B`. Because of that, `B` does not know about `D`. So if `B` is the input type, you can never get `D` as subtype.
 1. `A` knows about `C` because it is register in `B` which is registered in `A`.
 
 ### Thread safety
 
-DataMapper is designed to be used on background thread (default implementation is thread safe). If you want to use it that way you need to make sure that implementations of all methods from Map protocols are thread safe as well (or that the objects you are using cannot be used at two threads simultaneously). Your custom implementations of protocols like `Serializer`, `Polymorph`, `Transformation` etc. must be thread safe too.
+DataMapper is designed to be used on the background thread (default implementation is thread safe). If you want to use it that way you need to make sure that implementations of all methods from the Map protocols are thread safe as well (or that the objects you are using cannot be used at two threads simultaneously). Your custom implementations of protocols like `Serializer`, `Polymorph`, `Transformation` etc. must be thread safe too.
 
 ## Versioning
 
-This library uses semantic versioning. Until version 1.0 API breaking changes may occur even in minor versions. We consider version 0.1 to be prerelease, which means that API should be stable but is not tested yet in real project. After that testing we make needed adjustments and bump the version to 1.0 (first release).
+This library uses semantic versioning. Until the version 1.0 API breaking changes may occur even in minor versions. We consider the version 0.1 to be prerelease, which means that API should be stable but is not tested yet in a real project. After that testing, we make needed adjustments and bump the version to 1.0 (first release).
 
 ## Author
 
