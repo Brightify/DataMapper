@@ -23,12 +23,6 @@ Among its advantages belongs:
 
 List of all changes and new features can be found [here](CHANGELOG.md).
 
-## TODO
-
-* XMLSerializer
-* NSUserDefaultsSerializer
-* Dynamic polymorph (currently not possible because of Swift limitations)
-
 ## Requirements
 
 - **Swift 3**
