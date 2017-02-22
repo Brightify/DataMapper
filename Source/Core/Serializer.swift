@@ -14,3 +14,14 @@ public protocol Serializer {
     
     func deserialize(_ data: Data) -> SupportedType
 }
+
+extension Serializer {
+    
+    public func serializeToString(_ supportedType: SupportedType) -> String {
+        return String(data: serialize(supportedType), encoding: .utf8) ?? ""
+    }
+    
+    public func deserializeFromString(_ string: String) -> SupportedType {
+        return deserialize(string.data(using: .utf8) ?? Data())
+    }
+}

@@ -263,6 +263,19 @@ protocol Serializer {
 
 `Serializer` represents some object which maps `SupportedType` to `NSData`. You don't have to implement `Serializer` in order to map `SupportedType` to `NSData`, but it is recommended because then the object can be used in other libraries. (This protocol only provides standardized API.)
 
+Sometimes (almost always) it is easier to work with `String` instead of `Data`. So we added extension methods to `Serializer`:
+
+```Swift
+extension Serializer {
+    
+    func serializeToString(_ supportedType: SupportedType) -> String
+    
+    func deserializeFromString(_ string: String) -> SupportedType
+}
+```
+
+Note: `String` is converted to `Data` (and back) using UTF-8 coding.
+
 #### TypedSerializer
 
 ```Swift

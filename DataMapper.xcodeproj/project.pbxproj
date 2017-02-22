@@ -10,6 +10,7 @@
 		085068D2E12B019B90A3396E /* Pods_DataMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB00A2D2F89595D06F34EE2D /* Pods_DataMapper.framework */; };
 		18E484571BA8BFB1004CB09A /* DataMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18E4844D1BA8BFB1004CB09A /* DataMapper.framework */; };
 		DC07855E1DC6634A0063AB96 /* DeserializationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC07855D1DC6634A0063AB96 /* DeserializationError.swift */; };
+		DC1C67FF1E5DEAF20081E7BD /* SerializerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1C67FD1E5DEAE60081E7BD /* SerializerTest.swift */; };
 		DC2C72E51E0EC25600EE380C /* ObjectMapperTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2C72E41E0EC25600EE380C /* ObjectMapperTest.swift */; };
 		DC2C72E81E0EC54900EE380C /* SupportedTypeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2C72E61E0EC53700EE380C /* SupportedTypeTest.swift */; };
 		DC2C72F41E0EC78C00EE380C /* DeserializableDataTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2C72F31E0EC78C00EE380C /* DeserializableDataTest.swift */; };
@@ -155,6 +156,7 @@
 		D377A479DD457196E4FC76E9 /* Pods-Showcase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Showcase.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Showcase/Pods-Showcase.debug.xcconfig"; sourceTree = "<group>"; };
 		DB3BF816D64478E10A0467DF /* Pods-JsonSerializerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JsonSerializerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-JsonSerializerTests/Pods-JsonSerializerTests.release.xcconfig"; sourceTree = "<group>"; };
 		DC07855D1DC6634A0063AB96 /* DeserializationError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeserializationError.swift; sourceTree = "<group>"; };
+		DC1C67FD1E5DEAE60081E7BD /* SerializerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerializerTest.swift; sourceTree = "<group>"; };
 		DC2C72E41E0EC25600EE380C /* ObjectMapperTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectMapperTest.swift; sourceTree = "<group>"; };
 		DC2C72E61E0EC53700EE380C /* SupportedTypeTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportedTypeTest.swift; sourceTree = "<group>"; };
 		DC2C72F31E0EC78C00EE380C /* DeserializableDataTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeserializableDataTest.swift; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 			children = (
 				DC2C73041E0EC86E00EE380C /* ApiTest.swift */,
 				DC2C72E41E0EC25600EE380C /* ObjectMapperTest.swift */,
+				DC1C67FD1E5DEAE60081E7BD /* SerializerTest.swift */,
 				DC2C72E91E0EC64E00EE380C /* Map */,
 				DC2C72EA1E0EC67500EE380C /* Mappable */,
 				DC2C72EB1E0EC67E00EE380C /* StaticPolymorph */,
@@ -1000,6 +1003,7 @@
 				DC2C73021E0EC83D00EE380C /* StaticPolymorphTest.swift in Sources */,
 				DC2C72F81E0EC7C600EE380C /* SerializableData.swift in Sources */,
 				DC6540B71E17BC7E006BC731 /* URL+SupportedTypeConvertibleTest.swift in Sources */,
+				DC1C67FF1E5DEAF20081E7BD /* SerializerTest.swift in Sources */,
 				DC65409B1E17BA34006BC731 /* EnumTransformationTest.swift in Sources */,
 				DC2C72F61E0EC7B900EE380C /* DeserializableMappableDataWrapperTest.swift in Sources */,
 				DC2C72E51E0EC25600EE380C /* ObjectMapperTest.swift in Sources */,
