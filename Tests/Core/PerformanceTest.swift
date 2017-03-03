@@ -11,11 +11,11 @@ import DataMapper
 
 class PerfomanceTest: XCTestCase {
     
-    private typealias Object = TestData.MappableStruct
+    private typealias Object = TestData.PerformanceStruct
     
     private let objectMapper = ObjectMapper()
     private let serializer = JsonSerializer()
-    private let objects = TestData.generate(x: 6)
+    private let objects = TestData.generate(x: 7)
     
     func testSerializeObjectToData() {
         let data: Object = objects
@@ -52,7 +52,7 @@ class PerfomanceTest: XCTestCase {
         }
         _ = result
     }
- 
+    
     func testSerializeObjectToSupportedType() {
         let data: Object = objects
         var result: SupportedType = .null

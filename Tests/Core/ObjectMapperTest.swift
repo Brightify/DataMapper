@@ -23,7 +23,7 @@ class ObjectMapperTest: QuickSpec {
                 let objectMapper = ObjectMapper()
                 let object = TestData.generate(x: 3)
                 
-                let result: TestData.MappableStruct? = objectMapper.deserialize(objectMapper.serialize(object))
+                let result: TestData.PerformanceStruct? = objectMapper.deserialize(objectMapper.serialize(object))
                 
                 expect(result) == object
             }

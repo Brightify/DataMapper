@@ -20,13 +20,50 @@ struct TestData {
     static let invalidType = SupportedType.dictionary(["number": .int(1)])
     
     // Returned elements == Floor[ x! * e ]
-    static func generate(x: Int) -> MappableStruct {
-        var object: MappableStruct = MappableStruct(number: 0, text: "0", points: [], children: [])
+    static func generate(x: Int) -> PerformanceStruct {
+        var object = PerformanceStruct(number: 0, text: "0", points: [], children: [], dictionary: ["A": false, "B": true])
         
         for i in 1...x {
-            object = MappableStruct(number: i, text: "\(i)", points: (1...i).map { Double($0) }, children: (1...i).map { _ in object })
+            object = PerformanceStruct(number: i, text: "\(i)", points: (1...i).map { Double($0) },
+                                       children: (1...i).map { _ in object }, dictionary: ["A": false, "B": true])
         }
         return object
+    }
+    
+    struct PerformanceStruct: Mappable {
+        
+        private(set) var number: Int?
+        private(set) var text: String = ""
+        private(set) var points: [Double] = []
+        private(set) var children: [PerformanceStruct] = []
+        let dictionary: [String: Bool]
+        
+        init(number: Int?, text: String, points: [Double], children: [PerformanceStruct], dictionary: [String: Bool]) {
+            self.number = number
+            self.text = text
+            self.points = points
+            self.children = children
+            self.dictionary = dictionary
+        }
+        
+        init(_ data: DeserializableData) throws {
+            dictionary = try data["dictionary"].get()
+            
+            try mapping(data)
+        }
+        
+        func serialize(to data: inout SerializableData) {
+            data["dictionary"].set(dictionary)
+            
+            mapping(&data)
+        }
+        
+        mutating func mapping(_ data: inout MappableData) throws {
+            data["number"].map(&number)
+            try data["text"].map(&text)
+            data["points"].map(&points, or: [])
+            data["children"].map(&children, or: [])
+        }
     }
     
     struct DeserializableStruct: Deserializable {
@@ -339,6 +376,13 @@ struct TestData {
             return object.map { .int($0 / 2) } ?? .null
         }
     }
+}
+
+extension TestData.PerformanceStruct: Equatable {
+}
+
+func ==(lhs: TestData.PerformanceStruct, rhs: TestData.PerformanceStruct) -> Bool {
+    return lhs.number == rhs.number && lhs.text == rhs.text && lhs.points == rhs.points && lhs.children == rhs.children && lhs.dictionary == rhs.dictionary
 }
 
 extension TestData.DeserializableStruct: Equatable {

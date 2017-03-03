@@ -6,7 +6,6 @@ target 'DataMapper' do
 end
 
 target 'DataMapperTests' do
-    pod 'Nimble', '~> 5.1.1'
+    pod 'Nimble', '~> 5.0'
     pod 'Quick', '~> 1.0'
 end
-
