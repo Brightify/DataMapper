@@ -14,7 +14,7 @@ public struct JsonSerializer: TypedSerializer {
     }
     
     public func typedSerialize(_ supportedType: SupportedType) -> Any {
-        return serializeToAny(supportedType)
+        return JsonSerializer.serializeToAny(supportedType)
     }
     
     public func serialize(_ supportedType: SupportedType) -> Data {
@@ -25,7 +25,7 @@ public struct JsonSerializer: TypedSerializer {
         case .string(let value):
             data = "\"\(value)\"".data(using: .utf8)
         case .number(let value):
-            data = numberToString(value).data(using: .utf8)
+            data = JsonSerializer.numberToString(value).data(using: .utf8)
         default:
             data = try? JSONSerialization.data(withJSONObject: typedSerialize(supportedType))
         }
@@ -33,14 +33,14 @@ public struct JsonSerializer: TypedSerializer {
     }
     
     public func typedDeserialize(_ data: Any) -> SupportedType {
-        return deserializeToSupportedType(data)
+        return JsonSerializer.deserializeToSupportedType(data)
     }
     
     public func deserialize(_ data: Data) -> SupportedType {
         return typedDeserialize((try? JSONSerialization.jsonObject(with: data, options: .allowFragments)) ?? NSNull())
     }
     
-    private func serializeToAny(_ supportedType: SupportedType) -> Any {
+    private static func serializeToAny(_ supportedType: SupportedType) -> Any {
         switch supportedType {
         case .null:
             return NSNull()
@@ -55,7 +55,7 @@ public struct JsonSerializer: TypedSerializer {
         }
     }
     
-    private func deserializeToSupportedType(_ json: Any) -> SupportedType {
+    private static func deserializeToSupportedType(_ json: Any) -> SupportedType {
         switch json {
         case let number as NSNumber:
             let double = number.doubleValue
@@ -77,7 +77,7 @@ public struct JsonSerializer: TypedSerializer {
         }
     }
     
-    private func numberToString(_ number: SupportedNumber) -> String {
+    private static func numberToString(_ number: SupportedNumber) -> String {
         if let bool = number.bool {
             return "\(bool)"
         } else if let double = number.double {
