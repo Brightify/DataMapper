@@ -18,17 +18,29 @@ public struct JsonSerializer: TypedSerializer {
     }
     
     public func serialize(_ supportedType: SupportedType) -> Data {
-        let data: Data?
-        switch supportedType {
-        case .null:
-            data = nil
-        case .string(let value):
-            data = "\"\(value)\"".data(using: .utf8)
-        case .number(let value):
-            data = JsonSerializer.numberToString(value).data(using: .utf8)
-        default:
-            data = try? JSONSerialization.data(withJSONObject: typedSerialize(supportedType))
+        let text: String?
+        
+        if let string = supportedType.string {
+            text = "\"\(string)\""
+        } else if let bool = supportedType.bool {
+            text = "\(bool)"
+        } else if let double = supportedType.double {
+            text = "\(double)"
+        } else if let int = supportedType.int {
+            text = "\(int)"
+        } else {
+            text = nil
         }
+        
+        let data: Data?
+        if let text = text {
+            data = text.data(using: .utf8)
+        } else if !supportedType.isNull {
+            data = try? JSONSerialization.data(withJSONObject: typedSerialize(supportedType))
+        } else {
+            data = nil
+        }
+        
         return data ?? Data()
     }
     
@@ -41,18 +53,11 @@ public struct JsonSerializer: TypedSerializer {
     }
     
     private static func serializeToAny(_ supportedType: SupportedType) -> Any {
-        switch supportedType {
-        case .null:
-            return NSNull()
-        case .string(let string):
-            return string
-        case .number(let number):
-            return number.bool ?? number.double ?? number.int as Any
-        case .array(let array):
-            return array.map { serializeToAny($0) }
-        case .dictionary(let dictionary):
-            return dictionary.mapValue { serializeToAny($0) }
-        }
+        return supportedType.string
+            ?? supportedType.bool ?? supportedType.int ?? supportedType.double
+            ?? supportedType.array.map { array in array.map { serializeToAny($0) } }
+            ?? supportedType.dictionary.map { dictionary in dictionary.mapValue { serializeToAny($0) } }
+            ?? NSNull()
     }
     
     private static func deserializeToSupportedType(_ json: Any) -> SupportedType {
@@ -60,9 +65,9 @@ public struct JsonSerializer: TypedSerializer {
         case let number as NSNumber:
             let double = number.doubleValue
             if double == 1 || double == 0 {
-                return .number(SupportedNumber(bool: number.boolValue, int: number.intValue, double: double))
+                return .number(bool: number.boolValue, int: number.intValue, double: double)
             } else if double.truncatingRemainder(dividingBy: 1) == 0 {
-                return .number(SupportedNumber(int: number.intValue, double: double))
+                return .number(int: number.intValue, double: double)
             } else {
                 return .double(double)
             }
@@ -74,18 +79,6 @@ public struct JsonSerializer: TypedSerializer {
             return .dictionary(dictionary.mapValue { deserializeToSupportedType($0) })
         default:
             return .null
-        }
-    }
-    
-    private static func numberToString(_ number: SupportedNumber) -> String {
-        if let bool = number.bool {
-            return "\(bool)"
-        } else if let double = number.double {
-            return "\(double)"
-        } else if let int = number.int {
-            return "\(int)"
-        } else {
-            return ""
         }
     }
 }

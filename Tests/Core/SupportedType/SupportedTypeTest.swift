@@ -34,14 +34,34 @@ class SupportedTypeTest: QuickSpec {
                     expect(type.string).to(beNil())
                 }
             }
-            describe("number") {
-                it("returns number if is number") {
-                    let type: SupportedType = .number(SupportedNumber(int: 1))
-                    expect(type.number) == SupportedNumber(int: 1)
+            describe("bool") {
+                it("returns bool if is bool") {
+                    let type: SupportedType = .bool(true)
+                    expect(type.bool).to(beTrue())
                 }
-                it("returns nil if is not number") {
-                    let type: SupportedType = .string("A")
-                    expect(type.number).to(beNil())
+                it("returns nil if is not bool") {
+                    let type: SupportedType = .int(1)
+                    expect(type.bool).to(beNil())
+                }
+            }
+            describe("int") {
+                it("returns int if is int") {
+                    let type: SupportedType = .int(1)
+                    expect(type.int) == 1
+                }
+                it("returns nil if is not int") {
+                    let type: SupportedType = .bool(true)
+                    expect(type.int).to(beNil())
+                }
+            }
+            describe("double") {
+                it("returns double if is double") {
+                    let type: SupportedType = .double(1)
+                    expect(type.double) == 1
+                }
+                it("returns nil if is not double") {
+                    let type: SupportedType = .bool(true)
+                    expect(type.double).to(beNil())
                 }
             }
             describe("array") {
@@ -64,38 +84,42 @@ class SupportedTypeTest: QuickSpec {
                     expect(type.dictionary).to(beNil())
                 }
             }
-            describe("bool") {
-                it("returns bool if is bool") {
-                    let type: SupportedType = .bool(true)
-                    expect(type.bool).to(beTrue())
+            describe("number") {
+                it("returns number if is correct type") {
+                    expect(SupportedType.number(bool: true).bool).to(beTrue())
+                    expect(SupportedType.number(int: 1).int) == 1
+                    expect(SupportedType.number(double: 1.1).double) == 1.1
+                    
+                    expect(SupportedType.number(bool: true, int: 1).bool).to(beTrue())
+                    expect(SupportedType.number(bool: true, int: 1).int) == 1
+                    
+                    expect(SupportedType.number(bool: true, double: 1.1).bool).to(beTrue())
+                    expect(SupportedType.number(bool: true, double: 1.1).double) == 1.1
+                    
+                    expect(SupportedType.number(int: 1, double: 1.1).int) == 1
+                    expect(SupportedType.number(int: 1, double: 1.1).double) == 1.1
+                    
+                    expect(SupportedType.number(bool: true, int: 1, double: 1.1).bool).to(beTrue())
+                    expect(SupportedType.number(bool: true, int: 1, double: 1.1).int) == 1
+                    expect(SupportedType.number(bool: true, int: 1, double: 1.1).double) == 1.1
                 }
-                it("returns nil if is not bool") {
-                    let type: SupportedType = .int(1)
-                    expect(type.bool).to(beNil())
-                }
-            }
-            describe("int") {
-                it("returns int if is int") {
-                    expect(SupportedType.int(1).int) == 1
-                    expect(SupportedType.number(SupportedNumber(int: 1)).int) == 1
-                    expect(SupportedType.number(SupportedNumber(int: 1, double: 2)).int) == 1
-                }
-                it("returns nil if is not int") {
-                    expect(SupportedType.bool(true).int).to(beNil())
-                    expect(SupportedType.double(1).int).to(beNil())
-                    expect(SupportedType.number(SupportedNumber(double: 1)).int).to(beNil())
-                }
-            }
-            describe("double") {
-                it("returns double if is double") {
-                    expect(SupportedType.double(1).double) == 1
-                    expect(SupportedType.number(SupportedNumber(double: 1)).double) == 1
-                    expect(SupportedType.number(SupportedNumber(int: 2, double: 1)).double) == 1
-                }
-                it("returns nil if is not double") {
-                    expect(SupportedType.bool(true).double).to(beNil())
-                    expect(SupportedType.int(1).double).to(beNil())
-                    expect(SupportedType.number(SupportedNumber(int: 1)).double).to(beNil())
+                it("returns nil if is not correct type") {
+                    expect(SupportedType.number(bool: true).int).to(beNil())
+                    expect(SupportedType.number(bool: true).double).to(beNil())
+                    
+                    expect(SupportedType.number(int: 1).bool).to(beNil())
+                    expect(SupportedType.number(int: 1).double).to(beNil())
+                    
+                    expect(SupportedType.number(double: 1.1).bool).to(beNil())
+                    expect(SupportedType.number(double: 1.1).int).to(beNil())
+                    
+                    expect(SupportedType.number(bool: true, int: 1).double).to(beNil())
+                    
+                    expect(SupportedType.number(bool: true, double: 1.1).int).to(beNil())
+                    
+                    expect(SupportedType.number(int: 1, double: 1.1).bool).to(beNil())
+                    
+                    expect(SupportedType.number(bool: true, int: 1, double: 1.1).string).to(beNil())
                 }
             }
             describe("addToDictionary") {
@@ -112,29 +136,6 @@ class SupportedTypeTest: QuickSpec {
                     type.addToDictionary(key: "b", value: .bool(false))
                     
                     expect(type) == SupportedType.dictionary(["b": .bool(false)])
-                }
-            }
-            describe("==") {
-                it("returns true if equal") {
-                    expect(SupportedType.null) == SupportedType.null
-                    expect(SupportedType.string("a")) == SupportedType.string("a")
-                    expect(SupportedType.number(SupportedNumber(int: 1))) == SupportedType.number(SupportedNumber(int: 1))
-                    expect(SupportedType.bool(true)) == SupportedType.bool(true)
-                    expect(SupportedType.array([.bool(true)])) == SupportedType.array([.bool(true)])
-                    expect(SupportedType.dictionary(["a": .bool(true)])) == SupportedType.dictionary(["a": .bool(true)])
-                }
-                it("returns false if not equal") {
-                    expect(SupportedType.string("a")) != SupportedType.string("b")
-                    expect(SupportedType.number(SupportedNumber(int: 1))) != SupportedType.number(SupportedNumber(int: 2))
-                    expect(SupportedType.bool(true)) != SupportedType.bool(false)
-                    expect(SupportedType.array([.bool(true)])) != SupportedType.array([.bool(false)])
-                    expect(SupportedType.dictionary(["a": .bool(true)])) != SupportedType.dictionary(["a": .bool(false)])
-                    
-                    expect(SupportedType.null) != SupportedType.bool(true)
-                    expect(SupportedType.string("a")) != SupportedType.bool(true)
-                    expect(SupportedType.number(SupportedNumber(int: 1))) != SupportedType.bool(true)
-                    expect(SupportedType.array([.bool(true)])) != SupportedType.bool(true)
-                    expect(SupportedType.dictionary(["a": .bool(true)])) != SupportedType.bool(true)
                 }
             }
         }

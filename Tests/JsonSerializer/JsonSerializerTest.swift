@@ -66,7 +66,7 @@ class JsonSerializerTest: QuickSpec {
     }
     
     private func number(_ value: Int) -> SupportedType {
-        return .number(value == 0 || value == 1 ? SupportedNumber(bool: value == 1, int: value, double: Double(value)) :
-            SupportedNumber(int: value, double: Double(value)))
+        return value == 0 || value == 1 ? .number(bool: value == 1, int: value, double: Double(value)) :
+            .number(int: value, double: Double(value))
     }
 }
