@@ -8,14 +8,20 @@
 
 import Foundation
 
-public struct SupportedType {
+public final class SupportedType {
     
-    fileprivate typealias Number = (bool: Bool?, int: Int?, double: Double?)
+    public typealias Number = (bool: Bool?, int: Int?, double: Double?)
 
-    public let raw: Any?
+    public private(set) var raw: Any?
     
     public init(_ raw: Any?) {
         self.raw = raw
+    }
+    
+    public func addToDictionary(key: String, value: SupportedType) {
+        var mutableDictionary = dictionary ?? [:]
+        mutableDictionary[key] = value
+        raw = mutableDictionary
     }
 }
 
@@ -49,7 +55,7 @@ extension SupportedType {
         return raw as? [String: SupportedType]
     }
     
-    private var number: Number? {
+    public var number: Number? {
         return raw as? Number
     }
 }
@@ -91,18 +97,6 @@ extension SupportedType {
 
 extension SupportedType {
     
-    public static func number(bool: Bool) -> SupportedType {
-        return .bool(bool)
-    }
-    
-    public static func number(int: Int) -> SupportedType {
-        return .int(int)
-    }
-    
-    public static func number(double: Double) -> SupportedType {
-        return .double(double)
-    }
-    
     public static func number(bool: Bool, int: Int) -> SupportedType {
         return SupportedType(Number(bool: bool, int: int, double: nil))
     }
@@ -117,14 +111,5 @@ extension SupportedType {
     
     public static func number(bool: Bool, int: Int, double: Double) -> SupportedType {
         return SupportedType(Number(bool: bool, int: int, double: double))
-    }
-}
-
-extension SupportedType {
-    
-    public mutating func addToDictionary(key: String, value: SupportedType) {
-        var mutableDictionary = dictionary ?? [:]
-        mutableDictionary[key] = value
-        self = .dictionary(mutableDictionary)
     }
 }

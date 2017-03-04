@@ -86,10 +86,6 @@ class SupportedTypeTest: QuickSpec {
             }
             describe("number") {
                 it("returns number if is correct type") {
-                    expect(SupportedType.number(bool: true).bool).to(beTrue())
-                    expect(SupportedType.number(int: 1).int) == 1
-                    expect(SupportedType.number(double: 1.1).double) == 1.1
-                    
                     expect(SupportedType.number(bool: true, int: 1).bool).to(beTrue())
                     expect(SupportedType.number(bool: true, int: 1).int) == 1
                     
@@ -104,15 +100,6 @@ class SupportedTypeTest: QuickSpec {
                     expect(SupportedType.number(bool: true, int: 1, double: 1.1).double) == 1.1
                 }
                 it("returns nil if is not correct type") {
-                    expect(SupportedType.number(bool: true).int).to(beNil())
-                    expect(SupportedType.number(bool: true).double).to(beNil())
-                    
-                    expect(SupportedType.number(int: 1).bool).to(beNil())
-                    expect(SupportedType.number(int: 1).double).to(beNil())
-                    
-                    expect(SupportedType.number(double: 1.1).bool).to(beNil())
-                    expect(SupportedType.number(double: 1.1).int).to(beNil())
-                    
                     expect(SupportedType.number(bool: true, int: 1).double).to(beNil())
                     
                     expect(SupportedType.number(bool: true, double: 1.1).int).to(beNil())
@@ -121,17 +108,40 @@ class SupportedTypeTest: QuickSpec {
                     
                     expect(SupportedType.number(bool: true, int: 1, double: 1.1).string).to(beNil())
                 }
+                it("returns number if is number") {
+                    expect(SupportedType.number(bool: true, int: 1).number?.bool).to(beTrue())
+                    expect(SupportedType.number(bool: true, int: 1).number?.int) == 1
+                    
+                    expect(SupportedType.number(bool: true, double: 1.1).number?.bool).to(beTrue())
+                    expect(SupportedType.number(bool: true, double: 1.1).number?.double) == 1.1
+                    
+                    expect(SupportedType.number(int: 1, double: 1.1).number?.int) == 1
+                    expect(SupportedType.number(int: 1, double: 1.1).number?.double) == 1.1
+                    
+                    expect(SupportedType.number(bool: true, int: 1, double: 1.1).number?.bool).to(beTrue())
+                    expect(SupportedType.number(bool: true, int: 1, double: 1.1).number?.int) == 1
+                    expect(SupportedType.number(bool: true, int: 1, double: 1.1).number?.double) == 1.1
+                }
+                it("returns nil if is not number") {
+                    expect(SupportedType.number(bool: true, int: 1).number?.double).to(beNil())
+                    
+                    expect(SupportedType.number(bool: true, double: 1.1).number?.int).to(beNil())
+                    
+                    expect(SupportedType.number(int: 1, double: 1.1).number?.bool).to(beNil())
+                    
+                    expect(SupportedType.number(bool: true, int: 1, double: 1.1).string).to(beNil())
+                }
             }
             describe("addToDictionary") {
                 it("adds value to dictionary") {
-                    var type: SupportedType = .dictionary(["a": .bool(true)])
+                    let type: SupportedType = .dictionary(["a": .bool(true)])
                     
                     type.addToDictionary(key: "b", value: .bool(false))
                     
                     expect(type) == SupportedType.dictionary(["a": .bool(true), "b": .bool(false)])
                 }
                 it("creates new dictionary if necessary") {
-                    var type: SupportedType = .bool(true)
+                    let type: SupportedType = .bool(true)
                     
                     type.addToDictionary(key: "b", value: .bool(false))
                     

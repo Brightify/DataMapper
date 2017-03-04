@@ -51,15 +51,19 @@ public struct JsonSerializer: TypedSerializer {
     public func deserialize(_ data: Data) -> SupportedType {
         return typedDeserialize((try? JSONSerialization.jsonObject(with: data, options: .allowFragments)) ?? NSNull())
     }
-    
+
     private static func serializeToAny(_ supportedType: SupportedType) -> Any {
-        return supportedType.string
-            ?? supportedType.bool ?? supportedType.int ?? supportedType.double
-            ?? supportedType.array.map { array in array.map { serializeToAny($0) } }
-            ?? supportedType.dictionary.map { dictionary in dictionary.mapValue { serializeToAny($0) } }
-            ?? NSNull()
+        if let number = supportedType.number {
+            return number.bool ?? number.int ?? number.double ?? NSNull()
+        } else if let array = supportedType.array {
+            return array.map { serializeToAny($0) }
+        } else if let dictionary = supportedType.dictionary {
+            return dictionary.mapValue { serializeToAny($0) }
+        } else {
+            return supportedType.raw ?? NSNull()
+        }
     }
-    
+ 
     private static func deserializeToSupportedType(_ json: Any) -> SupportedType {
         switch json {
         case let number as NSNumber:
