@@ -8,11 +8,15 @@
 
 import Foundation
 
-public final class SupportedType {
+public final class SupportedType: CustomStringConvertible {
     
     public typealias Number = (bool: Bool?, int: Int?, double: Double?)
 
     public private(set) var raw: Any?
+    
+    public var description: String {
+        return String(describing: raw)
+    }
     
     public init(_ raw: Any?) {
         self.raw = raw

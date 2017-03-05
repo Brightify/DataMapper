@@ -10,11 +10,13 @@ import Foundation
 
 public struct JsonSerializer: TypedSerializer {
     
+    public typealias Json = Any
+    
     public init() {
     }
     
-    public func typedSerialize(_ supportedType: SupportedType) -> Any {
-        return JsonSerializer.serializeToAny(supportedType)
+    public func typedSerialize(_ supportedType: SupportedType) -> Json {
+        return JsonSerializer.serializeToJson(supportedType)
     }
     
     public func serialize(_ supportedType: SupportedType) -> Data {
@@ -44,7 +46,7 @@ public struct JsonSerializer: TypedSerializer {
         return data ?? Data()
     }
     
-    public func typedDeserialize(_ data: Any) -> SupportedType {
+    public func typedDeserialize(_ data: Json) -> SupportedType {
         return JsonSerializer.deserializeToSupportedType(data)
     }
     
@@ -52,19 +54,19 @@ public struct JsonSerializer: TypedSerializer {
         return typedDeserialize((try? JSONSerialization.jsonObject(with: data, options: .allowFragments)) ?? NSNull())
     }
 
-    private static func serializeToAny(_ supportedType: SupportedType) -> Any {
+    private static func serializeToJson(_ supportedType: SupportedType) -> Json {
         if let number = supportedType.number {
             return number.bool ?? number.int ?? number.double ?? NSNull()
         } else if let array = supportedType.array {
-            return array.map { serializeToAny($0) }
+            return array.map { serializeToJson($0) }
         } else if let dictionary = supportedType.dictionary {
-            return dictionary.mapValue { serializeToAny($0) }
+            return dictionary.mapValue { serializeToJson($0) }
         } else {
             return supportedType.raw ?? NSNull()
         }
     }
  
-    private static func deserializeToSupportedType(_ json: Any) -> SupportedType {
+    private static func deserializeToSupportedType(_ json: Json) -> SupportedType {
         switch json {
         case let number as NSNumber:
             let double = number.doubleValue
@@ -75,12 +77,20 @@ public struct JsonSerializer: TypedSerializer {
             } else {
                 return .double(double)
             }
-        case let string as String:
-            return .string(string)
-        case let array as [Any]:
+        case let string as NSString:
+            return .raw(string)
+        case let array as NSArray:
             return .array(array.map { deserializeToSupportedType($0) })
-        case let dictionary as [String: Any]:
-            return .dictionary(dictionary.mapValue { deserializeToSupportedType($0) })
+        case let dictionary as NSDictionary:
+            var mappedDictionary = [String: SupportedType](minimumCapacity: dictionary.count)
+            for (key, value) in dictionary {
+                if let key = key as? String {
+                    mappedDictionary[key] = deserializeToSupportedType(value)
+                } else {
+                    return .null
+                }
+            }
+            return .dictionary(mappedDictionary)
         default:
             return .null
         }

@@ -9,7 +9,7 @@
 extension Dictionary {
     
     public func mapValue<V>(_ transform: (Value) -> V) -> [Key: V] {
-        var output: [Key: V] = [:]
+        var output = [Key: V](minimumCapacity: count)
         for (key, value) in self {
             output[key] = transform(value)
         }
