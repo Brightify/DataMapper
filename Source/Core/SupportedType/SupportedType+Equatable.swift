@@ -14,8 +14,6 @@ extension SupportedType: Equatable {
 public func ==(lhs: SupportedType, rhs: SupportedType) -> Bool {
     if let lhsDictionary = lhs.dictionary, let rhsDictionary = rhs.dictionary {
         return lhsDictionary == rhsDictionary
-    } else if lhs.string == rhs.string && lhs.string != nil {
-        return true
     } else {
         return String(describing: lhs.raw) == String(describing: rhs.raw)
     }

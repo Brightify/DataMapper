@@ -10,9 +10,9 @@ import Foundation
 
 public final class SupportedType: CustomStringConvertible {
     
-    public typealias Number = (bool: Bool?, int: Int?, double: Double?)
-
     public private(set) var raw: Any?
+    
+    fileprivate var isIntOrDouble = false
     
     public var description: String {
         return String(describing: raw)
@@ -23,7 +23,13 @@ public final class SupportedType: CustomStringConvertible {
     }
     
     public func addToDictionary(key: String, value: SupportedType) {
-        var mutableDictionary = dictionary ?? [:]
+        var mutableDictionary: [String: SupportedType]
+        if let dictionary = dictionary {
+            mutableDictionary = dictionary
+        } else {
+            mutableDictionary = [:]
+            isIntOrDouble = false
+        }
         mutableDictionary[key] = value
         raw = mutableDictionary
     }
@@ -40,15 +46,19 @@ extension SupportedType {
     }
     
     public var bool: Bool? {
-        return raw as? Bool ?? number?.bool
+        return raw as? Bool
     }
     
     public var int: Int? {
-        return raw as? Int ?? number?.int
+        return raw as? Int
     }
     
     public var double: Double? {
-        return raw as? Double ?? number?.double
+        if isIntOrDouble, let int = int {
+            return Double(int)
+        } else {
+            return raw as? Double
+        }
     }
     
     public var array: [SupportedType]? {
@@ -57,10 +67,6 @@ extension SupportedType {
     
     public var dictionary: [String: SupportedType]? {
         return raw as? [String: SupportedType]
-    }
-    
-    public var number: Number? {
-        return raw as? Number
     }
 }
 
@@ -97,23 +103,10 @@ extension SupportedType {
     public static func dictionary(_ value: [String: SupportedType]) -> SupportedType {
         return SupportedType(value)
     }
-}
-
-extension SupportedType {
     
-    public static func number(bool: Bool, int: Int) -> SupportedType {
-        return SupportedType(Number(bool: bool, int: int, double: nil))
-    }
-    
-    public static func number(bool: Bool, double: Double) -> SupportedType {
-        return SupportedType(Number(bool: bool, int: nil, double: double))
-    }
-    
-    public static func number(int: Int, double: Double) -> SupportedType {
-        return SupportedType(Number(bool: nil, int: int, double: double))
-    }
-    
-    public static func number(bool: Bool, int: Int, double: Double) -> SupportedType {
-        return SupportedType(Number(bool: bool, int: int, double: double))
+    public static func intOrDouble(_ value: Int) -> SupportedType {
+        let type = SupportedType(value)
+        type.isIntOrDouble = true
+        return type
     }
 }

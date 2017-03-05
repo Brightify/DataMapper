@@ -25,6 +25,8 @@
 		DC2C73071E0EC8DC00EE380C /* SerializableMappableDataWrapperTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2C73061E0EC8DC00EE380C /* SerializableMappableDataWrapperTest.swift */; };
 		DC2C730E1E0ECA5F00EE380C /* CompositeTransformationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2C730D1E0ECA5F00EE380C /* CompositeTransformationTest.swift */; };
 		DC2C73101E0ECA6B00EE380C /* DelegatedTransformationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2C730F1E0ECA6B00EE380C /* DelegatedTransformationTest.swift */; };
+		DC2E3C351E6C10FD004710C8 /* JsonSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2E3C341E6C10FD004710C8 /* JsonSerialization.swift */; };
+		DC2E3C371E6C4D06004710C8 /* JsonWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2E3C361E6C4D06004710C8 /* JsonWriter.swift */; };
 		DC4690621E3624AE001C8540 /* SupportedType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5B83CF1DBA964E007751F6 /* SupportedType.swift */; };
 		DC4D91721DC341B30095A348 /* Polymorph.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4D91711DC341B30095A348 /* Polymorph.swift */; };
 		DC4D917B1DC3425C0095A348 /* GenericPolymorphicInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4D91741DC3425C0095A348 /* GenericPolymorphicInfo.swift */; };
@@ -167,6 +169,8 @@
 		DC2C73061E0EC8DC00EE380C /* SerializableMappableDataWrapperTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerializableMappableDataWrapperTest.swift; sourceTree = "<group>"; };
 		DC2C730D1E0ECA5F00EE380C /* CompositeTransformationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompositeTransformationTest.swift; sourceTree = "<group>"; };
 		DC2C730F1E0ECA6B00EE380C /* DelegatedTransformationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DelegatedTransformationTest.swift; sourceTree = "<group>"; };
+		DC2E3C341E6C10FD004710C8 /* JsonSerialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonSerialization.swift; sourceTree = "<group>"; };
+		DC2E3C361E6C4D06004710C8 /* JsonWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonWriter.swift; sourceTree = "<group>"; };
 		DC4D91711DC341B30095A348 /* Polymorph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Polymorph.swift; sourceTree = "<group>"; };
 		DC4D91741DC3425C0095A348 /* GenericPolymorphicInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericPolymorphicInfo.swift; sourceTree = "<group>"; };
 		DC4D91751DC3425C0095A348 /* PolymorphDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PolymorphDataProvider.swift; sourceTree = "<group>"; };
@@ -479,6 +483,8 @@
 			isa = PBXGroup;
 			children = (
 				DC4D91971DC3E6E00095A348 /* JsonSerializer.swift */,
+				DC2E3C341E6C10FD004710C8 /* JsonSerialization.swift */,
+				DC2E3C361E6C4D06004710C8 /* JsonWriter.swift */,
 			);
 			path = JsonSerializer;
 			sourceTree = "<group>";
@@ -921,6 +927,7 @@
 				DC5B83F41DBAAC1A007751F6 /* SupportedTypeConvertible.swift in Sources */,
 				DC5B84421DBC9FD8007751F6 /* SerializableTransformation.swift in Sources */,
 				DC4D91721DC341B30095A348 /* Polymorph.swift in Sources */,
+				DC2E3C351E6C10FD004710C8 /* JsonSerialization.swift in Sources */,
 				DC5B83971DBA92B4007751F6 /* MappableData.swift in Sources */,
 				DC4D918C1DC345090095A348 /* ObjectMapper.swift in Sources */,
 				DC4D917E1DC3425C0095A348 /* PolymorphicInfo.swift in Sources */,
@@ -936,6 +943,7 @@
 				DC4D91931DC34BE40095A348 /* DictionaryUtils.swift in Sources */,
 				DC5B84241DBAC612007751F6 /* String+SupportedTypeConvertible.swift in Sources */,
 				DC4D917C1DC3425C0095A348 /* PolymorphDataProvider.swift in Sources */,
+				DC2E3C371E6C4D06004710C8 /* JsonWriter.swift in Sources */,
 				DC5F6E7A1DBFEB2F005DDC61 /* Serializable.swift in Sources */,
 				DC5B844A1DBCA069007751F6 /* CompositeDeserializableTransformation.swift in Sources */,
 				DC69ACDD1E31101900957C55 /* JsonSerializer.swift in Sources */,
