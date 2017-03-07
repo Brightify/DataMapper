@@ -10,16 +10,28 @@ import Foundation
 
 public final class SupportedType: CustomStringConvertible {
     
-    public private(set) var raw: Any?
+    public enum RawType {
+        
+        case null
+        case string
+        case bool
+        case int
+        case double
+        case array
+        case dictionary
+        case intOrDouble
+    }
     
-    fileprivate var isIntOrDouble = false
+    public private(set) var raw: Any?
+    public private(set) var type: RawType
     
     public var description: String {
         return String(describing: raw)
     }
     
-    public init(_ raw: Any?) {
+    public init(raw: Any?, type: RawType) {
         self.raw = raw
+        self.type = type
     }
     
     public func addToDictionary(key: String, value: SupportedType) {
@@ -28,7 +40,7 @@ public final class SupportedType: CustomStringConvertible {
             mutableDictionary = dictionary
         } else {
             mutableDictionary = [:]
-            isIntOrDouble = false
+            type = .dictionary
         }
         mutableDictionary[key] = value
         raw = mutableDictionary
@@ -54,7 +66,7 @@ extension SupportedType {
     }
     
     public var double: Double? {
-        if isIntOrDouble, let int = int {
+        if type == .intOrDouble, let int = int {
             return Double(int)
         } else {
             return raw as? Double
@@ -72,41 +84,39 @@ extension SupportedType {
 
 extension SupportedType {
     
-    public static func raw(_ raw: Any?) -> SupportedType {
-        return SupportedType(raw)
+    public static func raw(_ raw: Any?, type: RawType) -> SupportedType {
+        return SupportedType(raw: raw, type: type)
     }
     
     public static var null: SupportedType {
-        return SupportedType(nil)
+        return SupportedType(raw: nil, type: .null)
     }
 
     public static func string(_ value: String) -> SupportedType {
-        return SupportedType(value)
+        return SupportedType(raw: value, type: .string)
     }
     
     public static func bool(_ value: Bool) -> SupportedType {
-        return SupportedType(value)
+        return SupportedType(raw: value, type: .bool)
     }
     
     public static func int(_ value: Int) -> SupportedType {
-        return SupportedType(value)
+        return SupportedType(raw: value, type: .int)
     }
     
     public static func double(_ value: Double) -> SupportedType {
-        return SupportedType(value)
+        return SupportedType(raw: value, type: .double)
     }
     
     public static func array(_ value: [SupportedType]) -> SupportedType {
-        return SupportedType(value)
+        return SupportedType(raw: value, type: .array)
     }
     
     public static func dictionary(_ value: [String: SupportedType]) -> SupportedType {
-        return SupportedType(value)
+        return SupportedType(raw: value, type: .dictionary)
     }
     
     public static func intOrDouble(_ value: Int) -> SupportedType {
-        let type = SupportedType(value)
-        type.isIntOrDouble = true
-        return type
+        return SupportedType(raw: value, type: .intOrDouble)
     }
 }

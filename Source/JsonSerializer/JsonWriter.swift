@@ -16,19 +16,20 @@ internal struct JsonWriter {
     internal private(set) var result = String()
     
     internal mutating func serialize(supportedType: SupportedType) {
-        if let string = supportedType.string {
-            serialize(string: string)
-        } else if let int = supportedType.int {
-            serialize(int: int)
-        } else if let dictionary = supportedType.dictionary {
-            serialize(dictionary: dictionary)
-        } else if let array = supportedType.array {
-            serialize(array: array)
-        } else if let double = supportedType.double {
-            serialize(double: double)
-        } else if let bool = supportedType.bool {
-            serialize(bool: bool)
-        } else {
+        switch supportedType.type {
+        case .string:
+            serialize(string: supportedType.raw as! String)
+        case .int, .intOrDouble:
+            serialize(int: supportedType.raw as! Int)
+        case .dictionary:
+            serialize(dictionary: supportedType.raw as! [String: SupportedType])
+        case .array:
+            serialize(array: supportedType.raw as! [SupportedType])
+        case .double:
+            serialize(double: supportedType.raw as! Double)
+        case .bool:
+            serialize(bool: supportedType.raw as! Bool)
+        default:
             serializeNull()
         }
     }

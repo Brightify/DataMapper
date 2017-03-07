@@ -16,20 +16,12 @@ public struct JsonSerializer: TypedSerializer {
     }
 
     public func typedSerialize(_ supportedType: SupportedType) -> Json {
-        if let dictionary = supportedType.dictionary {
-            var mappedDictionary = [String: Json](minimumCapacity: dictionary.count)
-            for (key, supportedType) in dictionary {
-                mappedDictionary[key] = typedSerialize(supportedType)
-            }
-            return mappedDictionary
-        } else if let array = supportedType.array {
-            var mappedArray: [Json] = []
-            mappedArray.reserveCapacity(array.count)
-            for supportedType in array {
-                mappedArray.append(typedSerialize(supportedType))
-            }
-            return mappedArray
-        } else {
+        switch supportedType.type {
+        case .dictionary:
+            return (supportedType.raw as! [String: SupportedType]).mapValue { typedSerialize($0) }
+        case .array:
+            return (supportedType.raw as! [SupportedType]).map { typedSerialize($0) }
+        default:
             return supportedType.raw ?? NSNull()
         }
     }
@@ -45,18 +37,9 @@ public struct JsonSerializer: TypedSerializer {
         case let string as String:
             return .string(string)
         case let dictionary as [String: Any]:
-            var mappedDictionary = [String: SupportedType](minimumCapacity: dictionary.count)
-            for (key, value) in dictionary {
-                mappedDictionary[key] = typedDeserialize(value)
-            }
-            return .dictionary(mappedDictionary)
+            return .dictionary(dictionary.mapValue { typedDeserialize($0) })
         case let array as [Any]:
-            var mappedArray: [SupportedType] = []
-            mappedArray.reserveCapacity(array.count)
-            for value in array {
-                mappedArray.append(typedDeserialize(value))
-            }
-            return .array(mappedArray)
+            return .array(array.map { typedDeserialize($0) })
         default:
             if let int = data as? Int, let double = data as? Double {
                 if Double(int) != double {
