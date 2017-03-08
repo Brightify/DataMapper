@@ -60,6 +60,6 @@ public struct JsonSerializer: TypedSerializer {
     }
     
     public func deserialize(_ data: Data) -> SupportedType {
-        return typedDeserialize((try? JSONSerialization.jsonObject(with: data, options: .allowFragments)) ?? NSNull())
+        return JsonParser().parse(data: data)
     }
 }
