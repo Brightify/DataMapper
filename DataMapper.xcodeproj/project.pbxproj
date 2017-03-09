@@ -157,7 +157,7 @@
 		DC07855D1DC6634A0063AB96 /* DeserializationError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeserializationError.swift; sourceTree = "<group>"; };
 		DC1C67FD1E5DEAE60081E7BD /* SerializerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerializerTest.swift; sourceTree = "<group>"; };
 		DC2C72E41E0EC25600EE380C /* ObjectMapperTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectMapperTest.swift; sourceTree = "<group>"; };
-		DC2C72E61E0EC53700EE380C /* SupportedTypeTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SupportedTypeTest.swift; path = SupportedType/SupportedTypeTest.swift; sourceTree = "<group>"; };
+		DC2C72E61E0EC53700EE380C /* SupportedTypeTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SupportedTypeTest.swift; path = SupportedTypeTest.swift; sourceTree = "<group>"; };
 		DC2C72F31E0EC78C00EE380C /* DeserializableDataTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeserializableDataTest.swift; sourceTree = "<group>"; };
 		DC2C72F51E0EC7B900EE380C /* DeserializableMappableDataWrapperTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeserializableMappableDataWrapperTest.swift; sourceTree = "<group>"; };
 		DC2C72F71E0EC7C600EE380C /* SerializableData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerializableData.swift; sourceTree = "<group>"; };
@@ -188,7 +188,7 @@
 		DC5B83921DBA9294007751F6 /* SerializableData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerializableData.swift; sourceTree = "<group>"; };
 		DC5B83941DBA92A4007751F6 /* DeserializableData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeserializableData.swift; sourceTree = "<group>"; };
 		DC5B83961DBA92B4007751F6 /* MappableData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MappableData.swift; sourceTree = "<group>"; };
-		DC5B83CF1DBA964E007751F6 /* SupportedType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SupportedType.swift; path = SupportedType/SupportedType.swift; sourceTree = "<group>"; };
+		DC5B83CF1DBA964E007751F6 /* SupportedType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SupportedType.swift; path = SupportedType.swift; sourceTree = "<group>"; };
 		DC5B83D41DBA9D42007751F6 /* AnyTransformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AnyTransformation.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		DC5B83D51DBA9D42007751F6 /* Transformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transformation.swift; sourceTree = "<group>"; };
 		DC5B83F11DBAA46E007751F6 /* CompositeTransformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CompositeTransformation.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -227,7 +227,7 @@
 		DC6540541E126FEC006BC731 /* TransformationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransformationTest.swift; sourceTree = "<group>"; };
 		DC6540561E127238006BC731 /* DeserializableTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeserializableTest.swift; sourceTree = "<group>"; };
 		DC6540581E127243006BC731 /* SerializableTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerializableTest.swift; sourceTree = "<group>"; };
-		DC65405F1E127692006BC731 /* PerformanceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PerformanceTest.swift; path = Core/PerformanceTest.swift; sourceTree = "<group>"; };
+		DC65405F1E127692006BC731 /* PerformanceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PerformanceTest.swift; path = PerformanceTest.swift; sourceTree = "<group>"; };
 		DC6540691E12C121006BC731 /* AnyTransformationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AnyTransformationTest.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		DC65406B1E12C14E006BC731 /* SupportedTypeConvertibleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportedTypeConvertibleTest.swift; sourceTree = "<group>"; };
 		DC65406D1E12C167006BC731 /* AnyDeserializableTransformationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AnyDeserializableTransformationTest.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -241,7 +241,7 @@
 		DC65407D1E12C203006BC731 /* SerializableSupportedTypeConvertibleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerializableSupportedTypeConvertibleTest.swift; sourceTree = "<group>"; };
 		DC65407F1E12C214006BC731 /* SerializableTransformationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerializableTransformationTest.swift; sourceTree = "<group>"; };
 		DC6540811E12C229006BC731 /* DictionaryUtilsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryUtilsTest.swift; sourceTree = "<group>"; };
-		DC65408F1E16BB67006BC731 /* SupportedType+Equatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "SupportedType+Equatable.swift"; path = "../Source/Core/SupportedType/SupportedType+Equatable.swift"; sourceTree = "<group>"; };
+		DC65408F1E16BB67006BC731 /* SupportedType+Equatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "SupportedType+Equatable.swift"; path = "SupportedType+Equatable.swift"; sourceTree = "<group>"; };
 		DC65409A1E17BA34006BC731 /* EnumTransformationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnumTransformationTest.swift; sourceTree = "<group>"; };
 		DC65409C1E17BA40006BC731 /* URLTransformationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLTransformationTest.swift; sourceTree = "<group>"; };
 		DC65409E1E17BA4D006BC731 /* CustomDateFormatTransformationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomDateFormatTransformationTest.swift; sourceTree = "<group>"; };
@@ -257,7 +257,7 @@
 		DC6540B21E17BC68006BC731 /* Int+SupportedTypeConvertibleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+SupportedTypeConvertibleTest.swift"; sourceTree = "<group>"; };
 		DC6540B41E17BC72006BC731 /* String+SupportedTypeConvertibleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+SupportedTypeConvertibleTest.swift"; sourceTree = "<group>"; };
 		DC6540B61E17BC7E006BC731 /* URL+SupportedTypeConvertibleTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URL+SupportedTypeConvertibleTest.swift"; sourceTree = "<group>"; };
-		DC6540BA1E1922B6006BC731 /* TestData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestData.swift; path = Core/TestData.swift; sourceTree = "<group>"; };
+		DC6540BA1E1922B6006BC731 /* TestData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestData.swift; path = TestData.swift; sourceTree = "<group>"; };
 		DC69ACD81E31100800957C55 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DC69ACDB1E31101500957C55 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DC69ACDE1E3114EE00957C55 /* JsonSerializerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonSerializerTest.swift; sourceTree = "<group>"; };
@@ -701,6 +701,7 @@
 				DC6540BA1E1922B6006BC731 /* TestData.swift */,
 			);
 			name = TestUtils;
+			path = TestUtils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
