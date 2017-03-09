@@ -28,7 +28,7 @@ public final class ObjectMapper {
     
     public func serialize<T: Serializable>(_ array: [T?]?) -> SupportedType {
         if let array = array {
-            return .array(array.map { serialize($0) })
+            return .array(array.map(serialize))
         } else {
             return .null
         }
@@ -36,7 +36,7 @@ public final class ObjectMapper {
     
     public func serialize<T: Serializable>(_ dictionary: [String: T?]?) -> SupportedType {
         if let dictionary = dictionary {
-            return .dictionary(dictionary.mapValue { serialize($0) })
+            return .dictionary(dictionary.mapValue(serialize))
         } else {
             return .null
         }
@@ -48,7 +48,7 @@ public final class ObjectMapper {
     
     public func serialize<T, R: SerializableTransformation>(_ array: [T?]?, using transformation: R) -> SupportedType where R.Object == T {
         if let array = array {
-            return .array(array.map { transformation.transform(object: $0) })
+            return .array(array.map(transformation.transform(object:)))
         } else {
             return .null
         }
@@ -56,7 +56,7 @@ public final class ObjectMapper {
     
     public func serialize<T, R: SerializableTransformation>(_ dictionary: [String: T?]?, using transformation: R) -> SupportedType where R.Object == T {
         if let dictionary = dictionary {
-            return .dictionary(dictionary.mapValue { transformation.transform(object: $0) })
+            return .dictionary(dictionary.mapValue(transformation.transform(object:)))
         } else {
             return .null
         }
@@ -72,20 +72,12 @@ public final class ObjectMapper {
         guard let array = type.array else {
             return nil
         }
-
-        var result: [T] = []
-        for type in array {
-            if let value: T = deserialize(type) {
-                result.append(value)
-            } else {
-                return nil
-            }
-        }
-        return result
+        
+        return array.mapOrNil(deserialize)
     }
     
     public func deserialize<T: Deserializable>(_ type: SupportedType) -> [T?]? {
-        return type.array?.map { deserialize($0) }
+        return type.array?.map(deserialize)
     }
     
     public func deserialize<T: Deserializable>(_ type: SupportedType) -> [String: T]? {
@@ -93,19 +85,11 @@ public final class ObjectMapper {
             return nil
         }
         
-        var result: [String: T] = [:]
-        for (key, type) in dictionary {
-            if let value: T = deserialize(type) {
-                result[key] = value
-            } else {
-                return nil
-            }
-        }
-        return result
+        return dictionary.mapValueOrNil(deserialize)
     }
     
     public func deserialize<T: Deserializable>(_ type: SupportedType) -> [String: T?]? {
-        return type.dictionary?.mapValue { deserialize($0) }
+        return type.dictionary?.mapValue(deserialize)
     }
     
     public func deserialize<T, R: DeserializableTransformation>(_ type: SupportedType, using transformation: R) -> T? where R.Object == T {
@@ -117,19 +101,11 @@ public final class ObjectMapper {
             return nil
         }
         
-        var result: [T] = []
-        for type in array {
-            if let value: T = transformation.transform(from: type) {
-                result.append(value)
-            } else {
-                return nil
-            }
-        }
-        return result
+        return array.mapOrNil(transformation.transform(from:))
     }
     
     public func deserialize<T, R: DeserializableTransformation>(_ type: SupportedType, using transformation: R) -> [T?]? where R.Object == T {
-        return type.array?.map { transformation.transform(from: $0) }
+        return type.array?.map(transformation.transform(from:))
     }
     
     public func deserialize<T, R: DeserializableTransformation>(_ type: SupportedType, using transformation: R) -> [String: T]? where R.Object == T {
@@ -137,18 +113,10 @@ public final class ObjectMapper {
             return nil
         }
         
-        var result: [String: T] = [:]
-        for (key, type) in dictionary {
-            if let value: T = transformation.transform(from: type) {
-                result[key] = value
-            } else {
-                return nil
-            }
-        }
-        return result
+        return dictionary.mapValueOrNil(transformation.transform(from:))
     }
     
     public func deserialize<T, R: DeserializableTransformation>(_ type: SupportedType, using transformation: R) -> [String: T?]? where R.Object == T {
-        return type.dictionary?.mapValue { transformation.transform(from: $0) }
+        return type.dictionary?.mapValue(transformation.transform(from:))
     }
 }

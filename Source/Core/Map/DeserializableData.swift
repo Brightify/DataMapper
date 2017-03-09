@@ -17,9 +17,9 @@ public struct DeserializableData {
     }
     
     public subscript(path: [String]) -> DeserializableData {
-        return path.reduce(self) { deserializableData, path in
-            DeserializableData(data: deserializableData.raw.dictionary?[path] ?? .null, objectMapper: objectMapper)
-        }
+        return DeserializableData(data: path.reduce(raw) { raw, path in
+            raw.dictionary?[path] ?? .null
+        }, objectMapper: objectMapper)
     }
     
     public subscript(path: String...) -> DeserializableData {

@@ -27,6 +27,7 @@
 		DC2C73101E0ECA6B00EE380C /* DelegatedTransformationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2C730F1E0ECA6B00EE380C /* DelegatedTransformationTest.swift */; };
 		DC2E3C371E6C4D06004710C8 /* JsonWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2E3C361E6C4D06004710C8 /* JsonWriter.swift */; };
 		DC4690621E3624AE001C8540 /* SupportedType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5B83CF1DBA964E007751F6 /* SupportedType.swift */; };
+		DC49C54D1E7143E3007190AC /* ArrayUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC49C54C1E7143E3007190AC /* ArrayUtils.swift */; };
 		DC4D91721DC341B30095A348 /* Polymorph.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4D91711DC341B30095A348 /* Polymorph.swift */; };
 		DC4D917B1DC3425C0095A348 /* GenericPolymorphicInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4D91741DC3425C0095A348 /* GenericPolymorphicInfo.swift */; };
 		DC4D917C1DC3425C0095A348 /* PolymorphDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4D91751DC3425C0095A348 /* PolymorphDataProvider.swift */; };
@@ -170,6 +171,7 @@
 		DC2C730D1E0ECA5F00EE380C /* CompositeTransformationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompositeTransformationTest.swift; sourceTree = "<group>"; };
 		DC2C730F1E0ECA6B00EE380C /* DelegatedTransformationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DelegatedTransformationTest.swift; sourceTree = "<group>"; };
 		DC2E3C361E6C4D06004710C8 /* JsonWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonWriter.swift; sourceTree = "<group>"; };
+		DC49C54C1E7143E3007190AC /* ArrayUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayUtils.swift; sourceTree = "<group>"; };
 		DC4D91711DC341B30095A348 /* Polymorph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Polymorph.swift; sourceTree = "<group>"; };
 		DC4D91741DC3425C0095A348 /* GenericPolymorphicInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericPolymorphicInfo.swift; sourceTree = "<group>"; };
 		DC4D91751DC3425C0095A348 /* PolymorphDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PolymorphDataProvider.swift; sourceTree = "<group>"; };
@@ -475,6 +477,7 @@
 			isa = PBXGroup;
 			children = (
 				DC4D91921DC34BE40095A348 /* DictionaryUtils.swift */,
+				DC49C54C1E7143E3007190AC /* ArrayUtils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -921,6 +924,7 @@
 				DC5B84281DBAC651007751F6 /* Double+SupportedTypeConvertible.swift in Sources */,
 				DC5B84511DBCA074007751F6 /* DelegatedSerializableTransformation.swift in Sources */,
 				DC5B845E1DBD1C36007751F6 /* SerializableMappableDataWrapper.swift in Sources */,
+				DC49C54D1E7143E3007190AC /* ArrayUtils.swift in Sources */,
 				DC4690621E3624AE001C8540 /* SupportedType.swift in Sources */,
 				DC5B842C1DBAC66E007751F6 /* URL+SupportedTypeConvertible.swift in Sources */,
 				DC5B84501DBCA074007751F6 /* CompositeSerializableTransformation.swift in Sources */,

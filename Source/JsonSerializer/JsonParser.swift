@@ -10,6 +10,10 @@ import Foundation
 
 internal final class JsonParser {
     
+    private static let stringCapacity = 16
+    private static let dictionaryCapacity = 8
+    private static let arrayCapacity = 16
+    
     private var data: String.UnicodeScalarView = "".unicodeScalars
     private var index: String.UnicodeScalarIndex
     private var hasNext: Bool = false
@@ -69,6 +73,7 @@ internal final class JsonParser {
     
     private func parseString() -> String {
         var result = String.UnicodeScalarView()
+        result.reserveCapacity(JsonParser.stringCapacity)
         var escaped = false
         
         while hasNext {
@@ -140,7 +145,7 @@ internal final class JsonParser {
     }
     
     private func parseDictionary() -> SupportedType {
-        var result: [String: SupportedType] = [:]
+        var result = Dictionary<String, SupportedType>(minimumCapacity: JsonParser.dictionaryCapacity)
         var nextKey = ""
         var state = DictionaryState.start
         
@@ -180,6 +185,7 @@ internal final class JsonParser {
     
     private func parseArray() -> SupportedType {
         var result: [SupportedType] = []
+        result.reserveCapacity(JsonParser.arrayCapacity)
         var state = ArrayState.start
         
         while hasNext {
@@ -222,7 +228,7 @@ internal final class JsonParser {
     
     private func parseNull() -> SupportedType {
         if next() == "u" && next() == "l" && hasNext && next() == "l" {
-            return .bool(true)
+            return .null
         } else {
             error()
         }
@@ -318,7 +324,11 @@ internal final class JsonParser {
     }
     
     private func repeatCharacter() {
-        index = data.index(before: index)
+        if hasNext {
+            index = data.index(before: index)
+        } else {
+            hasNext = true
+        }
     }
     
     private func error() -> Never {
