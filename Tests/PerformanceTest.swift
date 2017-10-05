@@ -17,6 +17,23 @@ class PerformanceTest: XCTestCase {
     private let serializer = JsonSerializer()
     private let objects = TestData.generate(x: 8)
     
+    func _testDerializeDataToCodable() {
+        let data = try! JSONEncoder().encode(objects)
+        var result: Object!
+        measure {
+            result = try! JSONDecoder().decode(TestData.PerformanceStruct.self, from: data)
+        }
+        _ = result
+    }
+    
+    func _testSerializeCodableToData() {
+        var result: Data!
+        measure {
+            result = try! JSONEncoder().encode(self.objects)
+        }
+        _ = result
+    }
+
     func _testDeserializeDataToObject() {
         let data: Data = serializer.serialize(objectMapper.serialize(objects))
         var result: Object!

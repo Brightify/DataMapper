@@ -30,7 +30,7 @@ struct TestData {
         return object
     }
     
-    struct PerformanceStruct: Mappable {
+    struct PerformanceStruct: Mappable, Codable {
         
         private(set) var number: Int?
         private(set) var text: String = ""
