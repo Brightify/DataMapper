@@ -44,20 +44,20 @@ class PolymorphDataProviderTest: QuickSpec {
             }
             describe("polymorphType") {
                 it("returns subtype corresponding to name and key in type hiearchy") {
-                    expect("\(provider.polymorphType(of: A.self, named: "A", forKey: "K"))") == "\(A.self as Polymorphic.Type?)"
-                    expect("\(provider.polymorphType(of: A.self, named: "B", forKey: "K"))") == "\(B.self as Polymorphic.Type?)"
-                    expect("\(provider.polymorphType(of: A.self, named: "C", forKey: "C"))") == "\(C.self as Polymorphic.Type?)"
-                    expect("\(provider.polymorphType(of: A.self, named: "D2", forKey: "C"))") == "\(D.self as Polymorphic.Type?)"
+                    expect(String(describing: provider.polymorphType(of: A.self, named: "A", forKey: "K"))) == "\(A.self as Polymorphic.Type?)"
+                    expect(String(describing: provider.polymorphType(of: A.self, named: "B", forKey: "K"))) == "\(B.self as Polymorphic.Type?)"
+                    expect(String(describing: provider.polymorphType(of: A.self, named: "C", forKey: "C"))) == "\(C.self as Polymorphic.Type?)"
+                    expect(String(describing: provider.polymorphType(of: A.self, named: "D2", forKey: "C"))) == "\(D.self as Polymorphic.Type?)"
                     
-                    expect("\(provider.polymorphType(of: B.self, named: "B", forKey: "K"))") == "\(B.self as Polymorphic.Type?)"
-                    expect("\(provider.polymorphType(of: B.self, named: "C", forKey: "C"))") == "\(C.self as Polymorphic.Type?)"
-                    expect("\(provider.polymorphType(of: B.self, named: "D2", forKey: "C"))") == "\(D.self as Polymorphic.Type?)"
+                    expect(String(describing: provider.polymorphType(of: B.self, named: "B", forKey: "K"))) == "\(B.self as Polymorphic.Type?)"
+                    expect(String(describing: provider.polymorphType(of: B.self, named: "C", forKey: "C"))) == "\(C.self as Polymorphic.Type?)"
+                    expect(String(describing: provider.polymorphType(of: B.self, named: "D2", forKey: "C"))) == "\(D.self as Polymorphic.Type?)"
                     
-                    // expect("\(provider.polymorphType(of: C.self, named: "C", forKey: "C"))") == "\(C.self as Polymorphic.Type?)"
+                    // expect(String(describing: provider.polymorphType(of: C.self, named: "C", forKey: "C"))) == "\(C.self as Polymorphic.Type?)"
                     
-                    expect("\(provider.polymorphType(of: D.self, named: "D2", forKey: "C"))") == "\(D.self as Polymorphic.Type?)"
+                    expect(String(describing: provider.polymorphType(of: D.self, named: "D2", forKey: "C"))) == "\(D.self as Polymorphic.Type?)"
                     
-                    // expect("\(provider.polymorphType(of: E.self, named: "E", forKey: "C"))") == "\(E.self as Polymorphic.Type?)"
+                    // expect(String(describing: provider.polymorphType(of: E.self, named: "E", forKey: "C"))) == "\(E.self as Polymorphic.Type?)"
                 }
                 it("returns nil if name and key does not exist") {
                     expect(provider.polymorphType(of: A.self, named: "X", forKey: "K")).to(beNil())

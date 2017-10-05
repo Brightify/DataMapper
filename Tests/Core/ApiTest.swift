@@ -190,7 +190,7 @@ private class PolymorphicInstance: Polymorphic {
 
 private struct PolymorphicInfoInstance: PolymorphicInfo {
     
-    var type: Polymorphic.Type = PolymorphicInfoInstance.self as! Polymorphic.Type
+    var type: Polymorphic.Type = PolymorphicInstance.self
     
     var name: String = ""
     

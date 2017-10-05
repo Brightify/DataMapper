@@ -20,7 +20,7 @@ extension Polymorphic {
         if name.hasPrefix("(") {
             let fromIndex = name.index(after: name.startIndex)
             let toIndex = (name.range(of: " in ", options: .backwards)?.lowerBound ?? name.endIndex)
-            return name.substring(with: fromIndex..<toIndex)
+            return String(name[fromIndex..<toIndex])
         } else {
             return name
         }

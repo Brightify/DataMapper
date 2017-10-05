@@ -71,7 +71,8 @@ public final class PolymorphDataProvider {
         cache(type: subtype, throwErrorIfPolymorphicInfoIsNotOverriden: false)
         
         let subtypeIdentifier = ObjectIdentifier(subtype)
-        keysOfTypeCache[typeIdentifier]?.formUnion(keysOfTypeCache[subtypeIdentifier] ?? [])
+        let keysOfSubtype = keysOfTypeCache[subtypeIdentifier] ?? []
+        keysOfTypeCache[typeIdentifier]?.formUnion(keysOfSubtype)
         castableFromTypeByNameByKeyCache[subtypeIdentifier]?.forEach { name, dictionary in
             dictionary.forEach { key, castableType in
                 precondition(castableFromTypeByNameByKeyCache[typeIdentifier]?[name]?[key] == nil,

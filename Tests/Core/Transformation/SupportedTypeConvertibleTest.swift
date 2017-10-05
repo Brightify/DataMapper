@@ -20,7 +20,7 @@ class SupportedTypeConvertibleTest: QuickSpec {
                 let type: SupportedType = .null
                 
                 let result: SupportedTypeConvertibleStub? = objectMapper.deserialize(type)
-                expect("\(result)") == "\(value)"
+                expect(String(describing: result)) == String(describing: value)
                 expect(objectMapper.serialize(value)) == type
             }
         }
