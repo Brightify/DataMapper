@@ -5,7 +5,7 @@ script:
     - (xcodebuild -workspace DataMapper.xcworkspace -scheme DataMapper -sdk iphonesimulator build-for-testing | egrep -A 3 "(error|warning|note):\ "; exit ${PIPESTATUS[0]})
 # not working with xcode 9 (version 0.33) try later
 # - xctool -workspace DataMapper.xcworkspace -scheme DataMapper -sdk iphonesimulator run-tests
-    - xcodebuild -workspace DataMapper.xcworkspace -scheme DataMapper -destination 'platform=iOS Simulator,name=iPhone 8 Plus,OS=11.0' test
+    - xcodebuild -workspace DataMapper.xcworkspace -scheme DataMapper -destination 'platform=iOS Simulator,name=iPhone 8 Plus,OS=11.1' test
     - pod lib lint --no-clean
 
 notifications:
