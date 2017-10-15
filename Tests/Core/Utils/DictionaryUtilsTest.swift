@@ -17,7 +17,7 @@ class DictionaryUtilsTest: QuickSpec {
             describe("mapValue") {
                 it("apply map to value") {
                     let dictionary = ["a": 1, "b": 2, "c": 3]
-                    expect(dictionary.mapValue { $0 * 2 }) == ["a": 2, "b": 4, "c": 6]
+                    expect(dictionary.mapValues { $0 * 2 }) == ["a": 2, "b": 4, "c": 6]
                 }
             }
         }

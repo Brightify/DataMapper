@@ -17,11 +17,11 @@ public protocol Serializer {
 
 extension Serializer {
     
-    public func serializeToString(_ supportedType: SupportedType) -> String {
+    public func serialize(toString supportedType: SupportedType) -> String {
         return String(data: serialize(supportedType), encoding: .utf8) ?? ""
     }
     
-    public func deserializeFromString(_ string: String) -> SupportedType {
+    public func deserialize(fromString string: String) -> SupportedType {
         return deserialize(string.data(using: .utf8) ?? Data())
     }
 }

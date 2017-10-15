@@ -8,15 +8,7 @@
 
 extension Dictionary {
     
-    public func mapValue<V>(_ transform: (Value) -> V) -> [Key: V] {
-        var output = Dictionary<Key, V>(minimumCapacity: count)
-        for (key, value) in self {
-            output[key] = transform(value)
-        }
-        return output
-    }
-    
-    public func mapValueOrNil<V>(_ transform: (Value) -> V?) -> [Key: V]? {
+    func mapValueOrNil<V>(_ transform: (Value) -> V?) -> [Key: V]? {
         var output = Dictionary<Key, V>(minimumCapacity: count)
         for (key, value) in self {
             if let mappedValue: V = transform(value) {

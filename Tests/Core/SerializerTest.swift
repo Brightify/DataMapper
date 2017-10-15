@@ -17,12 +17,12 @@ class SerializerTest: QuickSpec {
             let stub = SerializerStub()
             describe("serializeToString") {
                 it("converts output of serialize to String(utf8)") {
-                    expect(stub.serializeToString(.string("abcd"))) == "abcd"
+                    expect(stub.serialize(toString: .string("abcd"))) == "abcd"
                 }
             }
             describe("deserializeFromString") {
                 it("returns deserialize with converted String(utf8) to Data") {
-                    expect(stub.deserializeFromString("abcd")) == SupportedType.string("abcd")
+                    expect(stub.deserialize(fromString: "abcd")) == SupportedType.string("abcd")
                 }
             }
         }

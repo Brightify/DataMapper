@@ -18,7 +18,7 @@ public struct JsonSerializer: TypedSerializer {
     public func typedSerialize(_ supportedType: SupportedType) -> Json {
         switch supportedType.type {
         case .dictionary:
-            return (supportedType.raw as! [String: SupportedType]).mapValue { typedSerialize($0) }
+            return (supportedType.raw as! [String: SupportedType]).mapValues { typedSerialize($0) }
         case .array:
             return (supportedType.raw as! [SupportedType]).map { typedSerialize($0) }
         default:
@@ -37,7 +37,7 @@ public struct JsonSerializer: TypedSerializer {
         case let string as String:
             return .string(string)
         case let dictionary as [String: Any]:
-            return .dictionary(dictionary.mapValue { typedDeserialize($0) })
+            return .dictionary(dictionary.mapValues { typedDeserialize($0) })
         case let array as [Any]:
             return .array(array.map { typedDeserialize($0) })
         default:

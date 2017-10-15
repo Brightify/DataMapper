@@ -139,33 +139,30 @@ Used terminology:
 
 ### SupportedType
 
-```Swift
-enum SupportedType {
-    
-    case null
-    case string(String)
-    case number(SupportedNumber)
-    case array([SupportedType])
-    case dictionary([String: SupportedType])
-}
+`SupportedType` creates intermediate level between ObjectMapper and Serializers. It is an enum like structure (for performance reasons implemented using class) representing basic data types (`null`, `string`, `bool`, `int`, `double`, `array`, `dictionary`). Each type has associated property which return its value if it is correct type or nil otherwise. With small exception for `null` whose property is named `isNull` and returns `Bool`.
 
+```Swift
 extension SupportedType {
     
-    var isNull: Bool
+    var isNull: Bool 
     
     var string: String?
     
-    var number: SupportedNumber?
+    var bool: Bool?
+    
+    var int: Int?
+    
+    var double: Double?
     
     var array: [SupportedType]?
     
-    var dictionary: [String: SupportedType]?
+    var dictionary: [String: SupportedType]? 
 
     mutating func addToDictionary(key: String, value: SupportedType)
 }
 ```
 
-`SupportedType` creates intermediate level between ObjectMapper and Serializers. It is an enum representing basic data types (`null`, `string`, `number`, `array`, `dictionary`). Each type has associated property which return its value if it is correct type or nil otherwise. With small exception for `null` whose property is named `isNull` and returns `Bool`. For example:
+For example:
 
 ```Swift
 let type: SupportedType = .string("A")
@@ -175,46 +172,30 @@ type.number // nil
 
 `addToDictionary` adds the key value pair to the dictionary. If the current type is not a dictionary, then it is replaced with a new dictionary. 
 
-#### SupportedNumber
+`SupportedType` can be created using these static methods:
 
 ```Swift
-struct SupportedNumber {
+extension SupportedType {
     
-    let bool: Bool?
-    let int: Int?
-    let double: Double?
+    static var null: SupportedType
 
-    // + all combinations of inits.
+    static func string(_ value: String) -> SupportedType
+    
+    static func bool(_ value: Bool) -> SupportedType
+    
+    static func int(_ value: Int) -> SupportedType
+    
+    static func double(_ value: Double) -> SupportedType 
+    
+    static func array(_ value: [SupportedType]) -> SupportedType
+    
+    static func dictionary(_ value: [String: SupportedType]) -> SupportedType
+    
+    static func intOrDouble(_ value: Int) -> SupportedType 
 }
 ```
 
-SupportedNumber handles the problem of numbers being ambiguous when represented as text. For example is 1 `Int` or `Double` or even `Bool`? (thanks `NSNumber` for that) It is a basic struct representing `Bool`, `Int` or `Double` or any combination of these. Usage:
-
-```Swift
-let int = SupportedNumber(int: 1)
-int.bool // nil
-int.int // 1
-int.double // nil
-
-let intOrDouble = SupportedNumber(int: 1, double: 1)
-intOrDouble.bool // nil
-intOrDouble.int // 1
-intOrDouble.double // 1
-```
-
-You would only use it if the number type is ambiguous (i.e. in Serializers). Otherwise you should always use extensions of `SupportedType` to create and access it. For example:
-
-```Swift
-let int: SupportedType = .int(1)
-int.bool // nil
-int.int // 1
-int.double // nil
-
-let intOrDouble: SupportedType = .number(SupportedNumber(int: 1, double: 1))
-intOrDouble.bool // nil
-intOrDouble.int // 1
-intOrDouble.double // 1
-```
+`intOrDouble` handles the problem of numbers being ambiguous when represented as text. For example: `1` is `Int` or `Double`. If `intOrDouble(1)` is used to create `SupportedType`, then both `.int` and `.double` returns `1`. On the contrary if you use `.int(1)`, only `.int` returns `1` and `.double` returns `nil`.
 
 ### ObjectMapper
 
@@ -268,9 +249,9 @@ Sometimes (almost always) it is easier to work with `String` instead of `Data`. 
 ```Swift
 extension Serializer {
     
-    func serializeToString(_ supportedType: SupportedType) -> String
+    func serialize(toString supportedType: SupportedType) -> String
     
-    func deserializeFromString(_ string: String) -> SupportedType
+    func deserialize(fromString string: String) -> SupportedType
 }
 ```
 

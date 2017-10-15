@@ -36,7 +36,7 @@ public final class ObjectMapper {
     
     public func serialize<T: Serializable>(_ dictionary: [String: T?]?) -> SupportedType {
         if let dictionary = dictionary {
-            return .dictionary(dictionary.mapValue(serialize))
+            return .dictionary(dictionary.mapValues(serialize))
         } else {
             return .null
         }
@@ -56,7 +56,7 @@ public final class ObjectMapper {
     
     public func serialize<T, R: SerializableTransformation>(_ dictionary: [String: T?]?, using transformation: R) -> SupportedType where R.Object == T {
         if let dictionary = dictionary {
-            return .dictionary(dictionary.mapValue(transformation.transform(object:)))
+            return .dictionary(dictionary.mapValues(transformation.transform(object:)))
         } else {
             return .null
         }
@@ -89,7 +89,7 @@ public final class ObjectMapper {
     }
     
     public func deserialize<T: Deserializable>(_ type: SupportedType) -> [String: T?]? {
-        return type.dictionary?.mapValue(deserialize)
+        return type.dictionary?.mapValues(deserialize)
     }
     
     public func deserialize<T, R: DeserializableTransformation>(_ type: SupportedType, using transformation: R) -> T? where R.Object == T {
@@ -117,6 +117,6 @@ public final class ObjectMapper {
     }
     
     public func deserialize<T, R: DeserializableTransformation>(_ type: SupportedType, using transformation: R) -> [String: T?]? where R.Object == T {
-        return type.dictionary?.mapValue(transformation.transform(from:))
+        return type.dictionary?.mapValues(transformation.transform(from:))
     }
 }
