@@ -25,7 +25,7 @@ List of all changes and new features can be found [here](CHANGELOG.md).
 
 ## Requirements
 
-- **Swift 3**
+- **Swift 4**
 - **iOS 8+**
 
 ## Installation
