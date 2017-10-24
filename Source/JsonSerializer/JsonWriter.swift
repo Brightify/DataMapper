@@ -14,8 +14,14 @@ internal struct JsonWriter {
         ["\\u0000", "\\u0001", "\\u0002", "\\u0003", "\\u0004", "\\u0005", "\\u0006", "\\u0007", "\\b", "\\t", "\\n", "\\u000b", "\\f", "\\r", "\\u000e", "\\u000f", "\\u0010", "\\u0011", "\\u0012", "\\u0013", "\\u0014", "\\u0015", "\\u0016", "\\u0017", "\\u0018", "\\u0019", "\\u001a", "\\u001b", "\\u001c", "\\u001d", "\\u001e", "\\u001f", " ", "!", "\\\"", "#", "$", "%", "&", "\'", "(", ")", "*", "+", ",", "-", ".", "/", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ":", ";", "<", "=", ">", "?", "@", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "[", "\\\\", "]", "^", "_", "`", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "{", "|", "}", "~", "\\u007f", "\\u0080", "\\u0081", "\\u0082", "\\u0083", "\\u0084", "\\u0085", "\\u0086", "\\u0087", "\\u0088", "\\u0089", "\\u008a", "\\u008b", "\\u008c", "\\u008d", "\\u008e", "\\u008f", "\\u0090", "\\u0091", "\\u0092", "\\u0093", "\\u0094", "\\u0095", "\\u0096", "\\u0097", "\\u0098", "\\u0099", "\\u009a", "\\u009b", "\\u009c", "\\u009d", "\\u009e", "\\u009f", "\\u00a0"]
     
     internal private(set) var result = String()
-    
+
     internal mutating func serialize(supportedType: SupportedType) {
+        // Null is not supported as a top-level JSON type
+        guard supportedType.type != .null else { return }
+        serializeRecursive(supportedType: supportedType)
+    }
+
+    private mutating func serializeRecursive(supportedType: SupportedType) {
         switch supportedType.type {
         case .string:
             serialize(string: supportedType.raw as! String)
@@ -61,7 +67,7 @@ internal struct JsonWriter {
             }
             serialize(string: key)
             result.append(":")
-            serialize(supportedType: supportedType)
+            serializeRecursive(supportedType: supportedType)
         }
         result.append("}")
     }
@@ -75,7 +81,7 @@ internal struct JsonWriter {
             } else {
                 result.append(",")
             }
-            serialize(supportedType: supportedType)
+            serializeRecursive(supportedType: supportedType)
         }
         result.append("]")
     }

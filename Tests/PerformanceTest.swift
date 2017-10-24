@@ -17,7 +17,7 @@ class PerformanceTest: XCTestCase {
     private let serializer = JsonSerializer()
     private let objects = TestData.generate(x: 8)
     
-    func _testDerializeDataToCodable() {
+    func testDerializeDataToCodable() {
         let data = try! JSONEncoder().encode(objects)
         var result: Object!
         measure {
@@ -26,7 +26,7 @@ class PerformanceTest: XCTestCase {
         _ = result
     }
     
-    func _testSerializeCodableToData() {
+    func testSerializeCodableToData() {
         var result: Data!
         measure {
             result = try! JSONEncoder().encode(self.objects)
@@ -34,7 +34,7 @@ class PerformanceTest: XCTestCase {
         _ = result
     }
 
-    func _testDeserializeDataToObject() {
+    func testDeserializeDataToObject() {
         let data: Data = serializer.serialize(objectMapper.serialize(objects))
         var result: Object!
         measure {
@@ -43,7 +43,7 @@ class PerformanceTest: XCTestCase {
         _ = result
     }
     
-    func _testDeserializeSupportedTypeToObject() {
+    func testDeserializeSupportedTypeToObject() {
         let data: SupportedType = objectMapper.serialize(objects)
         var result: Object!
         measure {
@@ -52,7 +52,7 @@ class PerformanceTest: XCTestCase {
         _ = result
     }
     
-    func _testDeserializeDataToSupportedType() {
+    func testDeserializeDataToSupportedType() {
         let data: Data = serializer.serialize(objectMapper.serialize(objects))
         var result: SupportedType!
         measure {
@@ -61,7 +61,7 @@ class PerformanceTest: XCTestCase {
         _ = result
     }
     
-    func _testSerializeObjectToData() {
+    func testSerializeObjectToData() {
         let data: Object = objects
         var result: Data!
         measure {
@@ -70,7 +70,7 @@ class PerformanceTest: XCTestCase {
         _ = result
     }
     
-    func _testSerializeObjectToSupportedType() {
+    func testSerializeObjectToSupportedType() {
         let data: Object = objects
         var result: SupportedType!
         measure {
@@ -79,7 +79,7 @@ class PerformanceTest: XCTestCase {
         _ = result
     }
     
-    func _testSerializeSupportedTypeToData() {
+    func testSerializeSupportedTypeToData() {
         let data: SupportedType = objectMapper.serialize(objects)
         var result: Data!
         measure {
@@ -91,7 +91,7 @@ class PerformanceTest: XCTestCase {
     
     
     // TODO Change Any
-    func _testTypedSerialize() {
+    func testTypedSerialize() {
         let data: SupportedType = objectMapper.serialize(objects)
         var result: Any!
         measure {
@@ -100,7 +100,7 @@ class PerformanceTest: XCTestCase {
         _ = result
     }
     
-    func _testTypedDeserialize() {
+    func testTypedDeserialize() {
         let data: Any = serializer.typedSerialize(objectMapper.serialize(objects))
         var result: SupportedType!
         measure {

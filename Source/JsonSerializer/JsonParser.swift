@@ -8,6 +8,51 @@
 
 import Foundation
 
+internal enum JsonError: Error, CustomStringConvertible {
+    case load(data: Data)
+    case parse(index: String.UnicodeScalarIndex, line: Int, column: Int, character: UnicodeScalar, message: Message)
+
+    var description: String {
+        switch self {
+        case .load:
+            return "Couldn't load JSON."
+        case .parse(_, let line, let column, _, let message):
+            return "Couldn't parse JSON. \(message) at \(line):\(column)."
+        }
+    }
+
+    var localizedDescription: String {
+        return description
+    }
+
+    internal enum Message: CustomStringConvertible {
+        case unexpectedEOF
+        case onlyWhitespacesAtEnd
+        case invalidUnicodeCharacter(UInt32)
+        case unknownEscapedCharacter(UnicodeScalar)
+        case unexpectedCharacter(UnicodeScalar, allowed: [UnicodeScalar])
+        case invalidNumber
+
+        var description: String {
+            switch self {
+            case .unexpectedEOF:
+                return "Unexpected end of file"
+            case .onlyWhitespacesAtEnd:
+                return "Only whitespaces are allowed at the end of JSON file"
+            case .invalidUnicodeCharacter(let number):
+                return "Couldn't convert \(number) to a Unicode characted"
+            case .unknownEscapedCharacter(let character):
+                return "Unknown escaped character '\\\(character)'"
+            case .unexpectedCharacter(let character, let allowedCharacters):
+                let allowedCharactersJoined = allowedCharacters.map { String($0) }.joined(separator: ", ")
+                return "Unexpected character \(character). Expected one of: \(allowedCharactersJoined)"
+            case .invalidNumber:
+                return "Couldn't parse number"
+            }
+        }
+    }
+}
+
 internal final class JsonParser {
     
     private static let stringCapacity = 16
@@ -21,10 +66,10 @@ internal final class JsonParser {
     internal init() {
         index = data.startIndex
     }
-    
-    internal func parse(data: Data) -> SupportedType {
+
+    internal func parse(data: Data) throws -> SupportedType {
         guard let scalars = String(data: data, encoding: .utf8)?.unicodeScalars else {
-            error()
+            throw JsonError.load(data: data)
         }
         guard !scalars.isEmpty else {
             return .null
@@ -34,16 +79,17 @@ internal final class JsonParser {
         index = self.data.startIndex
         hasNext = true
         
-        let result = parseValue()
+        let result = try parseValue()
         while hasNext {
-            if !next().isWhitespace {
-                error()
+            let character = next()
+            if !character.isWhitespace {
+                throw createError(message: .onlyWhitespacesAtEnd)
             }
         }
         return result
     }
     
-    private func parseValue() -> SupportedType {
+    private func parseValue() throws -> SupportedType {
         while hasNext {
             let character = next()
             if character.isWhitespace {
@@ -52,26 +98,26 @@ internal final class JsonParser {
             
             switch character {
             case "\"":
-                return .string(parseString())
+                return .string(try parseString())
             case "{":
-                return parseDictionary()
+                return try parseDictionary()
             case "[":
-                return parseArray()
+                return try parseArray()
             case "t":
-                return parseTrue()
+                return try parseTrue()
             case "f":
-                return parseFalse()
+                return try parseFalse()
             case "n":
-                return parseNull()
+                return try parseNull()
             default:
                 repeatCharacter()
-                return parseNumber()
+                return try parseNumber()
             }
         }
-        error()
+        throw createError(message: .unexpectedEOF)
     }
     
-    private func parseString() -> String {
+    private func parseString() throws -> String {
         var result = String.UnicodeScalarView()
         result.reserveCapacity(JsonParser.stringCapacity)
         var escaped = false
@@ -113,16 +159,16 @@ internal final class JsonParser {
                                 number += value - "a" + 10
                             }
                         } else {
-                            error()
+                            throw createError(message: .unexpectedEOF)
                         }
                     }
                     if let unicodeCharacter = UnicodeScalar(number) {
                         result.append(unicodeCharacter)
                     } else {
-                        error()
+                        throw createError(message: .invalidUnicodeCharacter(number))
                     }
                 default:
-                    error()
+                    throw createError(message: .unknownEscapedCharacter(character))
                 }
             } else if character == "\"" {
                 return String(result)
@@ -132,7 +178,7 @@ internal final class JsonParser {
                 result.append(character)
             }
         }
-        error()
+        throw createError(message: .unexpectedEOF)
     }
     
     private enum DictionaryState {
@@ -144,7 +190,7 @@ internal final class JsonParser {
         case comma
     }
     
-    private func parseDictionary() -> SupportedType {
+    private func parseDictionary() throws -> SupportedType {
         var result = Dictionary<String, SupportedType>(minimumCapacity: JsonParser.dictionaryCapacity)
         var nextKey = ""
         var state = DictionaryState.start
@@ -157,7 +203,7 @@ internal final class JsonParser {
             
             switch state {
             case .start where character == "\"", .comma where character == "\"":
-                nextKey = parseString()
+                nextKey = try parseString()
                 state = .key
             case .key where character == ":":
                 state = .colon
@@ -166,14 +212,15 @@ internal final class JsonParser {
             case .start where character == "}", .value where character == "}":
                 return .dictionary(result)
             case .start, .key, .value, .comma:
-                error()
+                throw createError(message: .unexpectedCharacter(character, allowed: ["\"", ":", ",", "}"]))
+
             default:
                 repeatCharacter()
-                result[nextKey] = parseValue()
+                result[nextKey] = try parseValue()
                 state = .value
             }
         }
-        error()
+        throw createError(message: .unexpectedEOF)
     }
     
     private enum ArrayState {
@@ -183,7 +230,7 @@ internal final class JsonParser {
         case comma
     }
     
-    private func parseArray() -> SupportedType {
+    private func parseArray() throws -> SupportedType {
         var result: [SupportedType] = []
         result.reserveCapacity(JsonParser.arrayCapacity)
         var state = ArrayState.start
@@ -200,40 +247,48 @@ internal final class JsonParser {
             case .start where character == "]", .value where character == "]":
                 return .array(result)
             case .value:
-                error()
+                throw createError(message: .unexpectedCharacter(character, allowed: [",", "]"]))
             default:
                 repeatCharacter()
-                result.append(parseValue())
+                result.append(try parseValue())
                 state = .value
             }
         }
-        error()
+        throw createError(message: .unexpectedEOF)
+    }
+
+    private func parseTrue() throws -> SupportedType {
+        try ensureExpectedCharacter("r")
+        try ensureExpectedCharacter("u")
+        try ensureExpectedCharacter("e")
+
+        return .bool(true)
     }
     
-    private func parseTrue() -> SupportedType {
-        if next() == "r" && next() == "u" && next() == "e" {
-            return .bool(true)
-        } else {
-            error()
+    private func parseFalse() throws -> SupportedType {
+        try ensureExpectedCharacter("a")
+        try ensureExpectedCharacter("l")
+        try ensureExpectedCharacter("s")
+        try ensureExpectedCharacter("e")
+
+        return .bool(false)
+    }
+    
+    private func parseNull() throws -> SupportedType {
+        try ensureExpectedCharacter("u")
+        try ensureExpectedCharacter("l")
+        try ensureExpectedCharacter("l")
+
+        return .null
+    }
+    
+    private func ensureExpectedCharacter(_ expected: UnicodeScalar) throws {
+        let character = next()
+        guard character == expected else {
+            throw createError(message: .unexpectedCharacter(character, allowed: [expected]))
         }
     }
-    
-    private func parseFalse() -> SupportedType {
-        if next() == "a" && next() == "l" && next() == "s" && next() == "e" {
-            return .bool(false)
-        } else {
-            error()
-        }
-    }
-    
-    private func parseNull() -> SupportedType {
-        if next() == "u" && next() == "l" && hasNext && next() == "l" {
-            return .null
-        } else {
-            error()
-        }
-    }
-    
+
     private enum NumberState {
         
         case start
@@ -246,7 +301,7 @@ internal final class JsonParser {
         case exponent
     }
     
-    private func parseNumber() -> SupportedType {
+    private func parseNumber() throws -> SupportedType {
         var negative = false
         var negativeExponent = false
         var exponent: Double = 0
@@ -298,7 +353,8 @@ internal final class JsonParser {
         
         switch state {
         case .start, .dot, .e, .eSign:
-            error()
+            throw createError(message: .invalidNumber)
+
         default:
             if negative {
                 mantisa *= -1
@@ -331,8 +387,19 @@ internal final class JsonParser {
         }
     }
     
-    private func error() -> Never {
-        fatalError("Invalid JSON. Index: \(index).")
+    private func createError(message: JsonError.Message) -> JsonError {
+        let character = data[index]
+
+        var line = 1
+        var column = data.distance(from: data.startIndex, to: index)
+        for c in data[..<index] {
+            if c == "\n" {
+                line += 1
+            }
+            column -= 1
+        }
+
+        return JsonError.parse(index: index, line: line, column: column, character: character, message: message)
     }
 }
 

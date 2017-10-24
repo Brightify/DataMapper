@@ -60,6 +60,15 @@ public struct JsonSerializer: TypedSerializer {
     }
     
     public func deserialize(_ data: Data) -> SupportedType {
-        return JsonParser().parse(data: data)
+        do {
+            return try deserializeOrThrow(data)
+        } catch {
+            print("ERROR: \(error.localizedDescription)")
+            return .null
+        }
+    }
+
+    public func deserializeOrThrow(_ data: Data) throws -> SupportedType {
+        return try JsonParser().parse(data: data)
     }
 }

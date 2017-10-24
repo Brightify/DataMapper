@@ -60,7 +60,7 @@ class JsonSerializerTest: QuickSpec {
         let serializer = JsonSerializer()
         
         let data = serializer.serialize(type)
-        let actualType = serializer.deserialize(data)
+        let actualType = try! serializer.deserializeOrThrow(data)
         
         expect(actualType, file: file, line: line) == type
     }
