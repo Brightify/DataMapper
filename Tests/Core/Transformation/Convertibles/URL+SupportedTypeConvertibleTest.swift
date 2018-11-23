@@ -9,6 +9,7 @@
 import Quick
 import Nimble
 import DataMapper
+import Foundation
 
 class URL_SupportedTypeConvertibleTest: QuickSpec {
     
