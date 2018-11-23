@@ -9,6 +9,7 @@
 import Quick
 import Nimble
 import DataMapper
+import Foundation
 
 class JsonSerializerTest: QuickSpec {
     
@@ -47,7 +48,7 @@ class JsonSerializerTest: QuickSpec {
         }
     }
     
-    private func typedSerializeTest(for type: SupportedType, file: String = #file, line: UInt = #line) {
+    private func typedSerializeTest(for type: SupportedType, file: FileString = #file, line: UInt = #line) {
         let serializer = JsonSerializer()
         
         let data = serializer.typedSerialize(type)
@@ -56,7 +57,7 @@ class JsonSerializerTest: QuickSpec {
         expect(actualType, file: file, line: line) == type
     }
     
-    private func serializeTest(for type: SupportedType, file: String = #file, line: UInt = #line) {
+    private func serializeTest(for type: SupportedType, file: FileString = #file, line: UInt = #line) {
         let serializer = JsonSerializer()
         
         let data = serializer.serialize(type)

@@ -36,3 +36,4 @@ Pods
 .idea
 
 xcbaselines/
+.build
