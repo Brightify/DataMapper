@@ -725,7 +725,6 @@
 				18E484491BA8BFB1004CB09A /* Frameworks */,
 				18E4844A1BA8BFB1004CB09A /* Headers */,
 				18E4844B1BA8BFB1004CB09A /* Resources */,
-				B518202B398E69D813A9F1DB /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -745,7 +744,6 @@
 				18E484531BA8BFB1004CB09A /* Frameworks */,
 				18E484541BA8BFB1004CB09A /* Resources */,
 				921650F9D8529F3C16859D75 /* [CP] Embed Pods Frameworks */,
-				6740BA2BA3A725465D8BBB8E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -783,6 +781,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -815,21 +814,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		6740BA2BA3A725465D8BBB8E /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DataMapperTests/Pods-DataMapperTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		819879EBD545EE4D8D593957 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -854,7 +838,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-DataMapperTests/Pods-DataMapperTests-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-DataMapperTests/Pods-DataMapperTests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
 				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
 			);
@@ -865,22 +849,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DataMapperTests/Pods-DataMapperTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B518202B398E69D813A9F1DB /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DataMapper/Pods-DataMapper-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DataMapperTests/Pods-DataMapperTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DA0FDB8995EE725847F2562A /* [CP] Check Pods Manifest.lock */ = {
@@ -1058,7 +1027,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.brightify.DataMapper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1087,7 +1056,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.brightify.DataMapper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1106,7 +1075,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = org.brightify.DataMapperTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -1124,7 +1093,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = org.brightify.DataMapperTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -1171,7 +1140,7 @@
 				OTHER_SWIFT_FLAGS = "";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1212,7 +1181,7 @@
 				OTHER_SWIFT_FLAGS = "";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
