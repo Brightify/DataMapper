@@ -59,7 +59,7 @@ struct TestData {
         }
         
         mutating func mapping(_ data: inout MappableData) throws {
-            data["number"].map(&number)
+            try data["number"].map(&number)
             try data["text"].map(&text)
             data["points"].map(&points, or: [])
             data["children"].map(&children, or: [])
@@ -81,7 +81,7 @@ struct TestData {
         }
         
         init(_ data: DeserializableData) throws {
-            number = data["number"].get()
+            number = try data["number"].get()
             text = try data["text"].get()
             points = data["points"].get(or: [])
             children = data["children"].get(or: [])
@@ -107,7 +107,7 @@ struct TestData {
         }
         
         mutating func mapping(_ data: inout MappableData) throws {
-            data["number"].map(&number)
+            try data["number"].map(&number)
             try data["text"].map(&text)
             data["points"].map(&points, or: [])
             data["children"].map(&children, or: [])
@@ -129,7 +129,7 @@ struct TestData {
         }
         
         required init(_ data: DeserializableData) throws {
-            number = data["number"].get()
+            number = try data["number"].get()
             
             try mapping(data)
         }
@@ -338,7 +338,7 @@ struct TestData {
             override func mapping(_ data: inout MappableData) throws {
                 try super.mapping(&data)
                 
-                data["name"].map(&name)
+                try data["name"].map(&name)
             }
         }
         
@@ -359,7 +359,7 @@ struct TestData {
             override func mapping(_ data: inout MappableData) throws {
                 try super.mapping(&data)
                 
-                data["number"].map(&number)
+                try data["number"].map(&number)
             }
         }
     }

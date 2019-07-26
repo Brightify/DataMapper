@@ -29,7 +29,7 @@ class DeserializableTest: QuickSpec {
             }
             describe("ObjectMapper.deserialize") {
                 it("deserializes object") {
-                    let result: TestData.DeserializableStruct? = objectMapper.deserialize(TestData.type)
+                    let result = try? objectMapper.deserialize(TestData.DeserializableStruct.self, from: TestData.type)
                     
                     expect(result) == TestData.deserializableStruct
                 }

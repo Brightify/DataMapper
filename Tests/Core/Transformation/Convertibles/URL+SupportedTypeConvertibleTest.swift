@@ -20,7 +20,7 @@ class URL_SupportedTypeConvertibleTest: QuickSpec {
                 let value = URL(string: "a")
                 let type: SupportedType = .string("a")
                 
-                expect(objectMapper.deserialize(type)) == value
+                expect(try? objectMapper.deserialize(URL.self, from: type)) == value
                 expect(objectMapper.serialize(value)) == type
             }
         }

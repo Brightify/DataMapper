@@ -19,7 +19,7 @@ class String_SupportedTypeConvertibleTest: QuickSpec {
                 let value = "a"
                 let type: SupportedType = .string("a")
                 
-                expect(objectMapper.deserialize(type)) == value
+                expect(try? objectMapper.deserialize(String.self, from: type)) == value
                 expect(objectMapper.serialize(value)) == type
             }
         }

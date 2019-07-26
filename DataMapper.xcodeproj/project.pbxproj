@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		085068D2E12B019B90A3396E /* Pods_DataMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB00A2D2F89595D06F34EE2D /* Pods_DataMapper.framework */; };
+		189075E422EBA42F00B9D03B /* GenericPolymorphicInfoTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2C72FB1E0EC7F800EE380C /* GenericPolymorphicInfoTest.swift */; };
+		189075E522EBA43300B9D03B /* PolymorphicTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2C72FF1E0EC82D00EE380C /* PolymorphicTest.swift */; };
+		189075E622EBA46F00B9D03B /* PerformanceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC65405F1E127692006BC731 /* PerformanceTest.swift */; };
 		18E484571BA8BFB1004CB09A /* DataMapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18E4844D1BA8BFB1004CB09A /* DataMapper.framework */; };
 		DC07855E1DC6634A0063AB96 /* DeserializationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC07855D1DC6634A0063AB96 /* DeserializationError.swift */; };
 		DC1C67FF1E5DEAF20081E7BD /* SerializerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1C67FD1E5DEAE60081E7BD /* SerializerTest.swift */; };
@@ -79,7 +82,6 @@
 		DC65405A1E127248006BC731 /* DeserializableTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6540561E127238006BC731 /* DeserializableTest.swift */; };
 		DC65405B1E127248006BC731 /* SerializableTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6540581E127243006BC731 /* SerializableTest.swift */; };
 		DC65405C1E127256006BC731 /* TransformationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6540541E126FEC006BC731 /* TransformationTest.swift */; };
-		DC6540601E127692006BC731 /* PerformanceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC65405F1E127692006BC731 /* PerformanceTest.swift */; };
 		DC65406C1E12C14E006BC731 /* SupportedTypeConvertibleTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC65406B1E12C14E006BC731 /* SupportedTypeConvertibleTest.swift */; };
 		DC65406E1E12C167006BC731 /* AnyDeserializableTransformationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC65406D1E12C167006BC731 /* AnyDeserializableTransformationTest.swift */; };
 		DC6540701E12C17A006BC731 /* CompositeDeserializableTransformationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC65406F1E12C17A006BC731 /* CompositeDeserializableTransformationTest.swift */; };
@@ -953,13 +955,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				189075E522EBA43300B9D03B /* PolymorphicTest.swift in Sources */,
 				DC6540AB1E17BA8E006BC731 /* IntTransformationTest.swift in Sources */,
 				DC6540721E12C18A006BC731 /* DelegatedDeserializableTransformationTest.swift in Sources */,
 				DC6540801E12C214006BC731 /* SerializableTransformationTest.swift in Sources */,
 				DC65407A1E12C1E8006BC731 /* CompositeSerializableTransformationTest.swift in Sources */,
 				DC6540A91E17BA82006BC731 /* DoubleTransformationTest.swift in Sources */,
 				DC2C73101E0ECA6B00EE380C /* DelegatedTransformationTest.swift in Sources */,
-				DC6540601E127692006BC731 /* PerformanceTest.swift in Sources */,
 				DC6540BB1E1922B6006BC731 /* TestData.swift in Sources */,
 				DC6540AF1E17BC51006BC731 /* Bool+SupportedTypeConvertibleTest.swift in Sources */,
 				DC65407E1E12C203006BC731 /* SerializableSupportedTypeConvertibleTest.swift in Sources */,
@@ -973,6 +975,7 @@
 				DC6540741E12C199006BC731 /* DeserializableSupportedTypeConvertibleTest.swift in Sources */,
 				DCA379271E6AA7DC00587B5F /* SupportedType+Equatable.swift in Sources */,
 				DC6540821E12C229006BC731 /* DictionaryUtilsTest.swift in Sources */,
+				189075E622EBA46F00B9D03B /* PerformanceTest.swift in Sources */,
 				DC65409D1E17BA40006BC731 /* URLTransformationTest.swift in Sources */,
 				DC6540B51E17BC72006BC731 /* String+SupportedTypeConvertibleTest.swift in Sources */,
 				DC6540831E12C316006BC731 /* AnyTransformationTest.swift in Sources */,
@@ -992,6 +995,7 @@
 				DC6540A71E17BA7A006BC731 /* BoolTransformationTest.swift in Sources */,
 				DC65405C1E127256006BC731 /* TransformationTest.swift in Sources */,
 				DC2C72FE1E0EC80F00EE380C /* PolymorphDataProviderTest.swift in Sources */,
+				189075E422EBA42F00B9D03B /* GenericPolymorphicInfoTest.swift in Sources */,
 				DC6540A51E17BA70006BC731 /* ISO8601DateTransformationTest.swift in Sources */,
 				DC6540781E12C1DB006BC731 /* AnySerializableTransformationTest.swift in Sources */,
 				DC2C73071E0EC8DC00EE380C /* SerializableMappableDataWrapperTest.swift in Sources */,

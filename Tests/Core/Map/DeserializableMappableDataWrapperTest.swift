@@ -33,11 +33,11 @@ class DeserializableMappableDataWrapperTest: QuickSpec {
                     var optionalArrayTransformation: [Int?]?
                     var optionalDictionaryTransformation: [String: Int?]?
                     
-                    data["value"].map(&value)
-                    data["array"].map(&array)
-                    data["dictionary"].map(&dictionary)
-                    data["optionalArray"].map(&optionalArray)
-                    data["optionalDictionary"].map(&optionalDictionary)
+                    try! data["value"].map(&value)
+                    try! data["array"].map(&array)
+                    try! data["dictionary"].map(&dictionary)
+                    try! data["optionalArray"].map(&optionalArray)
+                    try! data["optionalDictionary"].map(&optionalDictionary)
                     
                     data["value"].map(&valueTransformation, using: CustomIntTransformation())
                     data["array"].map(&arrayTransformation, using: CustomIntTransformation())
@@ -66,11 +66,11 @@ class DeserializableMappableDataWrapperTest: QuickSpec {
                     var optionalArrayTransformation: [Int?]?
                     var optionalDictionaryTransformation: [String: Int?]?
                     
-                    data["value"].map(&value)
-                    data["array"].map(&array)
-                    data["dictionary"].map(&dictionary)
-                    data["optionalArray"].map(&optionalArray)
-                    data["optionalDictionary"].map(&optionalDictionary)
+                    try? data["value"].map(&value)
+                    try? data["array"].map(&array)
+                    try? data["dictionary"].map(&dictionary)
+                    try? data["optionalArray"].map(&optionalArray)
+                    try? data["optionalDictionary"].map(&optionalDictionary)
                     
                     data["value"].map(&valueTransformation, using: CustomIntTransformation())
                     data["array"].map(&arrayTransformation, using: CustomIntTransformation())

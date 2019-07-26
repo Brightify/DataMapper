@@ -26,66 +26,18 @@ public struct DeserializableData {
         return self[path]
     }
     
-    public func get<T: Deserializable>() -> T? {
-        return objectMapper.deserialize(raw)
+    public func get<T: Deserializable>(_ type: T.Type = T.self) throws -> T {
+        return try objectMapper.deserialize(type, from: raw)
     }
     
     public func get<T: Deserializable>(or: T) -> T {
-        return get() ?? or
+        do {
+            return try get(T.self)
+        } catch {
+            return or
+        }
     }
-    
-    public func get<T: Deserializable>() throws -> T {
-        return try valueOrThrow(get())
-    }
-    
-    public func get<T: Deserializable>() -> [T]? {
-        return objectMapper.deserialize(raw)
-    }
-    
-    public func get<T: Deserializable>(or: [T]) -> [T] {
-        return get() ?? or
-    }
-    
-    public func get<T: Deserializable>() throws -> [T] {
-        return try valueOrThrow(get())
-    }
-    
-    public func get<T: Deserializable>() -> [T?]? {
-        return objectMapper.deserialize(raw)
-    }
-    
-    public func get<T: Deserializable>(or: [T?]) -> [T?] {
-        return get() ?? or
-    }
-    
-    public func get<T: Deserializable>() throws -> [T?] {
-        return try valueOrThrow(get())
-    }
-    
-    public func get<T: Deserializable>() -> [String: T]? {
-        return objectMapper.deserialize(raw)
-    }
-    
-    public func get<T: Deserializable>(or: [String: T]) -> [String: T] {
-        return get() ?? or
-    }
-    
-    public func get<T: Deserializable>() throws -> [String: T] {
-        return try valueOrThrow(get())
-    }
-    
-    public func get<T: Deserializable>() -> [String: T?]? {
-        return objectMapper.deserialize(raw)
-    }
-    
-    public func get<T: Deserializable>(or: [String: T?]) -> [String: T?] {
-        return get() ?? or
-    }
-    
-    public func get<T: Deserializable>() throws -> [String: T?] {
-        return try valueOrThrow(get())
-    }
-    
+
     public func get<T, R: DeserializableTransformation>(using transformation: R) -> T? where R.Object == T {
         return objectMapper.deserialize(raw, using: transformation)
     }
@@ -150,7 +102,7 @@ public struct DeserializableData {
         if let value = optionalValue {
             return value
         } else {
-            throw DeserializationError.wrongType(type: raw)
+            throw DeserializationError.wrongType(type: raw, expected: .null)
         }
     }
 }

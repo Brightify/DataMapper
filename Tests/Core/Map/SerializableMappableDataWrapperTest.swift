@@ -28,11 +28,11 @@ class SerializableMappableDataWrapperTest: QuickSpec {
                         var optionalArray: [Int?]? = [1, nil]
                         var optionalDictionary: [String: Int?]? = ["a": 1, "b": nil]
                         
-                        data["value"].map(&value)
-                        data["array"].map(&array)
-                        data["dictionary"].map(&dictionary)
-                        data["optionalArray"].map(&optionalArray)
-                        data["optionalDictionary"].map(&optionalDictionary)
+                        try! data["value"].map(&value)
+                        try! data["array"].map(&array)
+                        try! data["dictionary"].map(&dictionary)
+                        try! data["optionalArray"].map(&optionalArray)
+                        try! data["optionalDictionary"].map(&optionalDictionary)
                         
                         expect((data as? SerializableMappableDataWrapper)?.delegate.raw) == TestData.Map.validType
                     }
@@ -46,11 +46,11 @@ class SerializableMappableDataWrapperTest: QuickSpec {
                         var optionalArray: [Int?]?
                         var optionalDictionary: [String: Int?]?
                         
-                        data["value"].map(&value)
-                        data["array"].map(&array)
-                        data["dictionary"].map(&dictionary)
-                        data["optionalArray"].map(&optionalArray)
-                        data["optionalDictionary"].map(&optionalDictionary)
+                        try! data["value"].map(&value)
+                        try! data["array"].map(&array)
+                        try! data["dictionary"].map(&dictionary)
+                        try! data["optionalArray"].map(&optionalArray)
+                        try! data["optionalDictionary"].map(&optionalDictionary)
                         
                         expect((data as? SerializableMappableDataWrapper)?.delegate.raw) == TestData.Map.nullType
                     }
@@ -193,21 +193,21 @@ class SerializableMappableDataWrapperTest: QuickSpec {
                 it("sets data with subData") {
                     var data = SerializableMappableDataWrapper(delegate: delegate)
                     
-                    data["a"]["b"].map(&value)
+                    try! data["a"]["b"].map(&value)
                     
                     expect(data.delegate.raw) == TestData.Map.pathType
                 }
                 it("accepts array") {
                     var data = SerializableMappableDataWrapper(delegate: delegate)
                     
-                    data[["a", "b"]].map(&value)
+                    try! data[["a", "b"]].map(&value)
                     
                     expect(data.delegate.raw) == TestData.Map.pathType
                 }
                 it("accepts vararg") {
                     var data = SerializableMappableDataWrapper(delegate: delegate)
                     
-                    data["a", "b"].map(&value)
+                    try! data["a", "b"].map(&value)
                     
                     expect(data.delegate.raw) == TestData.Map.pathType
                 }

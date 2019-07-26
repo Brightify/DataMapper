@@ -19,7 +19,7 @@ class Bool_SupportedTypeConvertibleTest: QuickSpec {
                 let value = true
                 let type: SupportedType = .bool(true)
                 
-                expect(objectMapper.deserialize(type)) == value
+                expect(try? objectMapper.deserialize(Bool.self, from: type)) == value
                 expect(objectMapper.serialize(value)) == type
             }
         }

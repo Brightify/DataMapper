@@ -40,9 +40,9 @@ class PerformanceTest: XCTestCase {
         let data = try! ikigaJsonEncoder.encode(objects)
 
         var result: Object!
-//        measure {
+        measure {
             result = try! ikigaJsonDecoder.decode(TestData.PerformanceStruct.self, from: data)
-//        }
+        }
         _ = result
     }
 
@@ -51,7 +51,7 @@ class PerformanceTest: XCTestCase {
         let data: Data = serializer.serialize(objectMapper.serialize(objects))
         var result: Object!
         measure {
-            result = self.objectMapper.deserialize(self.serializer.deserialize(data))
+            result = try! self.objectMapper.deserialize(Object.self, from: self.serializer.deserialize(data))
         }
         _ = result
     }
@@ -78,7 +78,7 @@ class PerformanceTest: XCTestCase {
         let data: SupportedType = objectMapper.serialize(objects)
         var result: Object!
         measure {
-            result = self.objectMapper.deserialize(data)
+            result = try! self.objectMapper.deserialize(Object.self, from: data)
         }
         _ = result
     }

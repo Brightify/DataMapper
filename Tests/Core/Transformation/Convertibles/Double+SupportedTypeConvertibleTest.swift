@@ -19,7 +19,7 @@ class Double_SupportedTypeConvertibleTest: QuickSpec {
                 let value = 1.1
                 let type: SupportedType = .double(1.1)
                 
-                expect(objectMapper.deserialize(type)) == value
+                expect(try? objectMapper.deserialize(Double.self, from: type)) == value
                 expect(objectMapper.serialize(value)) == type
             }
         }

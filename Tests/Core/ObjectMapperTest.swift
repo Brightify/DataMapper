@@ -23,7 +23,7 @@ class ObjectMapperTest: QuickSpec {
                 let objectMapper = ObjectMapper()
                 let object = TestData.generate(x: 3)
                 
-                let result: TestData.PerformanceStruct? = objectMapper.deserialize(objectMapper.serialize(object))
+                let result = try? objectMapper.deserialize(TestData.PerformanceStruct.self, from: objectMapper.serialize(object))
                 
                 expect(result) == object
             }
@@ -134,11 +134,11 @@ class ObjectMapperTest: QuickSpec {
                 describe("deserialize") {
                     context("not polymorphic type") {
                         it("returns data if type is valid") {                            
-                            let value: Int? = objectMapper.deserialize(self.getValidType("value"))
-                            let array: [Int]? = objectMapper.deserialize(self.getValidType("array"))
-                            let dictionary: [String: Int]? = objectMapper.deserialize(self.getValidType("dictionary"))
-                            let optionalArray: [Int?]? = objectMapper.deserialize(self.getValidType("optionalArray"))
-                            let optionalDictionary: [String: Int?]? = objectMapper.deserialize(self.getValidType("optionalDictionary"))
+                            let value: Int? = try? objectMapper.deserialize(Int.self, from: self.getValidType("value"))
+                            let array: [Int]? = try? objectMapper.deserialize([Int].self, from: self.getValidType("array"))
+                            let dictionary: [String: Int]? = try? objectMapper.deserialize([String: Int].self, from: self.getValidType("dictionary"))
+                            let optionalArray: [Int?]? = try? objectMapper.deserialize([Int?].self, from: self.getValidType("optionalArray"))
+                            let optionalDictionary: [String: Int?]? = try? objectMapper.deserialize([String: Int?].self, from: self.getValidType("optionalDictionary"))
                             
                             let valueTransformation: Int? = objectMapper.deserialize(self.getValidType("value"), using: CustomIntTransformation())
                             let arrayTransformation: [Int]? = objectMapper.deserialize(self.getValidType("array"), using: CustomIntTransformation())
@@ -152,11 +152,11 @@ class ObjectMapperTest: QuickSpec {
                                                                             dictionaryTransformation, optionalArrayTransformation, optionalDictionaryTransformation)
                         }
                         it("returns nil if type is not valid") {
-                            let value: Int? = objectMapper.deserialize(self.getInvalidType("value"))
-                            let array: [Int]? = objectMapper.deserialize(self.getInvalidType("array"))
-                            let dictionary: [String: Int]? = objectMapper.deserialize(self.getInvalidType("dictionary"))
-                            let optionalArray: [Int?]? = objectMapper.deserialize(self.getInvalidType("optionalArray"))
-                            let optionalDictionary: [String: Int?]? = objectMapper.deserialize(self.getInvalidType("optionalDictionary"))
+                            let value: Int? = try? objectMapper.deserialize(Int.self, from: self.getInvalidType("value"))
+                            let array: [Int]? = try? objectMapper.deserialize([Int].self, from: self.getInvalidType("array"))
+                            let dictionary: [String: Int]? = try? objectMapper.deserialize([String: Int].self, from: self.getInvalidType("dictionary"))
+                            let optionalArray: [Int?]? = try? objectMapper.deserialize([Int?].self, from: self.getInvalidType("optionalArray"))
+                            let optionalDictionary: [String: Int?]? = try? objectMapper.deserialize([String: Int?].self, from: self.getInvalidType("optionalDictionary"))
                             
                             let valueTransformation: Int? = objectMapper.deserialize(self.getInvalidType("value"), using: CustomIntTransformation())
                             let arrayTransformation: [Int]? = objectMapper.deserialize(self.getInvalidType("array"), using: CustomIntTransformation())
@@ -172,9 +172,9 @@ class ObjectMapperTest: QuickSpec {
                     }
                     context("polymorphic type") {
                         it("deserializes data with correct type") {
-                            let a: A? = objectMapper.deserialize(TestData.PolymorphicTypes.aType)
-                            let b: A? = objectMapper.deserialize(TestData.PolymorphicTypes.bType)
-                            let c: A? = objectMapper.deserialize(TestData.PolymorphicTypes.cType)
+                            let a: A? = try? objectMapper.deserialize(A.self, from: TestData.PolymorphicTypes.aType)
+                            let b: A? = try? objectMapper.deserialize(A.self, from: TestData.PolymorphicTypes.bType)
+                            let c: A? = try? objectMapper.deserialize(A.self, from: TestData.PolymorphicTypes.cType)
                             
                             if let a = a, let b = b as? B, let c = c as? C {
                                 expect(a.id) == TestData.PolymorphicTypes.a.id
@@ -208,9 +208,9 @@ class ObjectMapperTest: QuickSpec {
                 }
                 describe("deserialize") {
                     it("deserializes polymorhic type like not polymorphic") {
-                        let a: A? = objectMapper.deserialize(TestData.PolymorphicTypes.aType)
-                        let b: A? = objectMapper.deserialize(TestData.PolymorphicTypes.bType)
-                        let c: A? = objectMapper.deserialize(TestData.PolymorphicTypes.cType)
+                        let a: A? = try? objectMapper.deserialize(A.self, from: TestData.PolymorphicTypes.aType)
+                        let b: A? = try? objectMapper.deserialize(A.self, from: TestData.PolymorphicTypes.bType)
+                        let c: A? = try? objectMapper.deserialize(A.self, from: TestData.PolymorphicTypes.cType)
                         
                         expect(a).toNot(beNil())
                         expect(b).toNot(beNil())

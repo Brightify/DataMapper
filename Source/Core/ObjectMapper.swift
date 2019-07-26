@@ -16,32 +16,30 @@ public final class ObjectMapper {
         self.polymorph = polymorph
     }
     
-    public func serialize<T: Serializable>(_ value: T?) -> SupportedType {
-        if let value = value {
-            var serializableData = SerializableData(objectMapper: self)
-            value.serialize(to: &serializableData)
-            var data = serializableData.raw
-            polymorph?.writeTypeInfo(to: &data, of: type(of: value))
-            return data
+    public func serialize<T: Serializable>(_ value: T) -> SupportedType {
+        var serializableData = SerializableData(objectMapper: self)
+        value.serialize(to: &serializableData)
+        var data = serializableData.raw
+        polymorph?.writeTypeInfo(to: &data, of: type(of: value))
+        return data
+    }
+    
+    internal func serialize<T: Serializable>(array: [T], to storage: inout SupportedType) {
+        storage.array = array.map {
+            serialize($0)
+        }
+    }
+
+    internal func serialize<T: Serializable>(optional: T?, to storage: inout SupportedType) {
+        if let value = optional {
+            storage = serialize(value)
         } else {
-            return .null
+            storage.setNull()
         }
     }
     
-    public func serialize<T: Serializable>(_ array: [T?]?) -> SupportedType {
-        if let array = array {
-            return .array(array.map(serialize))
-        } else {
-            return .null
-        }
-    }
-    
-    public func serialize<T: Serializable>(_ dictionary: [String: T?]?) -> SupportedType {
-        if let dictionary = dictionary {
-            return .dictionary(dictionary.mapValues(serialize))
-        } else {
-            return .null
-        }
+    internal func serialize<T: Serializable>(dictionary: [String: T], to storage: inout SupportedType) {
+        storage.dictionary = dictionary.mapValues(serialize)
     }
     
     public func serialize<T, R: SerializableTransformation>(_ value: T?, using transformation: R) -> SupportedType where R.Object == T {
@@ -70,34 +68,38 @@ public final class ObjectMapper {
         return encoder.storage
     }
     
-    public func deserialize<T: Deserializable>(_ type: SupportedType) -> T? {
-        let data = DeserializableData(data: type, objectMapper: self)
-        let type = polymorph?.polymorphType(for: T.self, in: type) ?? T.self
-        return try? type.init(data)
+    public func deserialize<T: Deserializable>(_ type: T.Type, from storage: SupportedType) throws -> T {
+        let data = DeserializableData(data: storage, objectMapper: self)
+        let type = polymorph?.polymorphType(for: T.self, in: storage) ?? T.self
+        return try type.init(data)
     }
     
-    public func deserialize<T: Deserializable>(_ type: SupportedType) -> [T]? {
-        guard let array = type.array else {
-            return nil
+    internal func deserializeArray<T: Deserializable>(_ storage: SupportedType) throws -> [T] {
+        guard let array = storage.array else {
+            throw DeserializationError.wrongType(expected: .array, actual: storage)
         }
         
-        return array.mapOrNil(deserialize)
+        return try array.map {
+            try deserialize(T.self, from: $0)
+        }
+    }
+
+    internal func deserializeOptional<T: Deserializable>(_ type: SupportedType) throws -> T? {
+        if type.isNull {
+            return nil
+        } else {
+            return try deserialize(T.self, from: type)
+        }
     }
     
-    public func deserialize<T: Deserializable>(_ type: SupportedType) -> [T?]? {
-        return type.array?.map(deserialize)
-    }
-    
-    public func deserialize<T: Deserializable>(_ type: SupportedType) -> [String: T]? {
+    internal func deserializeDictionary<T: Deserializable>(_ type: SupportedType) throws -> [String: T] {
         guard let dictionary = type.dictionary else {
-            return nil
+            throw DeserializationError.wrongType(expected: .dictionary, actual: type)
         }
         
-        return dictionary.mapValueOrNil(deserialize)
-    }
-    
-    public func deserialize<T: Deserializable>(_ type: SupportedType) -> [String: T?]? {
-        return type.dictionary?.mapValues(deserialize)
+        return try dictionary.mapValues {
+            try deserialize(T.self, from: $0)
+        }
     }
     
     public func deserialize<T, R: DeserializableTransformation>(_ type: SupportedType, using transformation: R) -> T? where R.Object == T {

@@ -44,7 +44,7 @@ class MappableTest: QuickSpec {
             }
             describe("ObjectMapper.deserialize") {
                 it("deserializes object") {
-                    let object: TestData.MappableStruct? = objectMapper.deserialize(TestData.type)
+                    let object = try? objectMapper.deserialize(TestData.MappableStruct.self, from: TestData.type)
                     
                     expect(object) == TestData.mappableStruct
                 }

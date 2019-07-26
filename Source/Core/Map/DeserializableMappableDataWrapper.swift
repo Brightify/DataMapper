@@ -32,66 +32,14 @@ public struct DeserializableMappableDataWrapper: MappableData {
         }
     }
     
-    public func map<T: SerializableAndDeserializable>(_ value: inout T?) {
-        value = delegate.get()
+    public func map<T: SerializableAndDeserializable>(_ value: inout T) throws {
+        value = try delegate.get()
     }
     
     public func map<T: SerializableAndDeserializable>(_ value: inout T, or: T) {
         value = delegate.get(or: or)
     }
-    
-    public func map<T: SerializableAndDeserializable>(_ value: inout T) throws {
-        value = try delegate.get()
-    }
-    
-    public func map<T: SerializableAndDeserializable>(_ array: inout [T]?) {
-        array = delegate.get()
-    }
-    
-    public func map<T: SerializableAndDeserializable>(_ array: inout [T], or: [T]) {
-        array = delegate.get(or: or)
-    }
-    
-    public func map<T: SerializableAndDeserializable>(_ array: inout [T]) throws {
-        array = try delegate.get()
-    }
-    
-    public func map<T: SerializableAndDeserializable>(_ array: inout [T?]?) {
-        array = delegate.get()
-    }
-    
-    public func map<T: SerializableAndDeserializable>(_ array: inout [T?], or: [T?]) {
-        array = delegate.get(or: or)
-    }
-    
-    public func map<T: SerializableAndDeserializable>(_ array: inout [T?]) throws {
-        array = try delegate.get()
-    }
-    
-    public func map<T: SerializableAndDeserializable>(_ dictionary: inout [String: T]?) {
-        dictionary = delegate.get()
-    }
-    
-    public func map<T: SerializableAndDeserializable>(_ dictionary: inout [String: T], or: [String: T]) {
-        dictionary = delegate.get(or: or)
-    }
-    
-    public func map<T: SerializableAndDeserializable>(_ dictionary: inout [String: T]) throws {
-        dictionary = try delegate.get()
-    }
-    
-    public func map<T: SerializableAndDeserializable>(_ dictionary: inout [String: T?]?) {
-        dictionary = delegate.get()
-    }
-    
-    public func map<T: SerializableAndDeserializable>(_ dictionary: inout [String: T?], or: [String: T?]) {
-        dictionary = delegate.get(or: or)
-    }
-    
-    public func map<T: SerializableAndDeserializable>(_ dictionary: inout [String: T?]) throws {
-        dictionary = try delegate.get()
-    }
-    
+
     public func map<T, R: Transformation>(_ value: inout T?, using transformation: R) where R.Object == T {
         value = delegate.get(using: transformation)
     }

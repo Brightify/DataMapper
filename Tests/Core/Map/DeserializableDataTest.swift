@@ -20,11 +20,11 @@ class DeserializableDataTest: QuickSpec {
                 it("returns data if type is valid") {
                     let data = DeserializableData(data: TestData.Map.validType, objectMapper: ObjectMapper())
                     
-                    let value: Int? = data["value"].get()
-                    let array: [Int]? = data["array"].get()
-                    let dictionary: [String: Int]? = data["dictionary"].get()
-                    let optionalArray: [Int?]? = data["optionalArray"].get()
-                    let optionalDictionary: [String: Int?]? = data["optionalDictionary"].get()
+                    let value: Int? = try? data["value"].get()
+                    let array: [Int]? = try? data["array"].get()
+                    let dictionary: [String: Int]? = try? data["dictionary"].get()
+                    let optionalArray: [Int?]? = try? data["optionalArray"].get()
+                    let optionalDictionary: [String: Int?]? = try? data["optionalDictionary"].get()
                     
                     let valueTransformation: Int? = data["value"].get(using: CustomIntTransformation())
                     let arrayTransformation: [Int]? = data["array"].get(using: CustomIntTransformation())
@@ -40,11 +40,11 @@ class DeserializableDataTest: QuickSpec {
                 it("returns nil if type is not valid") {
                     let data = DeserializableData(data: TestData.Map.invalidType, objectMapper: ObjectMapper())
                     
-                    let value: Int? = data["value"].get()
-                    let array: [Int]? = data["array"].get()
-                    let dictionary: [String: Int]? = data["dictionary"].get()
-                    let optionalArray: [Int?]? = data["optionalArray"].get()
-                    let optionalDictionary: [String: Int?]? = data["optionalDictionary"].get()
+                    let value: Int? = try? data["value"].get()
+                    let array: [Int]? = try? data["array"].get()
+                    let dictionary: [String: Int]? = try? data["dictionary"].get()
+                    let optionalArray: [Int?]? = try? data["optionalArray"].get()
+                    let optionalDictionary: [String: Int?]? = try? data["optionalDictionary"].get()
                     
                     let valueTransformation: Int? = data["value"].get(using: CustomIntTransformation())
                     let arrayTransformation: [Int]? = data["array"].get(using: CustomIntTransformation())

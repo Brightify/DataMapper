@@ -41,16 +41,8 @@ public struct SerializableData {
         }
     }
 
-    public mutating func set<T: Serializable>(_ value: T?) {
+    public mutating func set<T: Serializable>(_ value: T) {
         raw = objectMapper.serialize(value)
-    }
-    
-    public mutating func set<T: Serializable>(_ array: [T?]?) {
-        raw = objectMapper.serialize(array)
-    }
-    
-    public mutating func set<T: Serializable>(_ dictionary: [String: T?]?) {
-        raw = objectMapper.serialize(dictionary)
     }
     
     public mutating func set<T, R: SerializableTransformation>(_ value: T?, using transformation: R) where R.Object == T {
