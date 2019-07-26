@@ -85,6 +85,52 @@ class ObjectMapperTest: QuickSpec {
                         }
                     }
                 }
+                describe("encode") {
+                    it("returns serialized data if type is valid") {
+                        let value: Int? = 1
+                        let array: [Int]? = [1, 2]
+                        let dictionary: [String: Int]? = ["a": 1, "b": 2]
+                        let optionalArray: [Int?]? = [1, nil]
+                        let optionalDictionary: [String: Int?]? = ["a": 1, "b": nil]
+
+                        let valueTransformation: Int? = 2
+                        let arrayTransformation: [Int]? = [2, 4]
+                        let dictionaryTransformation: [String: Int]? = ["a": 2, "b": 4]
+                        let optionalArrayTransformation: [Int?]? = [2, nil]
+                        let optionalDictionaryTransformation: [String: Int?]? = ["a": 2, "b": nil]
+
+                        expect(try! objectMapper.encode(value)) == self.getValidType("value")
+                        expect(try! objectMapper.encode(array)) == self.getValidType("array")
+                        expect(try! objectMapper.encode(dictionary)) == self.getValidType("dictionary")
+                        expect(try! objectMapper.encode(optionalArray)) == self.getValidType("optionalArray")
+                        expect(try! objectMapper.encode(optionalDictionary)) == self.getValidType("optionalDictionary")
+
+//                        expect(objectMapper.encode(valueTransformation, using: CustomIntTransformation())) == self.getValidType("value")
+//                        expect(objectMapper.encode(arrayTransformation, using: CustomIntTransformation())) == self.getValidType("array")
+//                        expect(objectMapper.encode(dictionaryTransformation, using: CustomIntTransformation())) == self.getValidType("dictionary")
+//                        expect(objectMapper.encode(optionalArrayTransformation, using: CustomIntTransformation())) == self.getValidType("optionalArray")
+//                        expect(objectMapper.encode(optionalDictionaryTransformation, using: CustomIntTransformation())) == self.getValidType("optionalDictionary")
+                    }
+//                    it("returns nil if type is invalid") {
+//                        let value: Int? = nil
+//                        let array: [Int]? = nil
+//                        let dictionary: [String: Int]? = nil
+//                        let optionalArray: [Int?]? = nil
+//                        let optionalDictionary: [String: Int?]? = nil
+//
+//                        expect(objectMapper.serialize(value)) == SupportedType.null
+//                        expect(objectMapper.serialize(array)) == SupportedType.null
+//                        expect(objectMapper.serialize(dictionary)) == SupportedType.null
+//                        expect(objectMapper.serialize(optionalArray)) == SupportedType.null
+//                        expect(objectMapper.serialize(optionalDictionary)) == SupportedType.null
+//
+//                        expect(objectMapper.serialize(value, using: CustomIntTransformation())) == SupportedType.null
+//                        expect(objectMapper.serialize(array, using: CustomIntTransformation())) == SupportedType.null
+//                        expect(objectMapper.serialize(dictionary, using: CustomIntTransformation())) == SupportedType.null
+//                        expect(objectMapper.serialize(optionalArray, using: CustomIntTransformation())) == SupportedType.null
+//                        expect(objectMapper.serialize(optionalDictionary, using: CustomIntTransformation())) == SupportedType.null
+//                    }
+                }
                 describe("deserialize") {
                     context("not polymorphic type") {
                         it("returns data if type is valid") {                            

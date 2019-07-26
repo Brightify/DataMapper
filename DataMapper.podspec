@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
     spec.name             = "DataMapper"
-    spec.version          = "0.2.0"
+    spec.version          = "1.0.0.alpha1"
     spec.summary          = "Universal object deserialization/serialization in Swift."
     spec.description      = <<-DESC
                         DataMapper is a framework for safe deserialization/serialization of objects from/to different data representation standards (as of now we support JSON but others can be added easily).

@@ -27,8 +27,8 @@ public final class StaticPolymorph: Polymorph {
     
     public func writeTypeInfo<T>(to supportedType: inout SupportedType, of type: T.Type) {
         if let type = type as? Polymorphic.Type {
-            let nameAndKey = dataProvider.nameAndKey(of: type)
-            supportedType.addToDictionary(key: nameAndKey.key, value: .string(nameAndKey.name))
+            let (name, key) = dataProvider.nameAndKey(of: type)
+            supportedType.addToDictionary(key: key, value: .string(name))
         }
     }
 }

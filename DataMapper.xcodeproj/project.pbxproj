@@ -17,9 +17,7 @@
 		DC2C72F61E0EC7B900EE380C /* DeserializableMappableDataWrapperTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2C72F51E0EC7B900EE380C /* DeserializableMappableDataWrapperTest.swift */; };
 		DC2C72F81E0EC7C600EE380C /* SerializableData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2C72F71E0EC7C600EE380C /* SerializableData.swift */; };
 		DC2C72FA1E0EC7DE00EE380C /* MappableTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2C72F91E0EC7DE00EE380C /* MappableTest.swift */; };
-		DC2C72FC1E0EC7F800EE380C /* GenericPolymorphicInfoTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2C72FB1E0EC7F800EE380C /* GenericPolymorphicInfoTest.swift */; };
 		DC2C72FE1E0EC80F00EE380C /* PolymorphDataProviderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2C72FD1E0EC80F00EE380C /* PolymorphDataProviderTest.swift */; };
-		DC2C73001E0EC82D00EE380C /* PolymorphicTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2C72FF1E0EC82D00EE380C /* PolymorphicTest.swift */; };
 		DC2C73021E0EC83D00EE380C /* StaticPolymorphTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2C73011E0EC83D00EE380C /* StaticPolymorphTest.swift */; };
 		DC2C73051E0EC86E00EE380C /* ApiTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2C73041E0EC86E00EE380C /* ApiTest.swift */; };
 		DC2C73071E0EC8DC00EE380C /* SerializableMappableDataWrapperTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC2C73061E0EC8DC00EE380C /* SerializableMappableDataWrapperTest.swift */; };
@@ -839,13 +837,27 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-DataMapperTests/Pods-DataMapperTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/CNIOAtomics/CNIOAtomics.framework",
+				"${BUILT_PRODUCTS_DIR}/CNIODarwin/CNIODarwin.framework",
+				"${BUILT_PRODUCTS_DIR}/CNIOLinux/CNIOLinux.framework",
+				"${BUILT_PRODUCTS_DIR}/CNIOSHA1/CNIOSHA1.framework",
+				"${BUILT_PRODUCTS_DIR}/IkigaJSON/IkigaJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
 				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftNIO/NIO.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftNIOConcurrencyHelpers/NIOConcurrencyHelpers.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CNIOAtomics.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CNIODarwin.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CNIOLinux.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CNIOSHA1.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IkigaJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NIO.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NIOConcurrencyHelpers.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -977,7 +989,6 @@
 				DC2C72F61E0EC7B900EE380C /* DeserializableMappableDataWrapperTest.swift in Sources */,
 				DC2C72E51E0EC25600EE380C /* ObjectMapperTest.swift in Sources */,
 				DC65409F1E17BA4D006BC731 /* CustomDateFormatTransformationTest.swift in Sources */,
-				DC2C73001E0EC82D00EE380C /* PolymorphicTest.swift in Sources */,
 				DC6540A71E17BA7A006BC731 /* BoolTransformationTest.swift in Sources */,
 				DC65405C1E127256006BC731 /* TransformationTest.swift in Sources */,
 				DC2C72FE1E0EC80F00EE380C /* PolymorphDataProviderTest.swift in Sources */,
@@ -985,7 +996,6 @@
 				DC6540781E12C1DB006BC731 /* AnySerializableTransformationTest.swift in Sources */,
 				DC2C73071E0EC8DC00EE380C /* SerializableMappableDataWrapperTest.swift in Sources */,
 				DC6540A31E17BA65006BC731 /* DateTransformationTest.swift in Sources */,
-				DC2C72FC1E0EC7F800EE380C /* GenericPolymorphicInfoTest.swift in Sources */,
 				DC6540B31E17BC68006BC731 /* Int+SupportedTypeConvertibleTest.swift in Sources */,
 				DC69ACDF1E3114EE00957C55 /* JsonSerializerTest.swift in Sources */,
 				DC6540761E12C1CA006BC731 /* DeserializableTransformationTest.swift in Sources */,
@@ -1135,7 +1145,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_SWIFT_FLAGS = "";
 				SDKROOT = iphoneos;
@@ -1177,7 +1187,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				OTHER_SWIFT_FLAGS = "";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";

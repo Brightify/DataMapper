@@ -45,6 +45,19 @@ public final class SupportedType: CustomStringConvertible {
         mutableDictionary[key] = value
         raw = mutableDictionary
     }
+
+    public func appendToArray(value: SupportedType) {
+        var mutableArray: [SupportedType]
+        if let array = array {
+            mutableArray = array
+        } else {
+            mutableArray = []
+            type = .array
+        }
+
+        mutableArray.append(value)
+        raw = mutableArray
+    }
 }
 
 extension SupportedType {
@@ -52,33 +65,99 @@ extension SupportedType {
     public var isNull: Bool {
         return raw == nil
     }
+
+    public func setNull() {
+        type = .null
+        raw = nil
+    }
     
     public var string: String? {
-        return raw as? String
-    }
-    
-    public var bool: Bool? {
-        return raw as? Bool
-    }
-    
-    public var int: Int? {
-        return raw as? Int
-    }
-    
-    public var double: Double? {
-        if type == .intOrDouble, let int = int {
-            return Double(int)
-        } else {
-            return raw as? Double
+        get {
+            return raw as? String
+        }
+        set {
+            guard let newValue = newValue else {
+                setNull()
+                return
+            }
+            type = .string
+            raw = newValue
         }
     }
     
+    public var bool: Bool? {
+        get {
+            return raw as? Bool
+        }
+        set {
+            guard let newValue = newValue else {
+                setNull()
+                return
+            }
+            type = .bool
+            raw = newValue
+        }
+    }
+    
+    public var int: Int? {
+        get {
+            return raw as? Int
+        }
+        set {
+            guard let newValue = newValue else {
+                setNull()
+                return
+            }
+            type = .int
+            raw = newValue
+        }
+    }
+    
+    public var double: Double? {
+        get {
+            if type == .intOrDouble, let int = int {
+                return Double(int)
+            } else {
+                return raw as? Double
+            }
+        }
+        set {
+            guard let newValue = newValue else {
+                setNull()
+                return
+            }
+            type = .double
+            raw = newValue
+        }
+
+    }
+    
     public var array: [SupportedType]? {
-        return raw as? [SupportedType]
+        get {
+            return raw as? [SupportedType]
+        }
+        set {
+            guard let newValue = newValue else {
+                setNull()
+                return
+            }
+            type = .array
+            raw = newValue
+        }
     }
     
     public var dictionary: [String: SupportedType]? {
-        return raw as? [String: SupportedType]
+        get {
+            return raw as? [String: SupportedType]
+        }
+        set {
+            guard let newValue = newValue else {
+                setNull()
+                return
+            }
+            type = .dictionary
+            raw = newValue
+        }
     }
 }
 
